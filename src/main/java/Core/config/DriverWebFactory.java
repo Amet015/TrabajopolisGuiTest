@@ -11,9 +11,9 @@ public class DriverWebFactory {
     final static String FIREFOX = "firefox";
 
     public static WebDriver getWebDriver() {
-        Map<String,IDriver> map = new HashMap<>();
-        map.put(CHROME,new ChromeWebDriver());
-        map.put(FIREFOX,new FirefoxWebDriver());
+        Map<String, IDriver> map = new HashMap<>();
+        map.put(CHROME, new ChromeWebDriver());
+        map.put(FIREFOX, new FirefoxWebDriver());
         return map.get(DriverConfig.getInstance().getDriver()).initDriver();
     }
 }

@@ -16,18 +16,18 @@ public class DriverConfig {
     private static final String IMPLICIT_WAIT = "implicitWait";
     private static final String EXPLICIT_WAIT = "explicitWait";
 
-    private DriverConfig(){
+    private DriverConfig() {
         initialize();
     }
 
-    public static DriverConfig getInstance(){
-        if (instance == null ) {
+    public static DriverConfig getInstance() {
+        if (instance == null) {
             instance = new DriverConfig();
         }
         return instance;
     }
 
-    private void initialize(){
+    private void initialize() {
         properties = new Properties();
         try {
             fileInputStream = new FileInputStream(INPUT_PATH);
@@ -37,16 +37,16 @@ public class DriverConfig {
         }
     }
 
-    public String getDriver(){
+    public String getDriver() {
         return properties.getProperty(BROWSER);
     }
 
-    public String getImplicitWait(){
-        return properties.getProperty(IMPLICIT_WAIT);
+    public Long getImplicitWait() {
+        return Long.parseLong(properties.getProperty(IMPLICIT_WAIT));
     }
 
-    public String getExplicitWait(){
-        return properties.getProperty(EXPLICIT_WAIT);
+    public Long getExplicitWait() {
+        return Long.parseLong(properties.getProperty(EXPLICIT_WAIT));
     }
 
 }

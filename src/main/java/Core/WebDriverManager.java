@@ -1,5 +1,6 @@
 package Core;
 
+import Core.config.DriverConfig;
 import Core.config.DriverWebFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,6 +12,7 @@ public class WebDriverManager {
     private WebDriver webDriver;
     private static WebDriverManager instance;
     private static WebDriverWait webDriverWait;
+
 
     private WebDriverManager(){
         initialize();
@@ -24,19 +26,11 @@ public class WebDriverManager {
     }
 
   private void initialize() {
-
-      String browser;
-      //webDriver = WebDriverFactory.getWebDriver(browser);
       this.webDriver = DriverWebFactory.getWebDriver();
       webDriver.manage().window().maximize();
-      webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-      webDriverWait = new WebDriverWait(webDriver, 40);
-//        this.webDriver = WebDriverFactory.getWebDriver(WebDriverConfig.getInstance().getBrowser());
-//        this.webDriver.manage().window().maximize();
-//        this.webDriver.manage().timeouts().implicitlyWait(WebDriverConfig.getInstance().getImplicitWaitTime(),
-//                TimeUnit.SECONDS);
-//
-//        webDriverWait = new WebDriverWait(webDriver, WebDriverConfig.getInstance().getExplicitWaitTime());
+      webDriver.manage().timeouts().implicitlyWait(DriverConfig.getInstance().getImplicitWait(), TimeUnit.SECONDS);
+      webDriverWait = new WebDriverWait(webDriver, DriverConfig.getInstance().getExplicitWait());
+
     }
     public WebDriver getWebDriver(){
         return this.webDriver;

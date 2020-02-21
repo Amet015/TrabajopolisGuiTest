@@ -6,16 +6,16 @@ import org.openqa.selenium.support.How;
 
 public class HomePage {
 
-    @FindBy(name="uid")
+    @FindBy(name = "uid")
     WebElement userTrabajopolis;
 
-    @FindBy(name="password")
+    @FindBy(name = "password")
     WebElement passwordTrabajopolis;
 
     @FindBy(how = How.CSS, css = "input.button")
     WebElement ingresar;
 
-    public void setCredentials(String user, String pass){
+    public void setCredentials(String user, String pass) {
         userTrabajopolis.sendKeys(user);
         passwordTrabajopolis.sendKeys(pass);
         ingresar.click();

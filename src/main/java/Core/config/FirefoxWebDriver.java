@@ -22,7 +22,6 @@ import org.openqa.selenium.remote.CapabilityType;
 import java.io.File;
 import java.util.HashMap;
 
-import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 import static io.github.bonigarcia.wdm.DriverManagerType.FIREFOX;
 
 /**
@@ -40,10 +39,6 @@ public class FirefoxWebDriver implements IDriver {
      */
     @Override
     public WebDriver initDriver() {
-//        FirefoxDriverManager.getInstance(FIREFOX).version("0.26.0").setup();
-//        FirefoxOptions firefoxOptions = new FirefoxOptions();
-//        return new FirefoxDriver(firefoxOptions);
-
         FirefoxDriverManager.getInstance(FIREFOX).version("0.26.0").setup();
 
         HashMap<String, Object> firefoxPrefs = new HashMap<String, Object>();
@@ -63,17 +58,9 @@ public class FirefoxWebDriver implements IDriver {
         firefoxPrefs.put("safebrowsing.enabled", "true");
 
         FirefoxOptions firefoxOptions = new FirefoxOptions();
-        // Passing the disable-infobars ChromeOption to the WebDriver,
-        // prevents ChromeWebDriver from displaying this notification.
-        // -- ChromeWebDriver is being controlled by automated test software --
-
-
-//        FirefoxOptions.addArguments("disable-infobars");
-//        FirefoxOptions.setExperimentalOption("prefs", firefoxPrefs)
 
         //Use to ignore ssl errors
         firefoxOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-        firefoxOptions.setCapability(ChromeOptions.CAPABILITY, firefoxOptions);
         firefoxOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
 
         //Todo Add more code here if need to do some configurations

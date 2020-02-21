@@ -2,6 +2,7 @@ package Core.config;
 
 //import com.jaggaer.selectsite.config.SelectSiteOrgConfig;
 //import com.jaggaer.selectsite.constants.SelectSiteConstants;
+
 import Core.IDriver;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.openqa.selenium.PageLoadStrategy;
@@ -16,9 +17,10 @@ import java.util.HashMap;
 import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 
 class ChromeWebDriver implements IDriver {
-    
+
     /**
      * Initializes ChromeWebDriver driver.
+     *
      * @return A new ChromeWebDriver.
      */
     @Override

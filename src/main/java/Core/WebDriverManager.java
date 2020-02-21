@@ -12,7 +12,7 @@ public class WebDriverManager {
     private static WebDriverWait webDriverWait;
 
     private WebDriverManager(){
-        this.webDriver = new ChromeDriver();
+        initialize();
     }
 
     public static WebDriverManager getInstance(){
@@ -22,14 +22,21 @@ public class WebDriverManager {
         return instance;
     }
 
-//    private void initialize() {
+  private void initialize() {
+
+      String browser;
+      //webDriver = WebDriverFactory.getWebDriver(browser);
+      this.webDriver = new ChromeDriver();
+      webDriver.manage().window().maximize();
+      webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+      webDriverWait = new WebDriverWait(webDriver, 40);
 //        this.webDriver = WebDriverFactory.getWebDriver(WebDriverConfig.getInstance().getBrowser());
 //        this.webDriver.manage().window().maximize();
 //        this.webDriver.manage().timeouts().implicitlyWait(WebDriverConfig.getInstance().getImplicitWaitTime(),
 //                TimeUnit.SECONDS);
 //
 //        webDriverWait = new WebDriverWait(webDriver, WebDriverConfig.getInstance().getExplicitWaitTime());
-//    }
+    }
     public WebDriver getWebDriver(){
         return this.webDriver;
     }

@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86e238fd-0431-4421-a82b-d20ae41410bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Core/LoginTrabajopolis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trabajopolis/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Core/WebDriverManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/WebDriverManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TrabajopolisLoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TrabajopolisLoginTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TrabajopolisLoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TrabajopolisLoginTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +23,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -47,7 +43,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GUI Automation/AutomationPractice" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -58,10 +54,13 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Core" />
       <recent name="" />
       <recent name="Trabajopolis" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\IdeaProjects\TrabajopolisGuiTest" />
+      <recent name="C:\Users\Admin\IdeaProjects\TrabajopolisGuiTest\src\main\java\Core" />
       <recent name="C:\Users\Admin\IdeaProjects\TrabajopolisGuiTest\src\main\java\Trabajopolis" />
       <recent name="C:\Users\Admin\IdeaProjects\TrabajopolisGuiTest\src\main\java" />
     </key>
@@ -150,22 +149,22 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="620" y="259" key="FileChooserDialogImpl/0.0.1680.1010@0.0.1680.1010" timestamp="1582315778344" />
-    <state width="1637" height="297" key="GridCell.Tab.0.bottom" timestamp="1582318358042">
+    <state width="1637" height="297" key="GridCell.Tab.0.bottom" timestamp="1582322164698">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="297" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1582318358042" />
-    <state width="1637" height="297" key="GridCell.Tab.0.center" timestamp="1582318358041">
+    <state width="1637" height="297" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1582322164698" />
+    <state width="1637" height="297" key="GridCell.Tab.0.center" timestamp="1582322164698">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="297" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1582318358041" />
-    <state width="1637" height="297" key="GridCell.Tab.0.left" timestamp="1582318358041">
+    <state width="1637" height="297" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1582322164698" />
+    <state width="1637" height="297" key="GridCell.Tab.0.left" timestamp="1582322164696">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="297" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1582318358041" />
-    <state width="1637" height="297" key="GridCell.Tab.0.right" timestamp="1582318358041">
+    <state width="1637" height="297" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1582322164696" />
+    <state width="1637" height="297" key="GridCell.Tab.0.right" timestamp="1582322164698">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="297" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1582318358041" />
+    <state width="1637" height="297" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1582322164698" />
     <state width="1637" height="336" key="GridCell.Tab.1.bottom" timestamp="1582318272066">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -191,11 +190,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/TrabajopolisLoginTest.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Trabajopolis/LoginPage.java</url>
           <line>38</line>
           <option name="timeStamp" value="16" />
@@ -214,6 +208,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/Trabajopolis/LoginPage.java</url>
           <line>41</line>
           <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.bonigarcia/webdrivermanager/3.8.0/35e9709a70a6ce35e2da17dfd2d1412ed8a74339/webdrivermanager-3.8.0-sources.jar!/io/github/bonigarcia/wdm/FirefoxDriverManager.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.bonigarcia/webdrivermanager/3.8.0/35e9709a70a6ce35e2da17dfd2d1412ed8a74339/webdrivermanager-3.8.0-sources.jar!/io/github/bonigarcia/wdm/FirefoxDriverManager.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

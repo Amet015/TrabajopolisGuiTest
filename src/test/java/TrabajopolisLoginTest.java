@@ -20,17 +20,6 @@ public class TrabajopolisLoginTest {
   public void login_trabajopolis() {
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
-//    String expected = "5";
-//    assertEquals(expected, "5");
-  }
-  @Test
-  public void trabajopolisLogin() {
-//    driver.get("https://www.trabajopolis.bo/");
-//    driver.manage().window().setSize(new Dimension(1696, 1026));
-//    driver.findElement(By.linkText("Ingresar")).click();
-//    driver.findElement(By.name("username")).click();
-//    driver.findElement(By.name("username")).sendKeys("at11.fundacion.jala@gmail.com");
-//    driver.findElement(By.name("password")).sendKeys("at11.2020");
-//    driver.findElement(By.cssSelector(".button")).click();
+
   }
 }

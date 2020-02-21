@@ -1,5 +1,6 @@
 package Core;
 
+import Core.config.DriverWebFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -26,7 +27,7 @@ public class WebDriverManager {
 
       String browser;
       //webDriver = WebDriverFactory.getWebDriver(browser);
-      this.webDriver = new ChromeDriver();
+      this.webDriver = DriverWebFactory.getWebDriver();
       webDriver.manage().window().maximize();
       webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
       webDriverWait = new WebDriverWait(webDriver, 40);

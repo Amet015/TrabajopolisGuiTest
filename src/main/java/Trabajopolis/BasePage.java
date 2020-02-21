@@ -9,11 +9,13 @@ public abstract class BasePage {
 
     protected WebDriver webDriver;
     protected WebDriverWait webDriverWait;
+    private static final String URL = "https://www.trabajopolis.bo/log-in/";
 
     public BasePage() {
         webDriver = WebDriverManager.getInstance().getWebDriver();
         webDriverWait = WebDriverManager.getInstance().getWebDriverWait();
         PageFactory.initElements(webDriver, this);
+        webDriver.get(URL);
         waitUntilPageObjectIsLoaded();
     }
 

@@ -2,14 +2,13 @@
 
 import Core.WebDriverManager;
 import Trabajopolis.BuscarEmpleosPage;
+import Trabajopolis.HomePage;
 import Trabajopolis.LoginPage;
 
 import Trabajopolis.MyAccountPage;
 import Trabajopolis.SearchResultJobPage;
 import org.junit.After;
 import org.junit.Test;
-
-import java.nio.charset.Charset;
 
 import static org.junit.Assert.*;
 
@@ -41,13 +40,27 @@ public class TrabajopolisLoginTest {
     buscarEmpleosPage.selectPostedWithin("30");
     buscarEmpleosPage.clickSearchJob();
     SearchResultJobPage searchResultJobPage = new SearchResultJobPage();
-    String actual = searchResultJobPage.getListingsText();
+    String actual = searchResultJobPage.getResultTitle();
     String expected = "Resultados de Búsqueda de Empleos";
     assertEquals(actual,expected);
   }
 
   @Test
-  public void search_PageToApply(){
+  public void search_ThroughtHomePage(){
+    LoginPage loginPage = new LoginPage();
+    loginPage.test_login();
+    MyAccountPage myAccountPage = new MyAccountPage();
+    myAccountPage.clickInicio();
+    HomePage homePage = new HomePage();
+    homePage.setCategory("Internet");
+    homePage.setCityListBox("Cochabamba");
+    homePage.setEmployementTypeListBox("Full time");
+    homePage.setPostedWithinListBox("30");
+    homePage.clickSearch();
+    SearchResultJobPage searchResultJobPage = new SearchResultJobPage();
+    String actual = searchResultJobPage.getResultTitle();
+    String expected = "Resultados de Búsqueda de Empleos";
+    assertEquals(actual,expected);
 
   }
 }

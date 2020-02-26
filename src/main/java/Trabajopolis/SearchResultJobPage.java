@@ -22,7 +22,7 @@ public class SearchResultJobPage extends BasePage {
     public void clickAddUnivalle(){
         addStandardUnivalle.click();
     }
-    public String getListingsText(){
+    public String getResultTitle(){
         return resultTitleTxt.getText();
     }
 }

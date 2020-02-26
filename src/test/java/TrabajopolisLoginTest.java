@@ -5,8 +5,11 @@ import Trabajopolis.BuscarEmpleosPage;
 import Trabajopolis.LoginPage;
 
 import Trabajopolis.MyAccountPage;
+import Trabajopolis.SearchResultJobPage;
 import org.junit.After;
 import org.junit.Test;
+
+import java.nio.charset.Charset;
 
 import static org.junit.Assert.*;
 
@@ -37,6 +40,14 @@ public class TrabajopolisLoginTest {
     buscarEmpleosPage.selectCategory("Informática");
     buscarEmpleosPage.selectPostedWithin("30");
     buscarEmpleosPage.clickSearchJob();
+    SearchResultJobPage searchResultJobPage = new SearchResultJobPage();
+    String actual = searchResultJobPage.getListingsText();
+    String expected = "Resultados de Búsqueda de Empleos";
+    assertEquals(actual,expected);
+  }
+
+  @Test
+  public void search_APageToApply(){
 
   }
 }

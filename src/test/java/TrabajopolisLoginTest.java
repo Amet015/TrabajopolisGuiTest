@@ -47,7 +47,7 @@ public class TrabajopolisLoginTest {
   }
 
   @Test
-  public void search_APageToApply(){
+  public void search_PageToApply(){
 
   }
 }

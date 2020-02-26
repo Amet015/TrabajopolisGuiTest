@@ -15,6 +15,9 @@ public class MyAccountPage extends BasePage{
     @FindBy(linkText = "Mi Perfil")
     WebElement miPerfilLink;
 
+    @FindBy(linkText = "Inicio")
+    WebElement inicioLink;
+
     public MyAccountPage(){}
 
     @Override
@@ -27,5 +30,9 @@ public class MyAccountPage extends BasePage{
 
     public String getMiCuentaCantidato(){
         return miPerfilLink.getText();
+    }
+
+    public void clickInicio(){
+        inicioLink.click();
     }
 }

@@ -17,8 +17,9 @@ public class LoginPage extends BasePage {
     @FindBy(name = "password")
     WebElement passwordText;
 
-    @FindBy(how = How.CSS, css = "input.button")
+    @FindBy(css = "input.button")
     WebElement ingresarButton;
+
 
     public LoginPage() {
     }
@@ -32,12 +33,11 @@ public class LoginPage extends BasePage {
         setCredentials("at11.fundacion.jala@gmail.com", "at11.2020");
     }
 
+
     public void setCredentials(String user, String pass) {
         userText.click();
         userText.sendKeys(user);
         passwordText.sendKeys(pass);
         ingresarButton.click();
-        WebDriverManager.getInstance().quitWebDriver();
     }
-
 }

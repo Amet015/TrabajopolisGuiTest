@@ -3,7 +3,6 @@ package Core;
 import Core.config.DriverConfig;
 import Core.config.DriverWebFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -12,6 +11,7 @@ public class WebDriverManager {
     private WebDriver webDriver;
     private static WebDriverManager instance;
     private static WebDriverWait webDriverWait;
+    private static final String URL = "https://www.trabajopolis.bo/log-in/";
 
 
     private WebDriverManager(){
@@ -30,8 +30,9 @@ public class WebDriverManager {
       webDriver.manage().window().maximize();
       webDriver.manage().timeouts().implicitlyWait(DriverConfig.getInstance().getImplicitWait(), TimeUnit.SECONDS);
       webDriverWait = new WebDriverWait(webDriver, DriverConfig.getInstance().getExplicitWait());
-
+      webDriver.get(URL);
     }
+
     public WebDriver getWebDriver(){
         return this.webDriver;
     }

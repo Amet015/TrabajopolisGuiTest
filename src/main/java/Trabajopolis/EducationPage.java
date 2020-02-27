@@ -95,52 +95,52 @@ public class EducationPage extends BasePage {
 
     public void setStartSchoolField(String date) {
         startSchoolField.click();
-        WebCalendar.setDateCalendar(date,yearListBox,monthListBox);
+        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setEndSchoolField(String date){
+    public void setEndSchoolField(String date) {
         endSchoolField.click();
-        WebCalendar.setDateCalendar(date,yearListBox,monthListBox);
+        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setUniversityField(String university){
+    public void setUniversityField(String university) {
         universityField.sendKeys(university);
     }
 
-    public void setStudioLevelUniversityListBox(String studioLevelUniversity){
+    public void setStudioLevelUniversityListBox(String studioLevelUniversity) {
         selectValue = new Select(studioLevelUniversityListBox);
         selectValue.selectByValue(studioLevelUniversity);
     }
 
-    public void setCareerField (String career) {
+    public void setCareerField(String career) {
         careerField.sendKeys(career);
     }
 
-    public void setCountryUniversityListBox(String countryUniversity){
+    public void setCountryUniversityListBox(String countryUniversity) {
         selectValue = new Select(countryUniversityListBox);
         selectValue.selectByValue(countryUniversity);
     }
 
-    public void setCityUniversityField(String cityUniversity){
+    public void setCityUniversityField(String cityUniversity) {
         cityUniversityField.sendKeys(cityUniversity);
     }
 
-    public void setStartUniversityField(String date){
+    public void setStartUniversityField(String date) {
         startUniversityField.click();
-        WebCalendar.setDateCalendar(date,yearListBox,monthListBox);
+        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setEndUniversityField(String date){
+    public void setEndUniversityField(String date) {
         endUniversityField.click();
-        WebCalendar.setDateCalendar(date,yearListBox,monthListBox);
+        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setLanguageListBox(String language){
+    public void setLanguageListBox(String language) {
         selectValue = new Select(languageListBox);
         selectValue.selectByValue(language);
     }
 
-    public void setLanguagueWritenListBox(String languagueWriten){
+    public void setLanguagueWritenListBox(String languagueWriten) {
         selectValue = new Select(languagueWritenListBox);
         selectValue.selectByValue(languagueWriten);
     }
@@ -150,8 +150,12 @@ public class EducationPage extends BasePage {
         selectValue.selectByValue(languageOral);
     }
 
-    public void setLanguageReadingListBox(String languageReading){
+    public void setLanguageReadingListBox(String languageReading) {
         selectValue = new Select(languageReadingListBox);
         selectValue.selectByValue(languageReading);
+    }
+
+    public void clickNextutton() {
+        nextButton.click();
     }
 }

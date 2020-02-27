@@ -8,6 +8,9 @@ public class MyListingsPage extends BasePage{
     @FindBy(xpath = "//*[@id=\"maindDivBg\"]/div[6]/p[2]/a")
     WebElement addCV;
 
+    @FindBy(linkText = "Eliminar")
+    WebElement deleteCV;
+
 
     public MyListingsPage(){}
     @Override
@@ -21,5 +24,10 @@ public class MyListingsPage extends BasePage{
 
     public void clickAddCV(){
         addCV.click();
+    }
+
+    public void clickDeleteCV(){
+        deleteCV.click();
+        webDriver.switchTo().alert().accept();
     }
 }

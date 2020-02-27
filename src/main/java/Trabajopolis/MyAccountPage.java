@@ -15,6 +15,12 @@ public class MyAccountPage extends BasePage{
     @FindBy(linkText = "Mi Perfil")
     WebElement miPerfilLink;
 
+    @FindBy(linkText = "Inicio")
+    WebElement inicioLink;
+
+    @FindBy(xpath = "//*[@id=\"rounded-lh\"]/ul/li[3]/div/div[1]/ul/li[2]/a")
+    WebElement misCurriculosLink;
+
     public MyAccountPage(){}
 
     @Override
@@ -27,5 +33,13 @@ public class MyAccountPage extends BasePage{
 
     public String getMiCuentaCantidato(){
         return miPerfilLink.getText();
+    }
+
+    public void clickInicio(){
+        inicioLink.click();
+    }
+
+    public void clickMisCurriculos(){
+        misCurriculosLink.click();
     }
 }

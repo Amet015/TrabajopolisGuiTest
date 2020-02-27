@@ -6,6 +6,9 @@ import Trabajopolis.HomePage;
 import Trabajopolis.LoginPage;
 
 import Trabajopolis.MyAccountPage;
+import Trabajopolis.MyListingsPage;
+import Trabajopolis.PersonalInformationPage;
+import Trabajopolis.ResumeExperiencePage;
 import Trabajopolis.SearchResultJobPage;
 import org.junit.After;
 import org.junit.Test;
@@ -61,6 +64,30 @@ public class TrabajopolisLoginTest {
     String actual = searchResultJobPage.getResultTitle();
     String expected = "Resultados de Búsqueda de Empleos";
     assertEquals(actual,expected);
+
+  }
+
+  @Test
+  public void create_Curriculum(){
+    LoginPage loginPage = new LoginPage();
+    loginPage.test_login();
+    MyAccountPage myAccountPage = new MyAccountPage();
+    myAccountPage.clickMisCurriculos();
+    MyListingsPage myListingsPage = new MyListingsPage();
+    myListingsPage.clickAddCV();
+    PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+    personalInformationPage.selectIdType("Pasaporte");
+    personalInformationPage.setAddressField("c/ laredo");
+    personalInformationPage.selectMaritalStatus("Soltero(a)");
+    personalInformationPage.clickNextButton();
+    ResumeExperiencePage resumeExperiencePage = new ResumeExperiencePage();
+    resumeExperiencePage.setCompanyCharge("ingeniero");
+    resumeExperiencePage.setCompanyName("entel");
+    resumeExperiencePage.selectIndustry("Ingeniería");
+    resumeExperiencePage.setCountryExperience("Bolivia");
+    resumeExperiencePage.setCityExperience("cochabamba");
+    resumeExperiencePage.setStartDate("2/3/2015");
+    resumeExperiencePage.setEndDate("2/3/2016");
 
   }
 }

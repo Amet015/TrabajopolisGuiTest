@@ -8,7 +8,7 @@ import utils.WebCalendar;
 
 
 public class ResumeExperiencePage extends BasePage {
-    @FindBy(css = "input.inputField")
+    @FindBy(name="WorkExperience[JobTitle][1]")
     WebElement companyChargeField;
 
     @FindBy(name = "WorkExperience[CompanyName][1]")
@@ -34,10 +34,16 @@ public class ResumeExperiencePage extends BasePage {
 
     @FindBy(css = "select.ui-datepicker-year")
     WebElement yearListBox;
-    /html/body/div[10]/table/tbody/tr[3]/td[4]/a
-    /html/body/div[10]/table/tbody/tr[4]/td[4]/a
+
+    @FindBy(css = "a.:contains()")
+    WebElement daySelect;
+
+
+    @FindBy(css = "select.ui-datepicker-month")
+    WebElement monthListBox;
 
     Select selectvalue;
+
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -67,6 +73,16 @@ public class ResumeExperiencePage extends BasePage {
     }
 
     public void setStartDate(String date) {
-        WebCalendar.setDateCalendar(date, startDate);
+        startDate.sendKeys(date);
+        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
+    }
+
+    public void setEndDate(String date){
+        endDate.sendKeys(date);
+       WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
+    }
+
+    public void clickNextButton(){
+        nextButton.click();
     }
 }

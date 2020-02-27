@@ -18,7 +18,7 @@ public class MyAccountPage extends BasePage{
     @FindBy(linkText = "Inicio")
     WebElement inicioLink;
 
-    @FindBy(linkText = "Mis Currículos")
+    @FindBy(xpath = "//*[@id=\"rounded-lh\"]/ul/li[3]/div/div[1]/ul/li[2]/a")
     WebElement misCurriculosLink;
 
     public MyAccountPage(){}

@@ -119,7 +119,6 @@ public class TrabajopolisLoginTest {
     PageTransporter pageTransporter = new PageTransporter();
     pageTransporter.navigateToMyAccountPage();
     myAccountPage.clickMisCurriculos();
-    System.out.println("probando");
     myListingsPage.clickDeleteCV();
 
   }

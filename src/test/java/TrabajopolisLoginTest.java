@@ -38,7 +38,7 @@ public class TrabajopolisLoginTest {
     SearchResultJobPage searchResultJobPage = new SearchResultJobPage();
     String actual = searchResultJobPage.getResultTitle();
     String expected = "Resultados de Búsqueda de Empleos";
-    assertEquals(actual,expected);
+    assertEquals(expected,actual);
   }
 
   @Test
@@ -56,7 +56,7 @@ public class TrabajopolisLoginTest {
     SearchResultJobPage searchResultJobPage = new SearchResultJobPage();
     String actual = searchResultJobPage.getResultTitle();
     String expected = "Resultados de Búsqueda de Empleos";
-    assertEquals(actual,expected);
+    assertEquals(expected,actual);
 
   }
 
@@ -88,7 +88,7 @@ public class TrabajopolisLoginTest {
     educationPage.setCountrySchoolListBox("Bolivia");
     educationPage.setCitySchoolField("Cochabamba");
     educationPage.setStartSchoolField("2/10/1997");
-    educationPage.setEndSchoolField("25/11/2008");
+    educationPage.setEndSchoolField("11/25/2008");
     educationPage.setUniversityField("univalle");
     educationPage.setCareerField("Telecomunicaciones");
     educationPage.setCountryUniversityListBox("Bolivia");
@@ -104,7 +104,7 @@ public class TrabajopolisLoginTest {
     GeneralInformationPage generalInformationPage = new GeneralInformationPage();
     generalInformationPage.setTitleField("Ingeniero");
     generalInformationPage.setCategoryListBox("Internet");
-    generalInformationPage.setContractListBox("Tiempo Completo");
+    generalInformationPage.setContractListBox("full time");
     generalInformationPage.setSalaryField("4000");
     generalInformationPage.setCountryListBox("Bolivia");
     generalInformationPage.setCityListBox("Cochabamba");
@@ -112,10 +112,15 @@ public class TrabajopolisLoginTest {
     generalInformationPage.clickNextButton();
     ManageListingPage manageListingPage = new ManageListingPage();
     String actual = manageListingPage.getDonwLadCVText();
-    String expecetd = "Descargar Currículum en PDF";
+    String expected = "DESCARGAR CURRÍCULUM EN PDF";
 
-    assertEquals(actual,expecetd);
+    assertEquals(expected,actual);
 
+    PageTransporter pageTransporter = new PageTransporter();
+    pageTransporter.navigateToMyAccountPage();
+    myAccountPage.clickMisCurriculos();
+    System.out.println("probando");
+    myListingsPage.clickDeleteCV();
 
   }
 }

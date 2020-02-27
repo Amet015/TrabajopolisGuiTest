@@ -18,6 +18,9 @@ public class MyAccountPage extends BasePage{
     @FindBy(linkText = "Inicio")
     WebElement inicioLink;
 
+    @FindBy(linkText = "Mis Currículos")
+    WebElement misCurriculosLink;
+
     public MyAccountPage(){}
 
     @Override
@@ -34,5 +37,9 @@ public class MyAccountPage extends BasePage{
 
     public void clickInicio(){
         inicioLink.click();
+    }
+
+    public void clickMisCurriculos(){
+        misCurriculosLink.click();
     }
 }

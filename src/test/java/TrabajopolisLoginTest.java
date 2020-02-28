@@ -120,6 +120,29 @@ public class TrabajopolisLoginTest {
     pageTransporter.navigateToMyAccountPage();
     myAccountPage.clickMisCurriculos();
     myListingsPage.clickDeleteCV();
+  }
+
+  @Test
+  public void edit_EditSalary() {
+    String newSalary = "4000";
+    LoginPage loginPage = new LoginPage();
+    loginPage.test_login();
+    MyAccountPage myAccountPage = new MyAccountPage();
+    myAccountPage.clickMiPerfil();
+    EditProfilePage editProfilePage = new EditProfilePage();
+    String salaryOld = editProfilePage.getSalaryField();
+    editProfilePage.setSalaryField(newSalary);
+    String actualSalary = editProfilePage.getSalaryField();
+    editProfilePage.clickSave();
+    String messageExpected = "Guardados los cambios del perfil";
+    String messageActual = editProfilePage.getMessageSuccesful();
+    assertEquals(messageExpected,messageActual);
+    assertEquals(newSalary,actualSalary);
+
+    PageTransporter pageTransporter = new PageTransporter();
+    pageTransporter.navigateEditProfilePage();
+    editProfilePage.setSalaryField(salaryOld);
+    editProfilePage.clickSave();
 
   }
 }

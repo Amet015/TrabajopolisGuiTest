@@ -3,6 +3,7 @@
 import Core.WebDriverManager;
 import Trabajopolis.*;
 
+import Trabajopolis.Pages.*;
 import org.junit.After;
 import org.junit.Test;
 
@@ -17,6 +18,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void login_trabajopolis() {
+    PageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -27,6 +29,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void search_trabajopolis() {
+    PageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -43,6 +46,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void search_ThroughtHomePage(){
+    PageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -62,6 +66,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void create_Curriculum(){
+    PageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -116,14 +121,14 @@ public class TrabajopolisLoginTest {
 
     assertEquals(expected,actual);
 
-    PageTransporter pageTransporter = new PageTransporter();
-    pageTransporter.navigateToMyAccountPage();
+    PageTransporter.navigateToMyAccountPage();
     myAccountPage.clickMisCurriculos();
     myListingsPage.clickDeleteCV();
   }
 
   @Test
   public void edit_EditSalary() {
+    PageTransporter.navigateToLoginPage();
     String newSalary = "4000";
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
@@ -139,8 +144,7 @@ public class TrabajopolisLoginTest {
     assertEquals(messageExpected,messageActual);
     assertEquals(newSalary,actualSalary);
 
-    PageTransporter pageTransporter = new PageTransporter();
-    pageTransporter.navigateEditProfilePage();
+    PageTransporter.navigateEditProfilePage();
     editProfilePage.setSalaryField(salaryOld);
     editProfilePage.clickSave();
 

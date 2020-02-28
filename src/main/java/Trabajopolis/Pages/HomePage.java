@@ -1,12 +1,13 @@
-package Trabajopolis;
+package Trabajopolis.Pages;
 
+import Trabajopolis.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
     @FindBy(name = "JobCategory[multi_like][]")
     WebElement categoryListBox;

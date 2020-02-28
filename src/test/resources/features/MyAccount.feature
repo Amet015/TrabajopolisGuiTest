@@ -48,7 +48,7 @@ Feature: My Account
     Given I login to the application with "user" credentials
     And I insert the credentials
     When I edit "Mi Perfil"
-      | Salary Field             | 4000  |
+      | Salary Field | 4000 |
     And I save changes
     Then The application displays a message "Guardados los cambios del perfil"
     And I reload the page and verify the changes

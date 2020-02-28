@@ -75,7 +75,7 @@ public class TrabajopolisLoginTest {
     personalInformationPage.clickNextButton();
     ResumeExperiencePage resumeExperiencePage = new ResumeExperiencePage();
     resumeExperiencePage.setCompanyCharge("ingeniero");
-    resumeExperiencePage.setCompanyName("entel");
+    resumeExperiencePage.setCompanyName("Entel");
     resumeExperiencePage.selectIndustry("Ingeniería");
     resumeExperiencePage.setCountryExperience("Bolivia");
     resumeExperiencePage.setCityExperience("cochabamba");
@@ -102,7 +102,7 @@ public class TrabajopolisLoginTest {
     educationPage.setLanguageReadingListBox("Medio");
     educationPage.clickNextutton();
     GeneralInformationPage generalInformationPage = new GeneralInformationPage();
-    generalInformationPage.setTitleField("Ingeniero");
+    generalInformationPage.setTitleField("Ingeniero Telecomunicaciones");
     generalInformationPage.setCategoryListBox("Internet");
     generalInformationPage.setContractListBox("full time");
     generalInformationPage.setSalaryField("4000");

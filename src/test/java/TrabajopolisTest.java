@@ -3,12 +3,13 @@
 import Core.WebDriverManager;
 import Trabajopolis.*;
 
+import gherkin.lexer.Pa;
 import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class TrabajopolisLoginTest {
+public class TrabajopolisTest {
 
   @After
   public void afterTest(){
@@ -31,10 +32,10 @@ public class TrabajopolisLoginTest {
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
     myAccountPage.clickBuscarEmpleos();
-    BuscarEmpleosPage buscarEmpleosPage = new BuscarEmpleosPage();
-    buscarEmpleosPage.selectCategory("Informática");
-    buscarEmpleosPage.selectPostedWithin("30");
-    buscarEmpleosPage.clickSearchJob();
+    SearchJobsPage searchJobsPage = new SearchJobsPage();
+    searchJobsPage.setCategory("Informática");
+    searchJobsPage.setPostedWithin("30");
+    searchJobsPage.clickSearchJob();
     SearchResultJobPage searchResultJobPage = new SearchResultJobPage();
     String actual = searchResultJobPage.getResultTitle();
     String expected = "Resultados de Búsqueda de Empleos";
@@ -143,6 +144,32 @@ public class TrabajopolisLoginTest {
     pageTransporter.navigateEditProfilePage();
     editProfilePage.setSalaryField(salaryOld);
     editProfilePage.clickSave();
+  }
+
+  @Test
+  public void Save_Busqueda() {
+    LoginPage loginPage = new LoginPage();
+    loginPage.test_login();
+    MyAccountPage myAccountPage = new MyAccountPage();
+    myAccountPage.clickBuscarEmpleos();
+    SearchJobsPage searchJobsPage = new SearchJobsPage();
+    searchJobsPage.setCategory("Informática");
+    searchJobsPage.setCity("Cochabamba");
+    searchJobsPage.setCountry("Bolivia");
+    searchJobsPage.setContractType("Full time");
+    searchJobsPage.setPostedWithin("30");
+    searchJobsPage.clickSearchJob();
+    SearchResultJobPage searchResultJobPage = new SearchResultJobPage();
+    searchResultJobPage.clickSaveThisSearch();
+    PopUpTrabajopolis popUpTrabajopolis = new PopUpTrabajopolis();
+    popUpTrabajopolis.setSearchName("Informatica Cochabamba");
+    PageTransporter pageTransporter = new PageTransporter();
+    pageTransporter.navigateToMyAccountPage();
+    myAccountPage.clickBusquedasGuardadas();
+    SearchingSaved searchingSaved = new SearchingSaved();
+
+    searchingSaved.clickDelete();
 
   }
+
 }

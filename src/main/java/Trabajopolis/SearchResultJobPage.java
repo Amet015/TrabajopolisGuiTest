@@ -14,6 +14,9 @@ public class SearchResultJobPage extends BasePage {
     @FindBy(linkText = "Desarrollador(a) de Software")
     WebElement addStandardUnivalle;
 
+    @FindBy(xpath = "//*[@id=\"topResults\"]/div[1]/div[2]/div[1]/ul/li[2]/a")
+    WebElement saveThisSearch;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(listings));
@@ -24,5 +27,8 @@ public class SearchResultJobPage extends BasePage {
     }
     public String getResultTitle(){
         return resultTitleTxt.getText();
+    }
+    public void clickSaveThisSearch(){
+        saveThisSearch.click();
     }
 }

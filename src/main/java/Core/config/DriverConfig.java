@@ -10,7 +10,7 @@ public class DriverConfig {
 
     private static DriverConfig instance;
     private static Properties properties;
-    private final String INPUT_PATH = "application.properties";
+    private final String INPUT_PATH = "gradle.properties";
     private FileInputStream fileInputStream;
     private static final String BROWSER = "browser";
     private static final String IMPLICIT_WAIT = "implicitWait";

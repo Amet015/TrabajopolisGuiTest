@@ -18,9 +18,11 @@ public class MyAccountPage extends BasePage{
     @FindBy(linkText = "Inicio")
     WebElement inicioLink;
 
-
     @FindBy(xpath = "//*[@id=\"rounded-lh\"]/ul/li[3]/div/div[1]/ul/li[2]/a")
     WebElement misCurriculosLink;
+
+    @FindBy(xpath = "//*[@id=\"rounded-lh\"]/ul/li[3]/div/div[2]/ul/li[2]/a")
+    WebElement busquedasGuardadsLink;
 
     public MyAccountPage(){}
 
@@ -45,5 +47,9 @@ public class MyAccountPage extends BasePage{
 
     public void clickMisCurriculos(){
         misCurriculosLink.click();
+    }
+
+    public void clickBusquedasGuardadas() {
+        busquedasGuardadsLink.click();
     }
 }

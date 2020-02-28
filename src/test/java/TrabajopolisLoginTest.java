@@ -144,8 +144,5 @@ public class TrabajopolisLoginTest {
     editProfilePage.setSalaryField(salaryOld);
     editProfilePage.clickSave();
 
-
-
-
   }
 }

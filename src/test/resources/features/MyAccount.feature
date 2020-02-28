@@ -40,6 +40,15 @@ Feature: My Account
       | Country List  | Bolivia                                                 |
       | City List     | Cochabamba                                              |
       | PrivacityCV   | Todas las Empresas - Visible en la Base de Datos de CVs |
-
     Then The application displays a page with a button "DESCARGAR CURRÍCULUM EN PDF"
     And I delete Curriculum
+
+
+  Scenario: Edit Salary
+    Given I login to the application with "user" credentials
+    And I insert the credentials
+    When I edit "Mi Perfil"
+      | Salary Field             | 4000  |
+    And I save changes
+    Then The application displays a message "Guardados los cambios del perfil"
+    And I reload the page and verify the changes

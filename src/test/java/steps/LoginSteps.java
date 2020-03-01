@@ -15,9 +15,10 @@ import static org.junit.Assert.assertEquals;
 
 public class LoginSteps {
     LoginPage loginPage;
+    PageTransporter pageTransporter;
 
     public LoginSteps(){
-
+        pageTransporter = new PageTransporter();
     }
 
     @After
@@ -27,7 +28,8 @@ public class LoginSteps {
 
     @Given("^I go to Login page$")
     public void iLoginToTheApplication() {
-        PageTransporter.navigateToLoginPage();
+
+        pageTransporter.navigateToLoginPage();
     }
 
     @When("^I insert the credentials$")

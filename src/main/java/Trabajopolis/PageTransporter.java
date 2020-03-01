@@ -3,26 +3,22 @@ package Trabajopolis;
 import Core.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 
-public class PageTransporter extends BasePage  {
-    protected static WebDriver webDriver = WebDriverManager.getInstance().getWebDriver();;
-    private static final String BASE_URL = "https://www.trabajopolis.bo/";
+public class PageTransporter {
+    protected WebDriver webDriver = WebDriverManager.getInstance().getWebDriver();;
+    private  final String BASE_URL = "https://www.trabajopolis.bo/";
     // Encargada de leer el url base
     // almacenar como constantes las variaciones
 
-    public static void navigateToLoginPage(){
+    public  void navigateToLoginPage(){
         webDriver.get(BASE_URL+ "log-in/");
     }
 
-    public static void navigateToMyAccountPage() {
+    public  void navigateToMyAccountPage() {
         webDriver.get(BASE_URL + "my-account/");
     }
 
-    public static void navigateEditProfilePage() {
+    public  void navigateEditProfilePage() {
         webDriver.get(BASE_URL + "edit-profile/");
     }
 
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
-    }
 }

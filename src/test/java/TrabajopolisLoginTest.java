@@ -10,6 +10,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TrabajopolisLoginTest {
+  private PageTransporter pageTransporter;
+
+  public TrabajopolisLoginTest(){
+    pageTransporter = new PageTransporter();
+  }
 
   @After
   public void afterTest(){
@@ -18,7 +23,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void login_trabajopolis() {
-    PageTransporter.navigateToLoginPage();
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -29,7 +34,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void search_trabajopolis() {
-    PageTransporter.navigateToLoginPage();
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -46,7 +51,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void search_ThroughtHomePage(){
-    PageTransporter.navigateToLoginPage();
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -66,7 +71,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void create_Curriculum(){
-    PageTransporter.navigateToLoginPage();
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -121,14 +126,14 @@ public class TrabajopolisLoginTest {
 
     assertEquals(expected,actual);
 
-    PageTransporter.navigateToMyAccountPage();
+    pageTransporter.navigateToMyAccountPage();
     myAccountPage.clickMisCurriculos();
     myListingsPage.clickDeleteCV();
   }
 
   @Test
   public void edit_EditSalary() {
-    PageTransporter.navigateToLoginPage();
+    pageTransporter.navigateToLoginPage();
     String newSalary = "4000";
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
@@ -144,7 +149,7 @@ public class TrabajopolisLoginTest {
     assertEquals(messageExpected,messageActual);
     assertEquals(newSalary,actualSalary);
 
-    PageTransporter.navigateEditProfilePage();
+    pageTransporter.navigateEditProfilePage();
     editProfilePage.setSalaryField(salaryOld);
     editProfilePage.clickSave();
 

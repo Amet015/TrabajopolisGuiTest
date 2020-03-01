@@ -89,7 +89,7 @@ public class MyAccountSteps {
         String id = dtPersonalInformation.get("Id");
         String address = dtPersonalInformation.get("Address");
         String maritalStatus = dtPersonalInformation.get("Marital Status");
-        System.out.println(maritalStatus +  "         ( a)");
+
         context.getPersonalInformation().setIdType(id);
         context.getPersonalInformation().setAddress(address);
         context.getPersonalInformation().setMaritalStatus(maritalStatus);
@@ -208,12 +208,6 @@ public class MyAccountSteps {
         manageListingPage.clickLookMyCV();
         resumeDetailsCV = new ResumeDetailsCV();
 
-        System.out.println(resumeDetailsCV.getAddress()+  "and no escribe esto " + context.getPersonalInformation().getAddress());
-//        Assert.assertTrue(resumeDetailsCV.getAddress().contains(context.getPersonalInformation().getAddress()),
-//                "the address "+ context.getPersonalInformation().getAddress()+ "is not the same: " +
-//                        resumeDetailsCV.getAddress()) ;
-        System.out.println(resumeDetailsCV.getMaritalStatus()+  " probando esto  " + context.getPersonalInformation().getMaritalStatus());
-
         Assert.assertTrue(resumeDetailsCV.getAddress().contains(context.getPersonalInformation().getAddress()) &&
                 resumeDetailsCV.getIdType().contains(context.getPersonalInformation().getIdType()) &&
                 resumeDetailsCV.getMaritalStatus().contains( context.getPersonalInformation()
@@ -222,17 +216,14 @@ public class MyAccountSteps {
                 .contains(context.getResumeExperience().getCompanyName()) && resumeDetailsCV.getLanguagues()
                 .contains(context.getEducation().getLanguage())&&resumeDetailsCV.getLanguagues()
                 .contains(context.getEducation().getLanguageOral()) );
-
-
-          /*Assert.assertTrue(actualCategories.contains(expectedCategory),
-                "The job " + jobName + " doesn't have the expected category: " + expectedCategory
-                        + ". The categories for the job are: " + actualCategories);*/
-
     }
 
     @And("^I delete Curriculum$")
     public void iDeleteCurriculum() {
-
+        pageTransporter.navigateToMyAccountPage();
+        myAccountPage = new MyAccountPage();
+        myAccountPage.clickMisCurriculos();
+        myListingsPage.clickDeleteCV();
     }
 
 

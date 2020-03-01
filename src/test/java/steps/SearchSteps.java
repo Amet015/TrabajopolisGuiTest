@@ -38,9 +38,6 @@ public class SearchSteps {
     }
 
 
-
-
-
     @And("^I search the Job$")
     public void iSearchTheJob() {
     }

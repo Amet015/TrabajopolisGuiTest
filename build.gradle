@@ -25,7 +25,9 @@ dependencies {
     implementation 'junit:junit:4.12'
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.8.0'
     testCompile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    //testCompile 'io.cucumber:cucumber-java:4.7.1'
     testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
+    //compile group: 'org.picocontainer', name: 'picocontainer', version: '2.15'
     testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
-
+    //compile group: 'io.cucumber', name: 'cucumber-testng', version: '4.7.1'
 }

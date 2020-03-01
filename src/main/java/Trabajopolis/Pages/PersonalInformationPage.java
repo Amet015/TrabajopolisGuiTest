@@ -34,6 +34,7 @@ public class PersonalInformationPage extends BasePage {
     }
 
     public void setAddressField(String address) {
+        addressField.clear();
         addressField.sendKeys(address);
     }
 

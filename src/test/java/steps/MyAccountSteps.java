@@ -42,15 +42,13 @@ public class MyAccountSteps {
     public void iNavitateToMyAccountPage() {
         myAccountPage = new MyAccountPage();
         myAccountPage.clickMiPerfil();
-        System.out.println("click mi perfil");
     }
 
     @When("^I edit Mi Perfil")
     public void iEdit(final Map<String, String> dataTableSalary) {
         editProfilePage = new EditProfilePage();
         System.out.println(dataTableSalary.get("Salary"));
-        String salary =  String.valueOf(dataTableSalary.get("Salary"));
-
+        String salary =  dataTableSalary.get("Salary");
         editProfilePage.setSalaryField(salary);
         newSalary = editProfilePage.getSalaryField();
     }
@@ -68,7 +66,7 @@ public class MyAccountSteps {
     }
 
     @And("^I reload the page and verify the changes$")
-    public void iReloadThePageAndVerifyTheChanges(final Map<String, String> dtPersonalInformationa) {
+    public void iReloadThePageAndVerifyTheChanges() {
         pageTransporter.navigateEditProfilePage();
         String actualSalary = editProfilePage.getSalaryField();
         String expectedSalary = newSalary;
@@ -107,8 +105,8 @@ public class MyAccountSteps {
         String industry = dtResumeExperience.get("Industry");
         String country = dtResumeExperience.get("Country");
         String city = dtResumeExperience.get("City");
-        String startDateSchool = dtResumeExperience.get("Start Date School");
-        String endDateSchool = dtResumeExperience.get("End Date School");
+        String startDateSchool = dtResumeExperience.get("Start Date");
+        String endDateSchool = dtResumeExperience.get("End Date");
         context.getResumeExperience().setCompanyCharge(companyCharge);
         context.getResumeExperience().setCompanyName(companyName);
         context.getResumeExperience().setIndustry(industry);

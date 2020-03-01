@@ -1,10 +1,11 @@
-package Trabajopolis;
+package Trabajopolis.Pages;
 
+import Trabajopolis.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import utils.WebCalendar;
+import Trabajopolis.components.WebCalendar;
 
 
 public class ResumeExperiencePage extends BasePage {

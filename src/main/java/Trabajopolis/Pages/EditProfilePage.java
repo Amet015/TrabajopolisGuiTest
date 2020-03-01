@@ -1,6 +1,7 @@
-package Trabajopolis;
+package Trabajopolis.Pages;
 
 import Core.WebDriverManager;
+import Trabajopolis.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;

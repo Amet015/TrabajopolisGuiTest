@@ -1,10 +1,11 @@
-package Trabajopolis;
+package Trabajopolis.Pages;
 
+import Trabajopolis.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class EmployPage extends BasePage{
+public class EmployPage extends BasePage {
     @FindBy(css = "input.buttonApplyext")
     WebElement applyEmployButton;
 

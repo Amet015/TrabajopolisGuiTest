@@ -3,13 +3,20 @@
 import Core.WebDriverManager;
 import Trabajopolis.*;
 
-import gherkin.lexer.Pa;
+import Trabajopolis.Pages.*;
 import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+
+
 public class TrabajopolisTest {
+  private PageTransporter pageTransporter;
+
+  public TrabajopolisTest(){
+    pageTransporter = new PageTransporter();
+  }
 
   @After
   public void afterTest(){
@@ -18,6 +25,7 @@ public class TrabajopolisTest {
 
   @Test
   public void login_trabajopolis() {
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -28,6 +36,7 @@ public class TrabajopolisTest {
 
   @Test
   public void search_trabajopolis() {
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -44,6 +53,7 @@ public class TrabajopolisTest {
 
   @Test
   public void search_ThroughtHomePage(){
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -63,6 +73,7 @@ public class TrabajopolisTest {
 
   @Test
   public void create_Curriculum(){
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -76,7 +87,7 @@ public class TrabajopolisTest {
     personalInformationPage.clickNextButton();
     ResumeExperiencePage resumeExperiencePage = new ResumeExperiencePage();
     resumeExperiencePage.setCompanyCharge("ingeniero");
-    resumeExperiencePage.setCompanyName("entel");
+    resumeExperiencePage.setCompanyName("Entel");
     resumeExperiencePage.selectIndustry("Ingeniería");
     resumeExperiencePage.setCountryExperience("Bolivia");
     resumeExperiencePage.setCityExperience("cochabamba");
@@ -103,7 +114,7 @@ public class TrabajopolisTest {
     educationPage.setLanguageReadingListBox("Medio");
     educationPage.clickNextutton();
     GeneralInformationPage generalInformationPage = new GeneralInformationPage();
-    generalInformationPage.setTitleField("Ingeniero");
+    generalInformationPage.setTitleField("Ingeniero Telecomunicaciones");
     generalInformationPage.setCategoryListBox("Internet");
     generalInformationPage.setContractListBox("full time");
     generalInformationPage.setSalaryField("4000");
@@ -117,7 +128,6 @@ public class TrabajopolisTest {
 
     assertEquals(expected,actual);
 
-    PageTransporter pageTransporter = new PageTransporter();
     pageTransporter.navigateToMyAccountPage();
     myAccountPage.clickMisCurriculos();
     myListingsPage.clickDeleteCV();
@@ -125,6 +135,7 @@ public class TrabajopolisTest {
 
   @Test
   public void edit_EditSalary() {
+    pageTransporter.navigateToLoginPage();
     String newSalary = "4000";
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
@@ -140,7 +151,6 @@ public class TrabajopolisTest {
     assertEquals(messageExpected,messageActual);
     assertEquals(newSalary,actualSalary);
 
-    PageTransporter pageTransporter = new PageTransporter();
     pageTransporter.navigateEditProfilePage();
     editProfilePage.setSalaryField(salaryOld);
     editProfilePage.clickSave();
@@ -148,6 +158,7 @@ public class TrabajopolisTest {
 
   @Test
   public void Save_Busqueda() {
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -163,7 +174,6 @@ public class TrabajopolisTest {
     searchResultJobPage.clickSaveThisSearch();
     PopUpTrabajopolis popUpTrabajopolis = new PopUpTrabajopolis();
     popUpTrabajopolis.setSearchName("Informatica Cochabamba");
-    PageTransporter pageTransporter = new PageTransporter();
     pageTransporter.navigateToMyAccountPage();
     myAccountPage.clickBusquedasGuardadas();
     SearchingSaved searchingSaved = new SearchingSaved();

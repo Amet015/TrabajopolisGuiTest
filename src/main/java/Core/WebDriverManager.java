@@ -11,8 +11,6 @@ public class WebDriverManager {
     private WebDriver webDriver;
     private static WebDriverManager instance;
     private static WebDriverWait webDriverWait;
-    private static final String URL = "https://www.trabajopolis.bo/log-in/";
-
 
     private WebDriverManager(){
         initialize();
@@ -30,7 +28,6 @@ public class WebDriverManager {
       webDriver.manage().window().maximize();
       webDriver.manage().timeouts().implicitlyWait(DriverConfig.getInstance().getImplicitWait(), TimeUnit.SECONDS);
       webDriverWait = new WebDriverWait(webDriver, DriverConfig.getInstance().getExplicitWait());
-      webDriver.get(URL);
     }
 
     public WebDriver getWebDriver(){

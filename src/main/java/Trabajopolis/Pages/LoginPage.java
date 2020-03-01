@@ -1,11 +1,9 @@
-package Trabajopolis;
+package Trabajopolis.Pages;
 
-import Core.WebDriverManager;
-import Trabajopolis.HomePage;
-import org.openqa.selenium.WebDriver;
+
+import Trabajopolis.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
@@ -22,6 +20,7 @@ public class LoginPage extends BasePage {
 
 
     public LoginPage() {
+
     }
 
     @Override
@@ -29,15 +28,17 @@ public class LoginPage extends BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(passwordText));
     }
 
-    public void test_login() {
-        setCredentials("at11.fundacion.jala@gmail.com", "at11.2020");
-    }
-
-
-    public void setCredentials(String user, String pass) {
+    private void setCredentials(String user, String pass) {
         userText.click();
         userText.sendKeys(user);
         passwordText.sendKeys(pass);
         ingresarButton.click();
     }
+
+    public void test_login() {
+        setCredentials("at11.fundacion.jala@gmail.com", "at11.2020");
+    }
+
+
+
 }

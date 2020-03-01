@@ -1,10 +1,11 @@
-package Trabajopolis;
+package Trabajopolis.Pages;
 
+import Trabajopolis.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class MyAccountPage extends BasePage{
+public class MyAccountPage extends BasePage {
 
     @FindBy(linkText = "Buscar Empleos")
     WebElement buscarEmpleosLink;

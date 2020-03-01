@@ -3,12 +3,18 @@
 import Core.WebDriverManager;
 import Trabajopolis.*;
 
+import Trabajopolis.Pages.*;
 import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class TrabajopolisLoginTest {
+  private PageTransporter pageTransporter;
+
+  public TrabajopolisLoginTest(){
+    pageTransporter = new PageTransporter();
+  }
 
   @After
   public void afterTest(){
@@ -17,6 +23,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void login_trabajopolis() {
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -27,6 +34,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void search_trabajopolis() {
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -43,6 +51,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void search_ThroughtHomePage(){
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -62,6 +71,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void create_Curriculum(){
+    pageTransporter.navigateToLoginPage();
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
     MyAccountPage myAccountPage = new MyAccountPage();
@@ -75,7 +85,7 @@ public class TrabajopolisLoginTest {
     personalInformationPage.clickNextButton();
     ResumeExperiencePage resumeExperiencePage = new ResumeExperiencePage();
     resumeExperiencePage.setCompanyCharge("ingeniero");
-    resumeExperiencePage.setCompanyName("entel");
+    resumeExperiencePage.setCompanyName("Entel");
     resumeExperiencePage.selectIndustry("Ingeniería");
     resumeExperiencePage.setCountryExperience("Bolivia");
     resumeExperiencePage.setCityExperience("cochabamba");
@@ -102,7 +112,7 @@ public class TrabajopolisLoginTest {
     educationPage.setLanguageReadingListBox("Medio");
     educationPage.clickNextutton();
     GeneralInformationPage generalInformationPage = new GeneralInformationPage();
-    generalInformationPage.setTitleField("Ingeniero");
+    generalInformationPage.setTitleField("Ingeniero Telecomunicaciones");
     generalInformationPage.setCategoryListBox("Internet");
     generalInformationPage.setContractListBox("full time");
     generalInformationPage.setSalaryField("4000");
@@ -116,7 +126,6 @@ public class TrabajopolisLoginTest {
 
     assertEquals(expected,actual);
 
-    PageTransporter pageTransporter = new PageTransporter();
     pageTransporter.navigateToMyAccountPage();
     myAccountPage.clickMisCurriculos();
     myListingsPage.clickDeleteCV();
@@ -124,6 +133,7 @@ public class TrabajopolisLoginTest {
 
   @Test
   public void edit_EditSalary() {
+    pageTransporter.navigateToLoginPage();
     String newSalary = "4000";
     LoginPage loginPage = new LoginPage();
     loginPage.test_login();
@@ -139,7 +149,6 @@ public class TrabajopolisLoginTest {
     assertEquals(messageExpected,messageActual);
     assertEquals(newSalary,actualSalary);
 
-    PageTransporter pageTransporter = new PageTransporter();
     pageTransporter.navigateEditProfilePage();
     editProfilePage.setSalaryField(salaryOld);
     editProfilePage.clickSave();

@@ -75,87 +75,59 @@ public class EducationPage extends BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(schoolField));
     }
 
-    public void setSchoolField(String schoolName) {
-        schoolField.sendKeys(schoolName);
-    }
-
-    public void setStudioLevelSchoolListBox(String studioLevel) {
-        selectValue = new Select(studioLevelSchoolListBox);
-        selectValue.selectByValue(studioLevel);
-    }
-
-    public void setCountrySchoolListBox(String country) {
-        selectValue = new Select(countrySchoolListBox);
-        selectValue.selectByValue(country);
-    }
-
-    public void setCitySchoolField(String city) {
-        citySchoolField.sendKeys(city);
-    }
-
-    public void setStartSchoolField(String date) {
+    private void setStartSchoolField(String date) {
         startSchoolField.click();
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setEndSchoolField(String date) {
+    private void setEndSchoolField(String date) {
         endSchoolField.click();
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setUniversityField(String university) {
-        universityField.sendKeys(university);
-    }
-
-    public void setStudioLevelUniversityListBox(String studioLevelUniversity) {
-        selectValue = new Select(studioLevelUniversityListBox);
-        selectValue.selectByValue(studioLevelUniversity);
-    }
-
-    public void setCareerField(String career) {
-        careerField.sendKeys(career);
-    }
-
-    public void setCountryUniversityListBox(String countryUniversity) {
-        selectValue = new Select(countryUniversityListBox);
-        selectValue.selectByValue(countryUniversity);
-    }
-
-    public void setCityUniversityField(String cityUniversity) {
-        cityUniversityField.sendKeys(cityUniversity);
-    }
-
-    public void setStartUniversityField(String date) {
+    private void setStartUniversityField(String date) {
         startUniversityField.click();
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setEndUniversityField(String date) {
+    private void setEndUniversityField(String date) {
         endUniversityField.click();
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setLanguageListBox(String language) {
+    public void setFillsEducation(String schoolName, String studioLevel, String countrySchool , String citySchool,
+                                  String startSchool, String endSchool, String universityName,
+                                  String studioLevelUniversity ,String career, String countryUniversity,
+                                  String cityUniversity, String startUniversity, String endUniversity, String language,
+                                  String languageWritten, String languageOral, String LanguageReading ) {
+        schoolField.sendKeys(schoolName);
+        selectValue = new Select(studioLevelSchoolListBox);
+        selectValue.selectByValue(studioLevel);
+        selectValue = new Select(countrySchoolListBox);
+        selectValue.selectByValue(countrySchool);
+        citySchoolField.sendKeys(citySchool);
+        setStartSchoolField(startSchool);
+        setEndSchoolField(endSchool);
+        universityField.sendKeys(universityName);
+        selectValue = new Select(studioLevelUniversityListBox);
+        selectValue.selectByValue(studioLevelUniversity);
+        careerField.sendKeys(career);
+        selectValue = new Select(countryUniversityListBox);
+        selectValue.selectByValue(countryUniversity);
+        cityUniversityField.sendKeys(cityUniversity);
+        setStartUniversityField(startUniversity);
+        setEndUniversityField(endUniversity);
         selectValue = new Select(languageListBox);
         selectValue.selectByValue(language);
-    }
-
-    public void setLanguagueWritenListBox(String languagueWriten) {
         selectValue = new Select(languagueWritenListBox);
-        selectValue.selectByValue(languagueWriten);
-    }
-
-    public void setLanguageOralListBox(String languageOral) {
+        selectValue.selectByValue(languageWritten);
         selectValue = new Select(languageOralListBox);
         selectValue.selectByValue(languageOral);
-    }
-
-    public void setLanguageReadingListBox(String languageReading) {
         selectValue = new Select(languageReadingListBox);
-        selectValue.selectByValue(languageReading);
+        selectValue.selectByValue(LanguageReading);
     }
 
-    public void clickNextutton() {
+    public void clickNextButton() {
         nextButton.click();
     }
 }

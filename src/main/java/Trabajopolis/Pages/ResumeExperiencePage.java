@@ -51,36 +51,28 @@ public class ResumeExperiencePage extends BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(companyChargeField));
     }
 
-    public void setCompanyCharge(String companyCharge) {
-        companyChargeField.sendKeys(companyCharge);
-    }
-
-    public void setCompanyName(String companyName) {
-        companyNameField.sendKeys(companyName);
-    }
-
-    public void selectIndustry(String industry) {
-        selectvalue = new Select(industryListBox);
-        selectvalue.selectByValue(industry);
-    }
-
-    public void setCountryExperience(String countryExperience) {
-        selectvalue = new Select(countryExperienceListBox);
-        selectvalue.selectByValue(countryExperience);
-    }
-
-    public void setCityExperience(String cityExperience) {
-        cityExperienceField.sendKeys(cityExperience);
-    }
-
-    public void setStartDate(String date) {
+    private void setStartDate(String date) {
         startDate.sendKeys(date);
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setEndDate(String date){
+    private void setEndDate(String date){
         endDate.sendKeys(date);
        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
+    }
+
+    public void setFillsExperience(String companyCharge, String companyName, String industry, String country,
+                                   String city, String startSchool, String endSchool ){
+        companyChargeField.sendKeys(companyCharge);
+        companyNameField.sendKeys(companyName);
+        selectvalue = new Select(industryListBox);
+        selectvalue.selectByValue(industry);
+        selectvalue = new Select(countryExperienceListBox);
+        selectvalue.selectByValue(country);
+        cityExperienceField.sendKeys(city);
+        setStartDate(startSchool);
+        setEndDate(endSchool);
+
     }
 
     public void clickNextButton(){

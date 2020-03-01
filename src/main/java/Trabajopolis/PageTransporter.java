@@ -4,21 +4,26 @@ import Core.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 
 public class PageTransporter {
-    protected WebDriver webDriver = WebDriverManager.getInstance().getWebDriver();;
-    private  final String BASE_URL = "https://www.trabajopolis.bo/";
+    protected WebDriver webDriver = WebDriverManager.getInstance().getWebDriver();
+    ;
+    private final String BASE_URL = "https://www.trabajopolis.bo/";
     // Encargada de leer el url base
     // almacenar como constantes las variaciones
 
-    public  void navigateToLoginPage(){
-        webDriver.get(BASE_URL+ "log-in/");
+    public void navigateToLoginPage() {
+        webDriver.get(BASE_URL + "log-in/");
     }
 
-    public  void navigateToMyAccountPage() {
+    public void navigateToMyAccountPage() {
         webDriver.get(BASE_URL + "my-account/");
     }
 
-    public  void navigateEditProfilePage() {
+    public void navigateEditProfilePage() {
         webDriver.get(BASE_URL + "edit-profile/");
+    }
+
+    public void navigateToMyCurriculums() {
+        webDriver.get(BASE_URL + "my-listings/");
     }
 
 }

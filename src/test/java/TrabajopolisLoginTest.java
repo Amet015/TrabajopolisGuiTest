@@ -69,67 +69,67 @@ public class TrabajopolisLoginTest {
 
   }
 
-  @Test
-  public void create_Curriculum(){
-    pageTransporter.navigateToLoginPage();
-    LoginPage loginPage = new LoginPage();
-    loginPage.test_login();
-    MyAccountPage myAccountPage = new MyAccountPage();
-    myAccountPage.clickMisCurriculos();
-    MyListingsPage myListingsPage = new MyListingsPage();
-    myListingsPage.clickAddCV();
-    PersonalInformationPage personalInformationPage = new PersonalInformationPage();
-    personalInformationPage.selectIdType("Pasaporte");
-    personalInformationPage.setAddressField("c/ laredo");
-    personalInformationPage.selectMaritalStatus("Soltero(a)");
-    personalInformationPage.clickNextButton();
-    ResumeExperiencePage resumeExperiencePage = new ResumeExperiencePage();
-    resumeExperiencePage.setCompanyCharge("ingeniero");
-    resumeExperiencePage.setCompanyName("Entel");
-    resumeExperiencePage.selectIndustry("Ingeniería");
-    resumeExperiencePage.setCountryExperience("Bolivia");
-    resumeExperiencePage.setCityExperience("cochabamba");
-    resumeExperiencePage.setStartDate("2/3/2015");
-    resumeExperiencePage.setEndDate("2/3/2016");
-    resumeExperiencePage.clickNextButton();
-    EducationPage educationPage = new EducationPage();
-    educationPage.setSchoolField("Sarmiento");
-    educationPage.setStudioLevelSchoolListBox("Bachiller en Humanidades");
-    educationPage.setCountrySchoolListBox("Bolivia");
-    educationPage.setCitySchoolField("Cochabamba");
-    educationPage.setStartSchoolField("2/10/1997");
-    educationPage.setEndSchoolField("11/25/2008");
-    educationPage.setUniversityField("univalle");
-    educationPage.setCareerField("Telecomunicaciones");
-    educationPage.setCountryUniversityListBox("Bolivia");
-    educationPage.setCityUniversityField("Cochabamba");
-    educationPage.setStudioLevelUniversityListBox("Licenciatura");
-    educationPage.setStartUniversityField("2/10/2009");
-    educationPage.setEndUniversityField("10/30/2014");
-    educationPage.setLanguageListBox("Español");
-    educationPage.setLanguagueWritenListBox("Medio");
-    educationPage.setLanguageOralListBox("Medio");
-    educationPage.setLanguageReadingListBox("Medio");
-    educationPage.clickNextutton();
-    GeneralInformationPage generalInformationPage = new GeneralInformationPage();
-    generalInformationPage.setTitleField("Ingeniero Telecomunicaciones");
-    generalInformationPage.setCategoryListBox("Internet");
-    generalInformationPage.setContractListBox("full time");
-    generalInformationPage.setSalaryField("4000");
-    generalInformationPage.setCountryListBox("Bolivia");
-    generalInformationPage.setCityListBox("Cochabamba");
-    generalInformationPage.setPrivacityCV("Todas las Empresas - Visible en la Base de Datos de CVs");
-    generalInformationPage.clickNextButton();
-    ManageListingPage manageListingPage = new ManageListingPage();
-    String actual = manageListingPage.getDonwLadCVText();
-    String expected = "DESCARGAR CURRÍCULUM EN PDF";
-
-    assertEquals(expected,actual);
-
-    pageTransporter.navigateToMyAccountPage();
-    myAccountPage.clickMisCurriculos();
-    myListingsPage.clickDeleteCV();
-  }
+//  @Test
+//  public void create_Curriculum(){
+//    pageTransporter.navigateToLoginPage();
+//    LoginPage loginPage = new LoginPage();
+//    loginPage.test_login();
+//    MyAccountPage myAccountPage = new MyAccountPage();
+//    myAccountPage.clickMisCurriculos();
+//    MyListingsPage myListingsPage = new MyListingsPage();
+//    myListingsPage.clickAddCV();
+//    PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+//    personalInformationPage.selectIdType("Pasaporte");
+//    personalInformationPage.setAddressField("c/ laredo");
+//    personalInformationPage.selectMaritalStatus("Soltero(a)");
+//    personalInformationPage.clickNextButton();
+//    ResumeExperiencePage resumeExperiencePage = new ResumeExperiencePage();
+//    resumeExperiencePage.setCompanyCharge("ingeniero");
+//    resumeExperiencePage.setCompanyName("Entel");
+//    resumeExperiencePage.selectIndustry("Ingeniería");
+//    resumeExperiencePage.setCountryExperience("Bolivia");
+//    resumeExperiencePage.setCityExperience("cochabamba");
+//    resumeExperiencePage.setStartDate("2/3/2015");
+//    resumeExperiencePage.setEndDate("2/3/2016");
+//    resumeExperiencePage.clickNextButton();
+//    EducationPage educationPage = new EducationPage();
+//    educationPage.setSchoolField("Sarmiento");
+//    educationPage.setStudioLevelSchoolListBox("Bachiller en Humanidades");
+//    educationPage.setCountrySchoolListBox("Bolivia");
+//    educationPage.setCitySchoolField("Cochabamba");
+//    educationPage.setStartSchoolField("2/10/1997");
+//    educationPage.setEndSchoolField("11/25/2008");
+//    educationPage.setUniversityField("univalle");
+//    educationPage.setCareerField("Telecomunicaciones");
+//    educationPage.setCountryUniversityListBox("Bolivia");
+//    educationPage.setCityUniversityField("Cochabamba");
+//    educationPage.setStudioLevelUniversityListBox("Licenciatura");
+//    educationPage.setStartUniversityField("2/10/2009");
+//    educationPage.setEndUniversityField("10/30/2014");
+//    educationPage.setLanguageListBox("Español");
+//    educationPage.setLanguagueWritenListBox("Medio");
+//    educationPage.setLanguageOralListBox("Medio");
+//    educationPage.setLanguageReadingListBox("Medio");
+//    educationPage.clickNextButton();
+//    GeneralInformationPage generalInformationPage = new GeneralInformationPage();
+//    generalInformationPage.setTitleField("Ingeniero Telecomunicaciones");
+//    generalInformationPage.setCategoryListBox("Internet");
+//    generalInformationPage.setContractListBox("full time");
+//    generalInformationPage.setSalaryField("4000");
+//    generalInformationPage.setCountryListBox("Bolivia");
+//    generalInformationPage.setCityListBox("Cochabamba");
+//    generalInformationPage.setPrivacityCV("Todas las Empresas - Visible en la Base de Datos de CVs");
+//    generalInformationPage.clickNextButton();
+//    ManageListingPage manageListingPage = new ManageListingPage();
+//    String actual = manageListingPage.getDonwLadCVText();
+//    String expected = "DESCARGAR CURRÍCULUM EN PDF";
+//
+//    assertEquals(expected,actual);
+//
+//    pageTransporter.navigateToMyAccountPage();
+//    myAccountPage.clickMisCurriculos();
+//    myListingsPage.clickDeleteCV();
+//  }
 
   @Test
   public void edit_EditSalary() {
@@ -154,4 +154,5 @@ public class TrabajopolisLoginTest {
     editProfilePage.clickSave();
 
   }
+
 }

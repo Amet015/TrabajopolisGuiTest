@@ -29,17 +29,17 @@ public class PersonalInformationPage extends BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(idTypeSelect));
     }
 
-    public void selectIdType(String idType) {
+    private void selectIdType(String idType) {
         selectValue = new Select(idTypeSelect);
         selectValue.selectByValue(idType);
     }
 
-    public void setAddressField(String address) {
+    private void setAddressField(String address) {
         addressField.clear();
         addressField.sendKeys(address);
     }
 
-    public void selectMaritalStatus(String maritalstatus) {
+    private void selectMaritalStatus(String maritalstatus) {
         selectValue = new Select(maritalStatusSelect);
         selectValue.selectByValue(maritalstatus);
     }
@@ -47,10 +47,6 @@ public class PersonalInformationPage extends BasePage {
     public ResumeExperiencePage clickNextButton(){
         nextButton.click();
         return new ResumeExperiencePage();
-    }
-
-    public String getNextButtonText(){
-        return nextButton.getText();
     }
 
     public void setPersonalInformation(PersonalInformation personalInformation) {

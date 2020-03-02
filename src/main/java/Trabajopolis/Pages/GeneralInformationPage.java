@@ -39,35 +39,35 @@ public class GeneralInformationPage extends BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(titleField));
     }
 
-    public void setTitle(String title){
+    private void setTitle(String title){
         titleField.sendKeys(title);
     }
 
-    public void setCategory(String category){
+    private void setCategory(String category){
         selectValue = new Select(categoryListBox);
         selectValue.selectByValue(category);
     }
 
-    public void setContractType(String contract) {
+    private void setContractType(String contract) {
         selectValue = new Select(contractListBox);
         selectValue.selectByValue(contract);
     }
 
-    public void setSalary(String salary){
+    private void setSalary(String salary){
         salaryField.sendKeys(salary);
     }
 
-    public void setCountry(String country){
+    private void setCountry(String country){
         selectValue = new Select(countryListBox);
         selectValue.selectByValue(country);
     }
 
-    public void setCity(String city){
+    private void setCity(String city){
         selectValue = new Select(cityListBox);
         selectValue.selectByValue(city);
     }
 
-    public void setPrivacityCV(String privacity){
+    private void setPrivacityCV(String privacity){
         selectValue = new Select(privacityCV);
         selectValue.selectByValue(privacity);
     }

@@ -22,7 +22,6 @@ import java.util.Map;
 public class MyAccountSteps {
     private MyAccountPage myAccountPage;
     PageTransporter pageTransporter = new PageTransporter();
-    //private Map<String, String> searchCriteria = new HashMap<>();
     private EditProfilePage editProfilePage;
     private String newSalary;
     private MyListingsPage myListingsPage;
@@ -120,8 +119,6 @@ public class MyAccountSteps {
 
         generalInformationPage =  educationPage.clickNextButton();
         generalInformationPage.setFillsGeneralInformation(generalInformation);
-
-
 
     }
 

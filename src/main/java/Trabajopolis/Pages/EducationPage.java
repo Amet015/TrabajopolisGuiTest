@@ -105,25 +105,25 @@ public class EducationPage extends BasePage {
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setUniversity(String university) {
+    private void setUniversity(String university) {
         universityField.sendKeys(university);
     }
 
-    public void setStudioLevelUniversity(String studioLevelUniversity) {
+    private void setStudioLevelUniversity(String studioLevelUniversity) {
         selectValue = new Select(studioLevelUniversityListBox);
         selectValue.selectByValue(studioLevelUniversity);
     }
 
-    public void setCareer(String career) {
+    private void setCareer(String career) {
         careerField.sendKeys(career);
     }
 
-    public void setCountryUniversity(String countryUniversity) {
+    private void setCountryUniversity(String countryUniversity) {
         selectValue = new Select(countryUniversityListBox);
         selectValue.selectByValue(countryUniversity);
     }
 
-    public void setCityUniversity(String cityUniversity) {
+    private void setCityUniversity(String cityUniversity) {
         cityUniversityField.sendKeys(cityUniversity);
     }
 
@@ -137,16 +137,16 @@ public class EducationPage extends BasePage {
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setLanguage(String language) {
+    private void setLanguage(String language) {
         selectValue = new Select(languageListBox);
         selectValue.selectByValue(language);
     }
 
-    public void setLanguageWritten(String languagueWriten) {
+    private void setLanguageWritten(String languagueWriten) {
         selectValue = new Select(languagueWritenListBox);
         selectValue.selectByValue(languagueWriten);
     }
-    public void setLanguageOral(String languageOral) {
+    private void setLanguageOral(String languageOral) {
         selectValue = new Select(languageOralListBox);
         selectValue.selectByValue(languageOral);
     }

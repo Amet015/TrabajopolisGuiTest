@@ -69,77 +69,77 @@ public class TrabajopolisLoginTest {
 
   }
 
-  @Test
-  public void create_Curriculum(){
-    pageTransporter.navigateToLoginPage();
-    LoginPage loginPage = new LoginPage();
-    loginPage.test_login();
-    MyAccountPage myAccountPage = new MyAccountPage();
-    myAccountPage.clickMisCurriculos();
-    MyListingsPage myListingsPage = new MyListingsPage();
-    myListingsPage.clickAddCV();
-    PersonalInformationPage personalInformationPage = new PersonalInformationPage();
-    personalInformationPage.selectIdType("Pasaporte");
-    personalInformationPage.setAddressField("c/ laredo");
-    personalInformationPage.selectMaritalStatus("Soltero(a)");
-    personalInformationPage.clickNextButton();
-    String companyCharge = "ingeniero";
-    String companyName = "Entel";
-    String industry = "Internet";
-    String country = "Bolivia";
-    String city = "cochabamba";
-    String startDate = "2/3/2015";
-    String endDate = "2/3/2016";
-    ResumeExperiencePage resumeExperiencePage = new ResumeExperiencePage();
-    resumeExperiencePage.setFillsExperience(companyCharge,companyName, industry, country, city, startDate,
-            endDate);
-    resumeExperiencePage.clickNextButton();
-
-    String school = "Sarmiento";
-    String studioLevelSchool = "Bachiller en Humanidades";
-    String countrySchool = "Bolivia";
-    String citySchool = "Cochabamba";
-    String startDateSchool = "2/10/1997";
-    String endDateSchool = "11/25/2008";
-    String university = "univalle";
-    String studioLevelUniversity = "Licenciatura";
-    String career = "Telecomunicaciones";
-    String countryUniversity = "Bolivia";
-    String cityUniversity = "Cochabamba";
-    String startDateUniversity = "2/10/2009";
-    String endDateUniversity = "10/30/2014";
-    String language = "Español";
-    String languageWritten = "Medio";
-    String laguageOral = "Medio";
-    String languageReading = "Medio";
-
-    EducationPage educationPage = new EducationPage();
-    educationPage.setFillsEducation(school, studioLevelSchool, countrySchool, citySchool, startDateSchool,
-            endDateSchool, university, studioLevelUniversity, career, countryUniversity, cityUniversity,
-            startDateUniversity, endDateUniversity, language, languageWritten, laguageOral, languageReading);
-    educationPage.clickNextButton();
-    educationPage.clickNextButton();
-    String title = "Ingeniero Telecomunicaciones";
-    String category = "Internet";
-    String contractType = "full time";
-    String salary = "4000";
-    String countryExperience = "Bolivia";
-    String cityExperience = "Cochabamba";
-    String privacityCV = "Todas las Empresas - Visible en la Base de Datos de CVs";
-    GeneralInformationPage generalInformationPage = new GeneralInformationPage();
-    generalInformationPage.setFillsGeneralInformation(title, category, contractType, salary,
-            countryExperience, cityExperience, privacityCV);
-    generalInformationPage.clickNextButton();
-    ManageListingPage manageListingPage = new ManageListingPage();
-    String actual = manageListingPage.getDonwLadCVText();
-    String expected = "DESCARGAR CURRÍCULUM EN PDF";
-
-    assertEquals(expected,actual);
-
-    pageTransporter.navigateToMyAccountPage();
-    myAccountPage.clickMisCurriculos();
-    myListingsPage.clickDeleteCV();
-  }
+//  @Test
+//  public void create_Curriculum(){
+//    pageTransporter.navigateToLoginPage();
+//    LoginPage loginPage = new LoginPage();
+//    loginPage.test_login();
+//    MyAccountPage myAccountPage = new MyAccountPage();
+//    myAccountPage.clickMisCurriculos();
+//    MyListingsPage myListingsPage = new MyListingsPage();
+//    myListingsPage.clickAddCV();
+//    PersonalInformationPage personalInformationPage = new PersonalInformationPage();
+//    personalInformationPage.selectIdType("Pasaporte");
+//    personalInformationPage.setAddressField("c/ laredo");
+//    personalInformationPage.selectMaritalStatus("Soltero(a)");
+//    personalInformationPage.clickNextButton();
+//    String companyCharge = "ingeniero";
+//    String companyName = "Entel";
+//    String industry = "Internet";
+//    String country = "Bolivia";
+//    String city = "cochabamba";
+//    String startDate = "2/3/2015";
+//    String endDate = "2/3/2016";
+//    ResumeExperiencePage resumeExperiencePage = new ResumeExperiencePage();
+//    resumeExperiencePage.setFillsExperience(companyCharge,companyName, industry, country, city, startDate,
+//            endDate);
+//    resumeExperiencePage.clickNextButton();
+//
+//    String school = "Sarmiento";
+//    String studioLevelSchool = "Bachiller en Humanidades";
+//    String countrySchool = "Bolivia";
+//    String citySchool = "Cochabamba";
+//    String startDateSchool = "2/10/1997";
+//    String endDateSchool = "11/25/2008";
+//    String university = "univalle";
+//    String studioLevelUniversity = "Licenciatura";
+//    String career = "Telecomunicaciones";
+//    String countryUniversity = "Bolivia";
+//    String cityUniversity = "Cochabamba";
+//    String startDateUniversity = "2/10/2009";
+//    String endDateUniversity = "10/30/2014";
+//    String language = "Español";
+//    String languageWritten = "Medio";
+//    String laguageOral = "Medio";
+//    String languageReading = "Medio";
+//
+//    EducationPage educationPage = new EducationPage();
+//    educationPage.setFillsEducation(school, studioLevelSchool, countrySchool, citySchool, startDateSchool,
+//            endDateSchool, university, studioLevelUniversity, career, countryUniversity, cityUniversity,
+//            startDateUniversity, endDateUniversity, language, languageWritten, laguageOral, languageReading);
+//    educationPage.clickNextButton();
+//    educationPage.clickNextButton();
+//    String title = "Ingeniero Telecomunicaciones";
+//    String category = "Internet";
+//    String contractType = "full time";
+//    String salary = "4000";
+//    String countryExperience = "Bolivia";
+//    String cityExperience = "Cochabamba";
+//    String privacityCV = "Todas las Empresas - Visible en la Base de Datos de CVs";
+//    GeneralInformationPage generalInformationPage = new GeneralInformationPage();
+//    generalInformationPage.setFillsGeneralInformation(title, category, contractType, salary,
+//            countryExperience, cityExperience, privacityCV);
+//    generalInformationPage.clickNextButton();
+//    ManageListingPage manageListingPage = new ManageListingPage();
+//    String actual = manageListingPage.getDonwLadCVText();
+//    String expected = "DESCARGAR CURRÍCULUM EN PDF";
+//
+//    assertEquals(expected,actual);
+//
+//    pageTransporter.navigateToMyAccountPage();
+//    myAccountPage.clickMisCurriculos();
+//    myListingsPage.clickDeleteCV();
+//  }
 
   @Test
   public void edit_EditSalary() {

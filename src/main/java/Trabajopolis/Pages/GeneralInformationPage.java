@@ -1,6 +1,7 @@
 package Trabajopolis.Pages;
 
 import Trabajopolis.BasePage;
+import Trabajopolis.entities.GeneralInformation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -38,24 +39,53 @@ public class GeneralInformationPage extends BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(titleField));
     }
 
-
-    public void setFillsGeneralInformation(String title, String category, String contractType, String salary,
-                                           String country, String city, String privacity){
+    public void setTitle(String title){
         titleField.sendKeys(title);
+    }
+
+    public void setCategory(String category){
         selectValue = new Select(categoryListBox);
         selectValue.selectByValue(category);
+    }
+
+    public void setContractType(String contract) {
         selectValue = new Select(contractListBox);
-        selectValue.selectByValue(contractType);
+        selectValue.selectByValue(contract);
+    }
+
+    public void setSalary(String salary){
         salaryField.sendKeys(salary);
+    }
+
+    public void setCountry(String country){
         selectValue = new Select(countryListBox);
         selectValue.selectByValue(country);
+    }
+
+    public void setCity(String city){
         selectValue = new Select(cityListBox);
         selectValue.selectByValue(city);
+    }
+
+    public void setPrivacityCV(String privacity){
         selectValue = new Select(privacityCV);
         selectValue.selectByValue(privacity);
     }
 
-    public void clickNextButton(){
+
+    public void setFillsGeneralInformation(GeneralInformation generalInformation){
+        setTitle(generalInformation.getTitle());
+        setCategory(generalInformation.getCategory());
+        setContractType(generalInformation.getContractType());
+        setSalary(generalInformation.getSalary());
+        setCountry(generalInformation.getCountry());
+        setCity(generalInformation.getCity());
+        setPrivacityCV(generalInformation.getPrivacityCV());
+
+    }
+
+    public ManageListingPage clickNextButton(){
         nextButton.click();
+        return new ManageListingPage();
     }
 }

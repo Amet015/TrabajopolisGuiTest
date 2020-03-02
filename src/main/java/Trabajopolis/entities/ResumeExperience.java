@@ -1,5 +1,7 @@
 package Trabajopolis.entities;
 
+import java.util.Map;
+
 public class ResumeExperience {
     private String companyCharge;
     private String companyName;
@@ -63,5 +65,22 @@ public class ResumeExperience {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public void proccessInformation(Map<String, String> mapResumeExperience) {
+        String companyCharge = mapResumeExperience.get("Company Charge");
+        String companyName = mapResumeExperience.get("Company Name");
+        String industry = mapResumeExperience.get("Industry");
+        String country = mapResumeExperience.get("Country");
+        String city = mapResumeExperience.get("City");
+        String startDateSchool = mapResumeExperience.get("Start Date");
+        String endDateSchool = mapResumeExperience.get("End Date");
+        setCompanyCharge(companyCharge);
+        setCompanyName(companyName);
+        setIndustry(industry);
+        setCountryExperience(country);
+        setCityExperience(city);
+        setStartDate(startDateSchool);
+        setEndDate(endDateSchool);
     }
 }

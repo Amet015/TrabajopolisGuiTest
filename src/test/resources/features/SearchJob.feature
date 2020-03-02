@@ -9,7 +9,9 @@ Feature: Search a Job
     And I search the Job
     Then The application displays a page with name board "Resultados de Búsqueda de Empleos"
     #validad el 5% de los resultados.
-    #td[class*='anuncio-estandar'] span[class*='titulo'] a
+    #FindBy(css = td[class*='anuncio-estandar'] span[class*='titulo'] a)
+    #WebElement links;
+   # list WebElements
 
   Scenario: Search a Job through Home page
     Given I login to the application with "user" credentials

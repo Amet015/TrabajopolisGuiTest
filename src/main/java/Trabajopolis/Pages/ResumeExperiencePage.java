@@ -1,6 +1,8 @@
 package Trabajopolis.Pages;
 
 import Trabajopolis.BasePage;
+import Trabajopolis.entities.Education;
+import Trabajopolis.entities.ResumeExperience;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -51,6 +53,27 @@ public class ResumeExperiencePage extends BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(companyChargeField));
     }
 
+    private void setCompanyCharge(String companyCharge) {
+        companyChargeField.sendKeys(companyCharge);
+    }
+    private void setCompanyName(String companyName) {
+        companyNameField.sendKeys(companyName);
+    }
+
+    private void setIndustry(String industry) {
+        selectvalue = new Select(industryListBox);
+        selectvalue.selectByValue(industry);
+    }
+
+    private void setCountryExperience(String countryExperience) {
+        selectvalue = new Select(countryExperienceListBox);
+        selectvalue.selectByValue(countryExperience);
+    }
+
+    private void setCityExperience(String cityExperience) {
+        cityExperienceField.sendKeys(cityExperience);
+    }
+
     private void setStartDate(String date) {
         startDate.sendKeys(date);
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
@@ -58,24 +81,23 @@ public class ResumeExperiencePage extends BasePage {
 
     private void setEndDate(String date){
         endDate.sendKeys(date);
-       WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
+        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setFillsExperience(String companyCharge, String companyName, String industry, String country,
-                                   String city, String startSchool, String endSchool ){
-        companyChargeField.sendKeys(companyCharge);
-        companyNameField.sendKeys(companyName);
-        selectvalue = new Select(industryListBox);
-        selectvalue.selectByValue(industry);
-        selectvalue = new Select(countryExperienceListBox);
-        selectvalue.selectByValue(country);
-        cityExperienceField.sendKeys(city);
-        setStartDate(startSchool);
-        setEndDate(endSchool);
+
+    public void setFillsExperience(ResumeExperience resumeExperience){
+        setCompanyCharge(resumeExperience.getCompanyCharge());
+        setCompanyName(resumeExperience.getCompanyName());
+        setIndustry(resumeExperience.getIndustry());
+        setCountryExperience(resumeExperience.getCountryExperience());
+        setCityExperience(resumeExperience.getCityExperience());
+        setStartDate(resumeExperience.getStartDate());
+        setEndDate(resumeExperience.getEndDate());
 
     }
 
-    public void clickNextButton(){
+    public EducationPage clickNextButton(){
         nextButton.click();
+        return new EducationPage();
     }
 }

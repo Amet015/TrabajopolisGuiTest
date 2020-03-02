@@ -23,8 +23,9 @@ public class MyListingsPage extends BasePage {
         return addCV.getText();
     }
 
-    public void clickAddCV(){
+    public PersonalInformationPage clickAddCV() {
         addCV.click();
+        return new PersonalInformationPage();
     }
 
     public void clickDeleteCV(){

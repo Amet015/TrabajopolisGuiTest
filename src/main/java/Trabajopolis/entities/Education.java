@@ -2,6 +2,8 @@ package Trabajopolis.entities;
 
 import org.graalvm.compiler.replacements.StandardGraphBuilderPlugins;
 
+import java.util.Map;
+
 public class Education {
     private String school;
     private String studioLevelSchool;
@@ -155,5 +157,43 @@ public class Education {
 
     public void setLanguageReading(String languageReading) {
         this.languageReading = languageReading;
+    }
+
+    public void proccessInformation(Map<String, String> mapEducation) {
+        String school = mapEducation.get("School");
+        String studioLevelSchool = mapEducation.get("Studio Level School");
+        String countrySchool = mapEducation.get("Country School");
+        String citySchool = mapEducation.get("City School");
+        String starDateSchool = mapEducation.get("Start Date School");
+        String endDateSchool = mapEducation.get("End Date School");
+        String university = mapEducation.get("University");
+        String studioLevelUniversity = mapEducation.get("Studio Level University");
+        String career = mapEducation.get("Career");
+        String countryUniversity = mapEducation.get("Country University");
+        String cityUniversity = mapEducation.get("City University");
+        String startDateUniversity = mapEducation.get("Start Date University");
+        String endDateUniversity = mapEducation.get("End Date University");
+        String language = mapEducation.get("Language");
+        String languageWritten = mapEducation.get("Language Written");
+        String laguageOral = mapEducation.get("Language Oral");
+        String languageReading = mapEducation.get("Language Reading");
+
+        setSchool(school);
+        setStudioLevelSchool(studioLevelSchool);
+        setCountrySchool(countrySchool);
+        setCitySchool(citySchool);
+        setStartSchool(starDateSchool);
+        setEndSchool(endDateSchool);
+        setUniversity(university);
+        setStudioLevelUniversity(studioLevelUniversity);
+        setCareer(career);
+        setCountryUniversity(countryUniversity);
+        setCityUniversity(cityUniversity);
+        setStartUniversity(startDateUniversity);
+        setEndUniversity(endDateUniversity);
+        setLanguage(language);
+        setLanguageWritten(languageWritten);
+        setLanguageOral(laguageOral);
+        setLanguageReading(languageReading);
     }
 }

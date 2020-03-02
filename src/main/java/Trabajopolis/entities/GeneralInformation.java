@@ -1,5 +1,7 @@
 package Trabajopolis.entities;
 
+import java.util.Map;
+
 public class GeneralInformation {
     private String title;
     private String category;
@@ -64,5 +66,24 @@ public class GeneralInformation {
 
     public String getPrivacityCV() {
         return privacityCV;
+    }
+
+    public void proccessInformation(Map<String, String> mapGeneralInformation) {
+        String title = mapGeneralInformation.get("Title");
+        String category = mapGeneralInformation.get("Category");
+        String contractType = mapGeneralInformation.get("Contract Type");
+        String salary = mapGeneralInformation.get("Salary");
+        String country = mapGeneralInformation.get("Country");
+        String city = mapGeneralInformation.get("City");
+        String privacityCV = mapGeneralInformation.get("PrivacityCV");
+
+        setTitle(title);
+        setCategory(category);
+        setContractType(contractType);
+        setSalary(salary);
+        setCountry(country);
+        setCity(city);
+        setPrivacityCV(privacityCV);
+
     }
 }

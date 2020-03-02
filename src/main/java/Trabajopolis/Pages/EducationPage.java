@@ -1,6 +1,8 @@
 package Trabajopolis.Pages;
 
 import Trabajopolis.BasePage;
+import Trabajopolis.entities.Education;
+import Trabajopolis.entities.GeneralInformation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -75,59 +77,108 @@ public class EducationPage extends BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(schoolField));
     }
 
-    private void setStartSchoolField(String date) {
+    private void setSchool(String schoolName) {
+        schoolField.sendKeys(schoolName);
+    }
+
+    private void setStudioLevelSchool(String studioLevel) {
+        selectValue = new Select(studioLevelSchoolListBox);
+        selectValue.selectByValue(studioLevel);
+    }
+
+    private void setCountrySchool(String country) {
+        selectValue = new Select(countrySchoolListBox);
+        selectValue.selectByValue(country);
+    }
+
+    private void setCitySchool(String city) {
+        citySchoolField.sendKeys(city);
+    }
+
+    private void setStartSchool(String date) {
         startSchoolField.click();
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    private void setEndSchoolField(String date) {
+    private void setEndSchool(String date) {
         endSchoolField.click();
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    private void setStartUniversityField(String date) {
+    public void setUniversity(String university) {
+        universityField.sendKeys(university);
+    }
+
+    public void setStudioLevelUniversity(String studioLevelUniversity) {
+        selectValue = new Select(studioLevelUniversityListBox);
+        selectValue.selectByValue(studioLevelUniversity);
+    }
+
+    public void setCareer(String career) {
+        careerField.sendKeys(career);
+    }
+
+    public void setCountryUniversity(String countryUniversity) {
+        selectValue = new Select(countryUniversityListBox);
+        selectValue.selectByValue(countryUniversity);
+    }
+
+    public void setCityUniversity(String cityUniversity) {
+        cityUniversityField.sendKeys(cityUniversity);
+    }
+
+    private void setStartUniversity(String date) {
         startUniversityField.click();
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    private void setEndUniversityField(String date) {
+    private void setEndUniversity(String date) {
         endUniversityField.click();
         WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    public void setFillsEducation(String schoolName, String studioLevel, String countrySchool , String citySchool,
-                                  String startSchool, String endSchool, String universityName,
-                                  String studioLevelUniversity ,String career, String countryUniversity,
-                                  String cityUniversity, String startUniversity, String endUniversity, String language,
-                                  String languageWritten, String languageOral, String LanguageReading ) {
-        schoolField.sendKeys(schoolName);
-        selectValue = new Select(studioLevelSchoolListBox);
-        selectValue.selectByValue(studioLevel);
-        selectValue = new Select(countrySchoolListBox);
-        selectValue.selectByValue(countrySchool);
-        citySchoolField.sendKeys(citySchool);
-        setStartSchoolField(startSchool);
-        setEndSchoolField(endSchool);
-        universityField.sendKeys(universityName);
-        selectValue = new Select(studioLevelUniversityListBox);
-        selectValue.selectByValue(studioLevelUniversity);
-        careerField.sendKeys(career);
-        selectValue = new Select(countryUniversityListBox);
-        selectValue.selectByValue(countryUniversity);
-        cityUniversityField.sendKeys(cityUniversity);
-        setStartUniversityField(startUniversity);
-        setEndUniversityField(endUniversity);
+    public void setLanguage(String language) {
         selectValue = new Select(languageListBox);
         selectValue.selectByValue(language);
-        selectValue = new Select(languagueWritenListBox);
-        selectValue.selectByValue(languageWritten);
-        selectValue = new Select(languageOralListBox);
-        selectValue.selectByValue(languageOral);
-        selectValue = new Select(languageReadingListBox);
-        selectValue.selectByValue(LanguageReading);
     }
 
-    public void clickNextButton() {
+    public void setLanguageWritten(String languagueWriten) {
+        selectValue = new Select(languagueWritenListBox);
+        selectValue.selectByValue(languagueWriten);
+    }
+    public void setLanguageOral(String languageOral) {
+        selectValue = new Select(languageOralListBox);
+        selectValue.selectByValue(languageOral);
+    }
+
+    public void setLanguageReading(String languageReading) {
+        selectValue = new Select(languageReadingListBox);
+        selectValue.selectByValue(languageReading);
+    }
+
+    public void setFillsEducation(Education education) {
+        setSchool(education.getSchool());
+        setStudioLevelSchool(education.getStudioLevelSchool());
+        setCountrySchool(education.getCountrySchool());
+        setCitySchool(education.getCitySchool());
+        setStartSchool(education.getStartSchool());
+        setEndSchool(education.getEndSchool());
+        setUniversity(education.getUniversity());
+        setStudioLevelUniversity(education.getStudioLevelUniversity());
+        setCareer(education.getCareer());
+        setCountryUniversity(education.getCountryUniversity());
+        setCityUniversity(education.getCityUniversity());
+        setStartUniversity(education.getStartUniversity());
+        setEndUniversity(education.getEndUniversity());
+        setLanguage(education.getLanguage());
+        setLanguageWritten(education.getLanguageWritten());
+        setLanguageOral(education.getLanguageOral());
+        setLanguageReading(education.getLanguageReading());
+
+    }
+
+    public GeneralInformationPage clickNextButton() {
         nextButton.click();
+        return new GeneralInformationPage();
     }
 }

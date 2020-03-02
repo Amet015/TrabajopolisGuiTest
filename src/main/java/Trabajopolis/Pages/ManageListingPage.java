@@ -22,7 +22,8 @@ public class ManageListingPage extends BasePage {
         return downloadCVButton.getText();
     }
 
-    public void clickLookMyCV(){
+    public ResumeDetailsCV clickLookMyCV(){
         lookMyCV.click();
+        return new ResumeDetailsCV();
     }
 }

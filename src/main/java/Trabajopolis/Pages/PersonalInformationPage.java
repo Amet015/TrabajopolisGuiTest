@@ -1,6 +1,7 @@
 package Trabajopolis.Pages;
 
 import Trabajopolis.BasePage;
+import Trabajopolis.entities.PersonalInformation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -43,11 +44,18 @@ public class PersonalInformationPage extends BasePage {
         selectValue.selectByValue(maritalstatus);
     }
 
-    public void clickNextButton(){
+    public ResumeExperiencePage clickNextButton(){
         nextButton.click();
+        return new ResumeExperiencePage();
     }
 
     public String getNextButtonText(){
         return nextButton.getText();
+    }
+
+    public void setPersonalInformation(PersonalInformation personalInformation) {
+        selectIdType(personalInformation.getIdType());
+        setAddressField(personalInformation.getAddress());
+        selectMaritalStatus(personalInformation.getMaritalStatus());
     }
 }

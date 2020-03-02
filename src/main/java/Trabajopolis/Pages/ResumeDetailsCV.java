@@ -7,30 +7,78 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ResumeDetailsCV extends BasePage {
-    @FindBy(xpath = "//*[@id=\"rounded-lh-cap\"]/ul/li[3]/div/div[2]/div[4]")
-    WebElement salary;
 
-    @FindBy(xpath = "//*[@id=\"rounded-lh-cap\"]/ul/li[3]/div/div[2]/div[5]")
-    WebElement address;
-
-    @FindBy(xpath = "//*[@id=\"rounded-lh-cap\"]/ul/li[3]/div/div[2]/div[12]")
-    WebElement maritalStatus;
-
-    @FindBy(xpath = "//*[@id=\"rounded-lh-cap\"]/ul/li[3]/div/div[2]/div[11]")
+    //armar
+    @FindBy(xpath = "//div[strong[contains(text(),'Pasaporte')] and @class=\"item\"]")
     WebElement idType;
 
-    @FindBy(xpath = "//*[@id=\"rounded-lh-cap\"]/ul/li[3]/div/div[3]/ul/li/span[1]")
+    @FindBy(xpath = "//div[strong[contains(text(),'Dirección')] and @class=\"item\"]")
+    WebElement address;
+
+    @FindBy(xpath = "//div[strong[contains(text(),'Estado')] and @class=\"item\"]")
+    WebElement maritalStatus;
+
+
+    //armar
+    @FindBy(xpath = "//li//span[@style=\"display:block;\" and contains(text(),\"Ingeniero\")]")
     WebElement companyCharge;
 
-    @FindBy(xpath = "//*[@id=\"rounded-lh-cap\"]/ul/li[3]/div/div[3]/ul/li/span[2]")
+    //armar
+    @FindBy(xpath = "//li//span[@style=\"display:block;\" and contains(text(),\"Entel\")]")
     WebElement companyName;
 
-    @FindBy(xpath = "//*[@id=\"rounded-lh-cap\"]/ul/li[3]/div/div[5]/ul/li/span")
+ // armar
+    @FindBy(xpath = "//li//span[contains(text(),'Quechua')]")
     WebElement laguagues;
+
+    @FindBy(xpath = "//div[strong[contains(text(),'Pa')] and @class=\"item\"]")
+    WebElement countryBorn;
+
+//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
+//    WebElement countryBorn;
+//
+//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
+//    WebElement countryBorn;
+//
+//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
+//    WebElement countryBorn;
+//
+//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
+//    WebElement countryBorn;
+//
+//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
+//    WebElement countryBorn;
+//
+//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
+//    WebElement countryBorn;
+//
+//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
+//    WebElement countryBorn;
+//
+//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
+//    WebElement countryBorn;
+//
+//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
+//    WebElement countryBorn;
+//
+//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
+//    WebElement countryBorn;
+
+    @FindBy(xpath = "//div[strong[contains(text(),'Pretensión')] and @class=\"item\"]")
+    WebElement salary;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(salary));
+        webDriverWait.until(ExpectedConditions.visibilityOf(idType));
+        webDriverWait.until(ExpectedConditions.visibilityOf(address));
+        webDriverWait.until(ExpectedConditions.visibilityOf(maritalStatus));
+        webDriverWait.until(ExpectedConditions.visibilityOf(companyCharge));
+        webDriverWait.until(ExpectedConditions.visibilityOf(companyName));
+    }
+
+    public void prueba(){
+        System.out.println(laguagues.getText());
     }
 
     public String getSalary(){

@@ -60,11 +60,6 @@ public class ResumeExperiencePage extends BasePage {
         companyNameField.sendKeys(companyName);
     }
 
-    private void setIndustry(String industry) {
-        selectvalue = new Select(industryListBox);
-        selectvalue.selectByValue(industry);
-    }
-
     private void setCountryExperience(String countryExperience) {
         selectvalue = new Select(countryExperienceListBox);
         selectvalue.selectByValue(countryExperience);
@@ -88,7 +83,6 @@ public class ResumeExperiencePage extends BasePage {
     public void setFillsExperience(ResumeExperience resumeExperience){
         setCompanyCharge(resumeExperience.getCompanyCharge());
         setCompanyName(resumeExperience.getCompanyName());
-        setIndustry(resumeExperience.getIndustry());
         setCountryExperience(resumeExperience.getCountryExperience());
         setCityExperience(resumeExperience.getCityExperience());
         setStartDate(resumeExperience.getStartDate());

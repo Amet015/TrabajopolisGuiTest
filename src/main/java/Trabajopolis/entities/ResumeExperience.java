@@ -70,7 +70,6 @@ public class ResumeExperience {
     public void proccessInformation(Map<String, String> mapResumeExperience) {
         String companyCharge = mapResumeExperience.get("Company Charge");
         String companyName = mapResumeExperience.get("Company Name");
-        String industry = mapResumeExperience.get("Industry");
         String country = mapResumeExperience.get("Country");
         String city = mapResumeExperience.get("City");
         String startDateSchool = mapResumeExperience.get("Start Date");

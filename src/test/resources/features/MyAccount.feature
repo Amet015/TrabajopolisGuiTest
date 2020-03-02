@@ -9,7 +9,6 @@ Feature: My Account
     And I fill fields in Resume Experience page with
       | Company Charge | Ingeniero  |
       | Company Name   | Entel      |
-      | Industry       | Internet   |
       | Country        | Bolivia    |
       | City           | Cochabamba |
       | Start Date     | 2/3/2015   |
@@ -40,7 +39,7 @@ Feature: My Account
       | Country       | Bolivia                                                 |
       | City          | Cochabamba                                              |
       | PrivacityCV   | Todas las Empresas - Visible en la Base de Datos de CVs |
-    Then The application displays a page with a button "DESCARGAR CURRÍCULUM EN PDF"
+    Then The application displays a page with a button "DESCARGAR CURRï¿½CULUM EN PDF"
     And The Curriculum is created with the basic information entered
     And I delete Curriculum
 

@@ -50,7 +50,8 @@ public class GeneralInformationPage extends BasePage {
 
     private void setContractType(String contract) {
         selectValue = new Select(contractListBox);
-        selectValue.selectByValue(contract);
+        //selectValue.selectByValue(contract);
+        selectValue.selectByVisibleText(contract);
     }
 
     private void setSalary(String salary){

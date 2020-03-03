@@ -23,17 +23,16 @@ public class ResumeDetailsCV extends BasePage {
     @FindBy(xpath = "//div[strong[contains(text(),'Estado')] and @class=\"item\"]")
     WebElement maritalStatus;
 
+    //div[@class="item"]//strong[contains(text(),"Dirección")]/following-sibling::text()
 
-    private final String EXPERIENCE_FIELD =  "//div[h2[contains(text(),\"Experiencia\")]]//ul//li//span[@style="+
+    private final String EXPERIENCE_FIELD = "//div[h2[contains(text(),\"Experiencia\")]]//ul//li//span[@style=" +
             "\"display:block;\" and contains(text(),\"%s\")] ";
 
-//    private final String LANGUAGE_FIELD = "//div[h2[@class=\"title\" and contains(text(), \"Idiomas\")]]//li//span" +
-//         "[contains(text(),'%s')]";
     @FindBy(xpath = "//div[h2[@class=\"title\" and contains(text(), \"Idiomas\")]]//li//span")
     WebElement languague;
 
-    private final  String TITLE = "//h1[strong[contains(text(),\"%s\")] and @style=\"color:#1E4B82;"+
-            "margin-bottom:10px;\"]";
+    @FindBy(xpath = "//h1[@style=\"color:#1E4B82; margin-bottom:10px;\"]")
+    WebElement title;
 
     @FindBy(xpath = "//div[strong[contains(text(),'Categoría')] and @class=\"item\"]")
     WebElement category;
@@ -51,11 +50,15 @@ public class ResumeDetailsCV extends BasePage {
     WebElement city;
 
 
-    @FindBy(xpath ="//div[h2[contains(text(),\"Educación\")]]//ul//li" )
+    @FindBy(xpath = "//div[h2[contains(text(),\"Educación\")]]//ul//li")
     List<WebElement> edutacion;
 
     ArrayList<String> listEducation;
 
+    @FindBy(xpath = "//div[h2[contains(text(),\"Experiencia\")]]//ul//li")
+    List<WebElement> experience;
+
+    ArrayList<String> listExperience;
 
 
     @Override
@@ -64,64 +67,83 @@ public class ResumeDetailsCV extends BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(address));
         webDriverWait.until(ExpectedConditions.visibilityOf(maritalStatus));
         listEducation = new ArrayList<>();
+        listExperience = new ArrayList<>();
         fillListEducation();
+        fillListExperience();
 
     }
 
-    public String getSalary(){
-        return salary.getText();
+    private void fillListExperience() {
+        for (WebElement element : experience) {
+            listExperience.add(element.getText());
+        }
+        Collections.sort(listExperience);
+
+        for (String esto: listExperience ) {
+            System.out.println(esto);
+        }
     }
 
-    public String getAddress(){
-        return address.getText();
-    }
-
-    public String getMaritalStatus(){
-        return maritalStatus.getText();
-    }
-
-    public String getIdType(String id){
-        return WebComponents.getTextFromTheElement(ID_TYPE,id);
-    }
-
-    public String getLanguague(){
-        return languague.getText();
-    }
-
-    public String getExperience(String value){
-
-        return WebComponents.getTextFromTheElement(EXPERIENCE_FIELD,value);
-    }
-
-
-    public String getTitle(String value){
-        return WebComponents.getTextFromTheElement(TITLE,value);
-    }
-
-    public String getCategory(){
-        return category.getText();
-    }
-
-    public String getContractType(){
-        return contractType.getText();
-    }
-
-    public String getCountry(){
-        return country.getText();
-    }
-
-    public String getCity(){
-        return city.getText();
-    }
-    private void fillListEducation(){
-        for (WebElement e: edutacion  ) {
-            listEducation.add(e.getText());
+    private void fillListEducation() {
+        for (WebElement element : edutacion) {
+            listEducation.add(element.getText());
         }
         Collections.sort(listEducation);
     }
 
-    public ArrayList getListEducation(){
-     return listEducation;
+    public String getSalary() {
+        String salaryClean = salary.getText().replace("Pretensión Salarial: Bs. ", "");
+        return salaryClean;
     }
 
+    public String getAddress() {
+        String addressClean = address.getText().replace("Dirección: ", "");
+        return addressClean;
+    }
+
+    public String getMaritalStatus() {
+        String maritalStatusClean = maritalStatus.getText().replace("Estado Civil: ", "");
+        return maritalStatus.getText();
+    }
+
+    public String getIdType(String id) {
+        return WebComponents.getTextFromTheElement(ID_TYPE, id);
+    }
+
+    public String getLanguague() {
+        return languague.getText();
+    }
+
+
+    public String getTitle() {
+        return title.getText();
+    }
+
+    public String getCategory() {
+        String categoryClean = category.getText().replace("Categoría: ", "");
+        return categoryClean;
+    }
+
+    public String getContractType() {
+        String ContractTypeClean = contractType.getText().replace("Contrato: ", "");
+        return ContractTypeClean;
+    }
+
+    public String getCountry() {
+        String countryClean = country.getText().replace("País: ", "");
+        return countryClean;
+    }
+
+    public String getCity() {
+        String cityClean = city.getText().replace("Ciudad: ", "");
+        return cityClean;
+    }
+
+    public ArrayList getListEducation() {
+        return listEducation;
+    }
+
+    public ArrayList getListExperience() {
+        return listExperience;
+    }
 }

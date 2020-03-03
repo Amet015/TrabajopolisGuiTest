@@ -30,7 +30,7 @@ public class WebUtils {
         return mapMonth.get(dateSplit[0]);
     }
 
-    public static String getYear(String date){
+    public String getYear(String date){
         String [] dateSplit = date.split("/");
         return dateSplit[2];
     }

@@ -141,8 +141,20 @@ public class MyAccountSteps {
         for (int i = 0; i < resumeDetailsCV.getListEducation().size() ; i++) {
             Assert.assertEquals(resumeDetailsCV.getListEducation().get(i), context.getCurriculum().getEducation().getListEducation().get(i));
         }
+
+        for (int i = 0; i <resumeDetailsCV.getListExperience().size() ; i++) {
+            Assert.assertEquals(resumeDetailsCV.getListExperience().get(i),context.getCurriculum().getResumeExperience().getListExperience().get(i));
+        }
         Assert.assertEquals(resumeDetailsCV.getLanguague(),context.getCurriculum().getEducation().getLanguageForm());
-//        resumeDetailsCV.getListEducation();
+        Assert.assertEquals(resumeDetailsCV.getTitle(), context.getCurriculum().getGeneralInformation().getTitle());
+        Assert.assertEquals(resumeDetailsCV.getAddress(), context.getCurriculum().getPersonalInformation().getAddress());
+        Assert.assertEquals(resumeDetailsCV.getContractType(),context.getCurriculum().getGeneralInformation().getContractType());
+        Assert.assertEquals(resumeDetailsCV.getCategory(),context.getCurriculum().getGeneralInformation().getCategory());
+        Assert.assertEquals(resumeDetailsCV.getCountry(), context.getCurriculum().getGeneralInformation().getCountry());
+        Assert.assertEquals(resumeDetailsCV.getCity(), context.getCurriculum().getGeneralInformation().getCity());
+        Assert.assertEquals(resumeDetailsCV.getSalary(),context.getCurriculum().getGeneralInformation().getSalary());
+
+        //        resumeDetailsCV.getListEducation();
 //        context.getCurriculum().getEducation().getListEducation();
 
 

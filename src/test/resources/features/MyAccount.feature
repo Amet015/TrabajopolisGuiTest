@@ -34,7 +34,7 @@ Feature: My Account
     And I fill fields in General Information Page with
       | Title         | Ingeniero Telecomunicaciones                            |
       | Category      | Internet                                                |
-      | Contract Type | full time                                               |
+      | Contract Type | Tiempo Completo                                         |
       | Salary        | 4000                                                    |
       | Country       | Bolivia                                                 |
       | City          | Cochabamba                                              |

@@ -1,5 +1,9 @@
 package Trabajopolis.entities;
 
+import Trabajopolis.Utils.WebUtils;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 public class ResumeExperience {
@@ -10,6 +14,24 @@ public class ResumeExperience {
     private String cityExperience;
     private String startDate;
     private String endDate;
+    private WebUtils webUtils;
+    private ArrayList<String> listExperience = new ArrayList<>();
+    private final String RESUME_EXPERIENCE = "%s, desde %s %s hasta %s %s\n" + "%s";
+
+    public ResumeExperience(){
+        webUtils = new WebUtils();
+    }
+
+    private void fillListExperience(){
+        String resumeExperience = String.format(RESUME_EXPERIENCE, getCompanyCharge(),webUtils
+                .getMonthWritten(getStartDate()), webUtils.getYear(getStartDate()), webUtils
+                .getMonthWritten(getEndDate()),webUtils.getYear(getEndDate()),getCompanyName());
+        listExperience.add(resumeExperience);
+        Collections.sort(listExperience);
+        for (String esto: listExperience ) {
+            System.out.println(esto);
+        }
+    }
 
     public String getCompanyCharge() {
         return companyCharge;
@@ -25,14 +47,6 @@ public class ResumeExperience {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
-    }
-
-    public String getIndustry() {
-        return industry;
-    }
-
-    public void setIndustry(String industry) {
-        this.industry = industry;
     }
 
     public String getCountryExperience() {
@@ -76,10 +90,14 @@ public class ResumeExperience {
         String endDateSchool = mapResumeExperience.get("End Date");
         setCompanyCharge(companyCharge);
         setCompanyName(companyName);
-        setIndustry(industry);
         setCountryExperience(country);
         setCityExperience(city);
         setStartDate(startDateSchool);
         setEndDate(endDateSchool);
+        fillListExperience();
+    }
+
+    public ArrayList getListExperience(){
+        return listExperience;
     }
 }

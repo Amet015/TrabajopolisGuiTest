@@ -2,12 +2,11 @@ package Trabajopolis.Pages;
 
 import Trabajopolis.BasePage;
 import Trabajopolis.entities.Education;
-import Trabajopolis.entities.GeneralInformation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import Trabajopolis.components.WebCalendar;
+import Trabajopolis.components.WebComponents;
 
 public class EducationPage extends BasePage {
     @FindBy(name = "EducacionColegio[Institucion][1]")
@@ -97,12 +96,12 @@ public class EducationPage extends BasePage {
 
     private void setStartSchool(String date) {
         startSchoolField.click();
-        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
+        WebComponents.setDateCalendar(date, yearListBox, monthListBox);
     }
 
     private void setEndSchool(String date) {
         endSchoolField.click();
-        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
+        WebComponents.setDateCalendar(date, yearListBox, monthListBox);
     }
 
     private void setUniversity(String university) {
@@ -129,12 +128,12 @@ public class EducationPage extends BasePage {
 
     private void setStartUniversity(String date) {
         startUniversityField.click();
-        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
+        WebComponents.setDateCalendar(date, yearListBox, monthListBox);
     }
 
     private void setEndUniversity(String date) {
         endUniversityField.click();
-        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
+        WebComponents.setDateCalendar(date, yearListBox, monthListBox);
     }
 
     private void setLanguage(String language) {

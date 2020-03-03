@@ -1,7 +1,13 @@
 package Trabajopolis.entities;
 
+import Trabajopolis.Utils.WebUtils;
+import Trabajopolis.components.WebComponents;
 import org.graalvm.compiler.replacements.StandardGraphBuilderPlugins;
+import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 public class Education {
@@ -22,6 +28,37 @@ public class Education {
     private String languageWritten;
     private String languageOral;
     private String languageReading;
+
+    private WebUtils webUtils;
+    private ArrayList<String> educationList = new ArrayList<>();
+
+    private final String SCHOOL_FORM = "%s\n" +
+            "%s, desde %s %s hasta %s %s\n" +
+            "%s, %s";
+    private final String UNIVERSITY_FORM = "%s (%s)\n" +
+            "%s, desde %s %s hasta %s %s\n" +
+            "%s, %s";
+    private final String LANGUAGE_FORM = "%sNivel Oral: %sNivel Escrito: %sNivel Lectura: %s";
+
+    public Education(){
+        webUtils = new WebUtils();
+    }
+
+
+    private void fillListEducation(){
+        String school = String.format(SCHOOL_FORM, getStudioLevelSchool(), getSchool(),
+                webUtils.getMonthWritten(getStartSchool()), webUtils.getYear(getStartSchool()),
+                webUtils.getMonthWritten(getEndSchool()), webUtils.getYear(getEndSchool()), getCitySchool(),
+                getCountrySchool());
+
+        String university = String.format(UNIVERSITY_FORM, getCareer(), getStudioLevelUniversity(), getUniversity(),
+                webUtils.getMonthWritten(getStartUniversity()), webUtils.getYear(getStartUniversity()),
+                webUtils.getMonthWritten(getEndUniversity()), webUtils.getYear(getEndUniversity()),
+                getCityUniversity(), getCountryUniversity());
+        educationList.add(university);
+        educationList.add(school);
+        Collections.sort(educationList);
+    }
 
     public String getSchool() {
         return school;
@@ -159,6 +196,7 @@ public class Education {
         this.languageReading = languageReading;
     }
 
+
     public void proccessInformation(Map<String, String> mapEducation) {
         String school = mapEducation.get("School");
         String studioLevelSchool = mapEducation.get("Studio Level School");
@@ -195,5 +233,18 @@ public class Education {
         setLanguageWritten(languageWritten);
         setLanguageOral(laguageOral);
         setLanguageReading(languageReading);
+        fillListEducation();
+        getLanguageForm();
+
+    }
+
+    public String getLanguageForm() {
+        String languageForm = String.format(LANGUAGE_FORM,getLanguage(),getLanguageOral(), getLanguageWritten(),
+                getLanguageReading());
+        return languageForm;
+    }
+
+    public ArrayList getListEducation() {
+        return educationList;
     }
 }

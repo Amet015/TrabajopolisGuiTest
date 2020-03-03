@@ -39,7 +39,7 @@ Feature: My Account
       | Country       | Bolivia                                                 |
       | City          | Cochabamba                                              |
       | PrivacityCV   | Todas las Empresas - Visible en la Base de Datos de CVs |
-    Then The application displays a page with a button "DESCARGAR CURR�CULUM EN PDF"
+    Then The application displays a page with a button "DESCARGAR CURRÍCULUM EN PDF"
     And The Curriculum is created with the basic information entered
     And I delete Curriculum
 

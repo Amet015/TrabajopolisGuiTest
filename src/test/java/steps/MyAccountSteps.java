@@ -17,6 +17,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class MyAccountSteps {
@@ -32,15 +33,18 @@ public class MyAccountSteps {
     private GeneralInformationPage generalInformationPage;
     private ResumeDetailsCV resumeDetailsCV;
     private Context context;
+    private Map<String,String> mapPersonalInformation;
 
-    public MyAccountSteps() {
-        context = new Context();
+    public MyAccountSteps(Context context) {
+        this.context = context;
     }
 
     @Given("^I navitate to My Account Page$")
     public void iNavitateToMyAccountPage() {
         myAccountPage = new MyAccountPage();
         myAccountPage.clickMiPerfil();
+        mapPersonalInformation = new HashMap<>();
+
     }
 
     @When("^I edit Mi Perfil")
@@ -80,7 +84,7 @@ public class MyAccountSteps {
 
     @And("^I create Curriculums in Personal Information page with$")
     public void iCreateCurriculumsInPersonalInformationPageWith(final Map<String, String> mapPersonalInformation) {
-        //Set entity information
+        this.mapPersonalInformation = mapPersonalInformation;
         PersonalInformation personalInformation = context.getCurriculum().getPersonalInformation();
         personalInformation.processInformation(mapPersonalInformation);
 
@@ -108,8 +112,6 @@ public class MyAccountSteps {
 
         educationPage = resumeExperiencePage.clickNextButton();;
         educationPage.setFillsEducation(education);
-
-
     }
 
     @And("^I fill fields in General Information Page with$")
@@ -119,24 +121,35 @@ public class MyAccountSteps {
 
         generalInformationPage =  educationPage.clickNextButton();
         generalInformationPage.setFillsGeneralInformation(generalInformation);
-
     }
 
     @Then("^The application displays a page with a button \"([^\"]*)\"$")
-    public void theApplicationDisplaysAPageWithAButton(String arg0) throws Throwable {
+    public void theApplicationDisplaysAPageWithAButton(String descargarCV) throws Throwable {
         manageListingPage = generalInformationPage.clickNextButton();;
         String actual = manageListingPage.getDonwLadCVText();
-        String expected = "DESCARGAR CURRÍCULUM EN PDF";
+        String expected = descargarCV;
         Assert.assertEquals(actual, expected);
     }
 
     @And("^The Curriculum is created with the basic information entered$")
     public void theCurriculumIsCreatedWithTheBasicInformationEntered() {
         resumeDetailsCV = manageListingPage.clickLookMyCV();
-        resumeDetailsCV.prueba();
-        resumeDetailsCV.prueba();
-        resumeDetailsCV.prueba();
-        resumeDetailsCV.prueba();
+        Assert.assertTrue(resumeDetailsCV.getIdType(mapPersonalInformation.get("Id")).contains(context.getCurriculum()
+                .getPersonalInformation().getIdType()), "Type Id does't have the expected Id Type: "
+                + context.getCurriculum().getPersonalInformation().getIdType() + ". the Id type is: "+
+                resumeDetailsCV.getIdType(mapPersonalInformation.get("Id")) );
+        for (int i = 0; i < resumeDetailsCV.getListEducation().size() ; i++) {
+            Assert.assertEquals(resumeDetailsCV.getListEducation().get(i), context.getCurriculum().getEducation().getListEducation().get(i));
+        }
+        Assert.assertEquals(resumeDetailsCV.getLanguague(),context.getCurriculum().getEducation().getLanguageForm());
+//        resumeDetailsCV.getListEducation();
+//        context.getCurriculum().getEducation().getListEducation();
+
+
+         /*Assert.assertTrue(actualCategories.contains(expectedCategory),
+                "The job " + jobName + " doesn't have the expected category: " + expectedCategory
+                        + ". The categories for the job are: " + actualCategories);*/
+
 
 //        Assert.assertTrue(resumeDetailsCV.getAddress().contains(context.getCurriculum().getPersonalInformation().getAddress()) &&
 //                resumeDetailsCV.getIdType().contains(context.getCurriculum().getPersonalInformation().getIdType()) &&

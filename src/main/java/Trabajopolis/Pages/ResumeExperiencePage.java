@@ -1,13 +1,12 @@
 package Trabajopolis.Pages;
 
 import Trabajopolis.BasePage;
-import Trabajopolis.entities.Education;
 import Trabajopolis.entities.ResumeExperience;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import Trabajopolis.components.WebCalendar;
+import Trabajopolis.components.WebComponents;
 
 
 public class ResumeExperiencePage extends BasePage {
@@ -71,12 +70,12 @@ public class ResumeExperiencePage extends BasePage {
 
     private void setStartDate(String date) {
         startDate.sendKeys(date);
-        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
+        WebComponents.setDateCalendar(date, yearListBox, monthListBox);
     }
 
     private void setEndDate(String date){
         endDate.sendKeys(date);
-        WebCalendar.setDateCalendar(date, yearListBox, monthListBox);
+        WebComponents.setDateCalendar(date, yearListBox, monthListBox);
     }
 
 

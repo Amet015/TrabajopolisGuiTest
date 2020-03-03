@@ -2,15 +2,20 @@ package Trabajopolis.Pages;
 
 import Core.WebDriverManager;
 import Trabajopolis.BasePage;
+import Trabajopolis.components.WebComponents;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 public class ResumeDetailsCV extends BasePage {
 
-    //armar
-    @FindBy(xpath = "//div[strong[contains(text(),'Pasaporte')] and @class=\"item\"]")
-    WebElement idType;
+    private final String ID_TYPE = "//div[strong[contains(text(),'%s')] and @class=\"item\"]";
 
     @FindBy(xpath = "//div[strong[contains(text(),'Dirección')] and @class=\"item\"]")
     WebElement address;
@@ -19,66 +24,48 @@ public class ResumeDetailsCV extends BasePage {
     WebElement maritalStatus;
 
 
-    //armar
-    @FindBy(xpath = "//li//span[@style=\"display:block;\" and contains(text(),\"Ingeniero\")]")
-    WebElement companyCharge;
+    private final String EXPERIENCE_FIELD =  "//div[h2[contains(text(),\"Experiencia\")]]//ul//li//span[@style="+
+            "\"display:block;\" and contains(text(),\"%s\")] ";
 
-    //armar
-    @FindBy(xpath = "//li//span[@style=\"display:block;\" and contains(text(),\"Entel\")]")
-    WebElement companyName;
+//    private final String LANGUAGE_FIELD = "//div[h2[@class=\"title\" and contains(text(), \"Idiomas\")]]//li//span" +
+//         "[contains(text(),'%s')]";
+    @FindBy(xpath = "//div[h2[@class=\"title\" and contains(text(), \"Idiomas\")]]//li//span")
+    WebElement languague;
 
- // armar
-    @FindBy(xpath = "//li//span[contains(text(),'Quechua')]")
-    WebElement laguagues;
+    private final  String TITLE = "//h1[strong[contains(text(),\"%s\")] and @style=\"color:#1E4B82;"+
+            "margin-bottom:10px;\"]";
 
-    @FindBy(xpath = "//div[strong[contains(text(),'Pa')] and @class=\"item\"]")
-    WebElement countryBorn;
+    @FindBy(xpath = "//div[strong[contains(text(),'Categoría')] and @class=\"item\"]")
+    WebElement category;
 
-//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
-//    WebElement countryBorn;
-//
-//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
-//    WebElement countryBorn;
-//
-//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
-//    WebElement countryBorn;
-//
-//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
-//    WebElement countryBorn;
-//
-//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
-//    WebElement countryBorn;
-//
-//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
-//    WebElement countryBorn;
-//
-//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
-//    WebElement countryBorn;
-//
-//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
-//    WebElement countryBorn;
-//
-//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
-//    WebElement countryBorn;
-//
-//    @FindBy(xpath = "//div[strong[contains(text(),'Pa�s')] and @class=\"item\"]")
-//    WebElement countryBorn;
+    @FindBy(xpath = "//div[strong[contains(text(),'Contrato')] and @class=\"item\"]")
+    WebElement contractType;
 
     @FindBy(xpath = "//div[strong[contains(text(),'Pretensión')] and @class=\"item\"]")
     WebElement salary;
 
+    @FindBy(xpath = "//div[strong[contains(text(),'País')] and @class=\"item\"]")
+    WebElement country;
+
+    @FindBy(xpath = "//div[strong[contains(text(),'Ciudad')] and @class=\"item\"]")
+    WebElement city;
+
+
+    @FindBy(xpath ="//div[h2[contains(text(),\"Educación\")]]//ul//li" )
+    List<WebElement> edutacion;
+
+    ArrayList<String> listEducation;
+
+
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(salary));
-        webDriverWait.until(ExpectedConditions.visibilityOf(idType));
         webDriverWait.until(ExpectedConditions.visibilityOf(address));
         webDriverWait.until(ExpectedConditions.visibilityOf(maritalStatus));
-        webDriverWait.until(ExpectedConditions.visibilityOf(companyCharge));
-        webDriverWait.until(ExpectedConditions.visibilityOf(companyName));
-    }
+        listEducation = new ArrayList<>();
+        fillListEducation();
 
-    public void prueba(){
-        System.out.println(laguagues.getText());
     }
 
     public String getSalary(){
@@ -93,19 +80,48 @@ public class ResumeDetailsCV extends BasePage {
         return maritalStatus.getText();
     }
 
-    public String getIdType(){
-        return idType.getText();
+    public String getIdType(String id){
+        return WebComponents.getTextFromTheElement(ID_TYPE,id);
     }
 
-    public String getCompanyCharge(){
-        return companyCharge.getText();
+    public String getLanguague(){
+        return languague.getText();
     }
 
-    public String getCompanyName(){
-        return companyName.getText();
+    public String getExperience(String value){
+
+        return WebComponents.getTextFromTheElement(EXPERIENCE_FIELD,value);
     }
 
-    public String getLanguagues(){
-        return laguagues.getText();
+
+    public String getTitle(String value){
+        return WebComponents.getTextFromTheElement(TITLE,value);
     }
+
+    public String getCategory(){
+        return category.getText();
+    }
+
+    public String getContractType(){
+        return contractType.getText();
+    }
+
+    public String getCountry(){
+        return country.getText();
+    }
+
+    public String getCity(){
+        return city.getText();
+    }
+    private void fillListEducation(){
+        for (WebElement e: edutacion  ) {
+            listEducation.add(e.getText());
+        }
+        Collections.sort(listEducation);
+    }
+
+    public ArrayList getListEducation(){
+     return listEducation;
+    }
+
 }

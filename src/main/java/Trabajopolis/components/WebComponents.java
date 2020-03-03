@@ -6,7 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class WebCalendar extends BasePage {
+import java.util.HashMap;
+import java.util.Map;
+
+public class WebComponents {
     private static Select selectValue;
     private static int monthInt;
     private static final String DAY_XPATH = "//td[contains(@data-month,'%s') and contains(@data-year,'%s')]//a[text()='%s']";
@@ -27,8 +30,9 @@ public class WebCalendar extends BasePage {
         dayToSelect.click();
     }
 
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
+    public static String getTextFromTheElement(String xpathValue , String value ) {
+        String element = String.format(xpathValue,value);
+        WebElement webElement = WebDriverManager.getInstance().getWebDriver().findElement(By.xpath(element));
+        return webElement.getText();
     }
 }

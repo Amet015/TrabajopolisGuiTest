@@ -1,6 +1,7 @@
 package Trabajopolis.Pages;
 
 import Trabajopolis.BasePage;
+import Trabajopolis.entities.PersonalInformation;
 import Trabajopolis.entities.ResumeExperience;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,9 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import Trabajopolis.components.WebComponents;
 
+import java.util.HashMap;
+import java.util.Set;
+
 
 public class ResumeExperiencePage extends BasePage {
-    @FindBy(name="WorkExperience[JobTitle][1]")
+    @FindBy(name = "WorkExperience[JobTitle][1]")
     WebElement companyChargeField;
 
     @FindBy(name = "WorkExperience[CompanyName][1]")
@@ -46,6 +50,12 @@ public class ResumeExperiencePage extends BasePage {
 
     Select selectvalue;
 
+    private final String COMPANY_CHARGE = "Company Charge";
+    private final String COMPANY_NAME = "Company Name";
+    private final String COUNTRY = "Country";
+    private final String CITY = "City";
+    private final String START_DATE = "Start Date";
+    private final String END_DATE = "End Date";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -55,6 +65,7 @@ public class ResumeExperiencePage extends BasePage {
     private void setCompanyCharge(String companyCharge) {
         companyChargeField.sendKeys(companyCharge);
     }
+
     private void setCompanyName(String companyName) {
         companyNameField.sendKeys(companyName);
     }
@@ -73,23 +84,30 @@ public class ResumeExperiencePage extends BasePage {
         WebComponents.setDateCalendar(date, yearListBox, monthListBox);
     }
 
-    private void setEndDate(String date){
+    private void setEndDate(String date) {
         endDate.sendKeys(date);
         WebComponents.setDateCalendar(date, yearListBox, monthListBox);
     }
 
 
-    public void setFillsExperience(ResumeExperience resumeExperience){
-        setCompanyCharge(resumeExperience.getCompanyCharge());
-        setCompanyName(resumeExperience.getCompanyName());
-        setCountryExperience(resumeExperience.getCountryExperience());
-        setCityExperience(resumeExperience.getCityExperience());
-        setStartDate(resumeExperience.getStartDate());
-        setEndDate(resumeExperience.getEndDate());
-
+    public void setFillsExperience(ResumeExperience resumeExperience, final Set<String> fields) {
+        HashMap<String, Runnable> strategtyMap = composeStrategyMap(resumeExperience);
+       fields.forEach(field -> strategtyMap.get(field).run());
     }
 
-    public EducationPage clickNextButton(){
+    private HashMap<String, Runnable> composeStrategyMap(ResumeExperience resumeExperience) {
+        HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put(COMPANY_CHARGE, () -> setCompanyCharge(resumeExperience.getCompanyCharge()));
+        strategyMap.put(COMPANY_NAME, () -> setCompanyName(resumeExperience.getCompanyName()));
+        strategyMap.put(COUNTRY, () -> setCountryExperience(resumeExperience.getCountryExperience()));
+        strategyMap.put(CITY, () -> setCityExperience(resumeExperience.getCityExperience()));
+        strategyMap.put(START_DATE, () -> setStartDate(resumeExperience.getStartDate()));
+        strategyMap.put(END_DATE, () -> setEndDate(resumeExperience.getEndDate()));
+        return strategyMap;
+    }
+
+
+    public EducationPage clickNextButton() {
         nextButton.click();
         return new EducationPage();
     }

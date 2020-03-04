@@ -19,6 +19,7 @@ import org.testng.Assert;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class MyAccountSteps {
     private MyAccountPage myAccountPage;
@@ -91,9 +92,7 @@ public class MyAccountSteps {
         myListingsPage = new MyListingsPage();
         personalInformationPage = myListingsPage.clickAddCV();
 
-        // ACtion by UI
-        personalInformationPage.setPersonalInformation(personalInformation);
-
+        personalInformationPage.setPersonalInformation(personalInformation, mapPersonalInformation.keySet());
     }
 
     @And("^I fill fields in Resume Experience page with$")
@@ -102,7 +101,7 @@ public class MyAccountSteps {
         resumeExperience.proccessInformation(mapResumeExperience);
 
         resumeExperiencePage = personalInformationPage.clickNextButton();
-        resumeExperiencePage.setFillsExperience(resumeExperience);
+        resumeExperiencePage.setFillsExperience(resumeExperience, mapResumeExperience.keySet());
     }
 
     @And("^I fill fields in Education Page with$")
@@ -120,12 +119,12 @@ public class MyAccountSteps {
         generalInformation.proccessInformation(mapGeneralInformation);
 
         generalInformationPage =  educationPage.clickNextButton();
-        generalInformationPage.setFillsGeneralInformation(generalInformation);
+        generalInformationPage.setFillsGeneralInformation(generalInformation, mapGeneralInformation.keySet());
     }
 
     @Then("^The application displays a page with a button \"([^\"]*)\"$")
     public void theApplicationDisplaysAPageWithAButton(String descargarCV) throws Throwable {
-        manageListingPage = generalInformationPage.clickNextButton();;
+        manageListingPage = generalInformationPage.clickNextButton();
         String actual = manageListingPage.getDonwLadCVText();
         String expected = descargarCV;
         Assert.assertEquals(actual, expected);
@@ -153,26 +152,7 @@ public class MyAccountSteps {
         Assert.assertEquals(resumeDetailsCV.getCountry(), context.getCurriculum().getGeneralInformation().getCountry());
         Assert.assertEquals(resumeDetailsCV.getCity(), context.getCurriculum().getGeneralInformation().getCity());
         Assert.assertEquals(resumeDetailsCV.getSalary(),context.getCurriculum().getGeneralInformation().getSalary());
-
-        //        resumeDetailsCV.getListEducation();
-//        context.getCurriculum().getEducation().getListEducation();
-
-
-         /*Assert.assertTrue(actualCategories.contains(expectedCategory),
-                "The job " + jobName + " doesn't have the expected category: " + expectedCategory
-                        + ". The categories for the job are: " + actualCategories);*/
-
-
-//        Assert.assertTrue(resumeDetailsCV.getAddress().contains(context.getCurriculum().getPersonalInformation().getAddress()) &&
-//                resumeDetailsCV.getIdType().contains(context.getCurriculum().getPersonalInformation().getIdType()) &&
-//                resumeDetailsCV.getMaritalStatus().contains(context.getCurriculum().getPersonalInformation()
-//                        .getMaritalStatus().replace("(a)", "")) && resumeDetailsCV.getCompanyCharge()
-//                .contains(context.getCurriculum().getResumeExperience().getCompanyCharge()) && resumeDetailsCV.getCompanyName()
-//                .contains(context.getCurriculum().getResumeExperience().getCompanyName()) && resumeDetailsCV.getLanguagues()
-//                .contains(context.getCurriculum().getEducation().getLanguage()) && resumeDetailsCV.getLanguagues()
-//                .contains(context.getCurriculum().getEducation().getLanguageOral()));
     }
-    //*[@id="rounded-lh-cap"]/ul/li[3]/div/div[2]/div[4]/text()
 
     @And("^I delete Curriculum$")
     public void iDeleteCurriculum() {

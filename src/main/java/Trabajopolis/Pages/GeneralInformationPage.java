@@ -7,6 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.HashMap;
+import java.util.Set;
+
 public class GeneralInformationPage extends BasePage {
     @FindBy(name="Title")
     WebElement titleField;
@@ -34,6 +37,14 @@ public class GeneralInformationPage extends BasePage {
 
     Select selectValue;
 
+    private final String TITLE = "Title";
+    private final String CATEGORY = "Category";
+    private final String CONTRACT_TYPE = "Contract Type";
+    private final String SALARY = "Salary";
+    private final String COUNTRY = "Country";
+    private final String CITY = "City";
+    private final String PRIVACITY_CV= "PrivacityCV";
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(titleField));
@@ -50,7 +61,6 @@ public class GeneralInformationPage extends BasePage {
 
     private void setContractType(String contract) {
         selectValue = new Select(contractListBox);
-        //selectValue.selectByValue(contract);
         selectValue.selectByVisibleText(contract);
     }
 
@@ -73,16 +83,21 @@ public class GeneralInformationPage extends BasePage {
         selectValue.selectByValue(privacity);
     }
 
+    public void setFillsGeneralInformation(GeneralInformation generalInformation, final Set<String> fields){
+        HashMap<String, Runnable> strategtyMap = composeStrategyMap(generalInformation);
+        fields.forEach(field -> strategtyMap.get(field).run());
+    }
 
-    public void setFillsGeneralInformation(GeneralInformation generalInformation){
-        setTitle(generalInformation.getTitle());
-        setCategory(generalInformation.getCategory());
-        setContractType(generalInformation.getContractType());
-        setSalary(generalInformation.getSalary());
-        setCountry(generalInformation.getCountry());
-        setCity(generalInformation.getCity());
-        setPrivacityCV(generalInformation.getPrivacityCV());
-
+    private HashMap<String, Runnable> composeStrategyMap(GeneralInformation generalInformation) {
+        HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put(TITLE, () -> setTitle(generalInformation.getTitle()));
+        strategyMap.put(CATEGORY, () -> setCategory(generalInformation.getCategory()));
+        strategyMap.put(CONTRACT_TYPE, () -> setContractType(generalInformation.getContractType()));
+        strategyMap.put(SALARY, () -> setSalary(generalInformation.getSalary()));
+        strategyMap.put(COUNTRY, () -> setCountry(generalInformation.getCountry()));
+        strategyMap.put(CITY, () -> setCity(generalInformation.getCity()));
+        strategyMap.put(PRIVACITY_CV, () -> setPrivacityCV(generalInformation.getPrivacityCV()));
+        return strategyMap;
     }
 
     public ManageListingPage clickNextButton(){

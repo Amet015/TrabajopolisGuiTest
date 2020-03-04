@@ -1,5 +1,6 @@
 package Trabajopolis.entities;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class GeneralInformation {
@@ -10,6 +11,14 @@ public class GeneralInformation {
     private String country;
     private String city;
     private String privacityCV;
+
+    private final String TITLE = "Title";
+    private final String CATEGORY = "Category";
+    private final String CONTRACT_TYPE = "Contract Type";
+    private final String SALARY = "Salary";
+    private final String COUNTRY = "Country";
+    private final String CITY = "City";
+    private final String PRIVACITY_CV= "PrivacityCV";
 
 
     public void setTitle(String title) {
@@ -69,21 +78,19 @@ public class GeneralInformation {
     }
 
     public void proccessInformation(Map<String, String> mapGeneralInformation) {
-        String title = mapGeneralInformation.get("Title");
-        String category = mapGeneralInformation.get("Category");
-        String contractType = mapGeneralInformation.get("Contract Type");
-        String salary = mapGeneralInformation.get("Salary");
-        String country = mapGeneralInformation.get("Country");
-        String city = mapGeneralInformation.get("City");
-        String privacityCV = mapGeneralInformation.get("PrivacityCV");
+        HashMap<String,Runnable> strategyMap = composeStrategy(mapGeneralInformation);
+        mapGeneralInformation.keySet().forEach(key -> strategyMap.get(key).run());
+    }
 
-        setTitle(title);
-        setCategory(category);
-        setContractType(contractType);
-        setSalary(salary);
-        setCountry(country);
-        setCity(city);
-        setPrivacityCV(privacityCV);
-
+    private HashMap<String, Runnable> composeStrategy(Map<String, String> mapGeneralInformation) {
+        HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put(TITLE, () -> setTitle(mapGeneralInformation.get(TITLE)));
+        strategyMap.put(CATEGORY, () -> setCategory(mapGeneralInformation.get(CATEGORY)));
+        strategyMap.put(CONTRACT_TYPE, () -> setContractType(mapGeneralInformation.get(CONTRACT_TYPE)));
+        strategyMap.put(SALARY, () -> setSalary(mapGeneralInformation.get(SALARY)));
+        strategyMap.put(COUNTRY, () -> setCountry(mapGeneralInformation.get(COUNTRY)));
+        strategyMap.put(CITY, () -> setCity(mapGeneralInformation.get(CITY)));
+        strategyMap.put(PRIVACITY_CV, () -> setPrivacityCV(mapGeneralInformation.get(PRIVACITY_CV)));
+        return strategyMap;
     }
 }

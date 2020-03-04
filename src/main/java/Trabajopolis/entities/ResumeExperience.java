@@ -4,18 +4,26 @@ import Trabajopolis.Utils.WebUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ResumeExperience {
     private String companyCharge;
     private String companyName;
-    private String industry;
     private String countryExperience;
     private String cityExperience;
     private String startDate;
     private String endDate;
     private WebUtils webUtils;
     private ArrayList<String> listExperience = new ArrayList<>();
+
+    private final String COMPANY_CHARGE = "Company Charge";
+    private final String COMPANY_NAME = "Company Name";
+    private final String COUNTRY = "Country";
+    private final String CITY = "City";
+    private final String START_DATE = "Start Date";
+    private final String END_DATE = "End Date";
+
     private final String RESUME_EXPERIENCE = "%s, desde %s %s hasta %s %s\n" + "%s";
 
     public ResumeExperience(){
@@ -28,9 +36,6 @@ public class ResumeExperience {
                 .getMonthWritten(getEndDate()),webUtils.getYear(getEndDate()),getCompanyName());
         listExperience.add(resumeExperience);
         Collections.sort(listExperience);
-        for (String esto: listExperience ) {
-            System.out.println(esto);
-        }
     }
 
     public String getCompanyCharge() {
@@ -82,20 +87,34 @@ public class ResumeExperience {
     }
 
     public void proccessInformation(Map<String, String> mapResumeExperience) {
-        String companyCharge = mapResumeExperience.get("Company Charge");
-        String companyName = mapResumeExperience.get("Company Name");
-        String country = mapResumeExperience.get("Country");
-        String city = mapResumeExperience.get("City");
-        String startDateSchool = mapResumeExperience.get("Start Date");
-        String endDateSchool = mapResumeExperience.get("End Date");
-        setCompanyCharge(companyCharge);
-        setCompanyName(companyName);
-        setCountryExperience(country);
-        setCityExperience(city);
-        setStartDate(startDateSchool);
-        setEndDate(endDateSchool);
+        HashMap<String,Runnable> strategyMap = composeStrategy(mapResumeExperience);
+        mapResumeExperience.keySet().forEach(key -> strategyMap.get(key).run());
         fillListExperience();
     }
+
+    private HashMap<String, Runnable> composeStrategy(Map<String, String> mapResumeExperience) {
+        HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put(COMPANY_CHARGE, () -> setCompanyCharge(mapResumeExperience.get(COMPANY_CHARGE)));
+        strategyMap.put(COMPANY_NAME, () -> setCompanyName(mapResumeExperience.get(COMPANY_NAME)));
+        strategyMap.put(COUNTRY, () -> setCountryExperience(mapResumeExperience.get(COUNTRY)));
+        strategyMap.put(CITY, () -> setCityExperience(mapResumeExperience.get(CITY)));
+        strategyMap.put(START_DATE, () -> setStartDate(mapResumeExperience.get(START_DATE)));
+        strategyMap.put(END_DATE, () -> setEndDate(mapResumeExperience.get(END_DATE)));
+        return strategyMap;
+    }
+
+//    public void processInformation(Map<String, String> mapPersonalInformation) {
+//        HashMap<String,Runnable> strategyMap = composeStrategy(mapPersonalInformation);
+//        mapPersonalInformation.keySet().forEach(key -> strategyMap.get(key).run());
+//    }
+//    private HashMap<String, Runnable> composeStrategy(Map<String, String> mapPersonalInformation) {
+//        HashMap<String, Runnable> strategyMap = new HashMap<>();
+//        strategyMap.put("Id", () -> setIdType(mapPersonalInformation.get("Id")));
+//        strategyMap.put("Address", () -> setAddress(mapPersonalInformation.get("Address")));
+//        strategyMap.put("Marital Status", () -> setMaritalStatus(mapPersonalInformation.get("Marital Status")));
+//        return strategyMap;
+//
+//    }
 
     public ArrayList getListExperience(){
         return listExperience;

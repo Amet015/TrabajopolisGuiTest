@@ -180,8 +180,6 @@ public class EducationPage extends BasePage {
     public void setFillsEducation(Education education, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(education);
         fields.forEach(field -> strategtyMap.get(field).run());
-
-
     }
 
     private HashMap<String, Runnable> composeStrategyMap(Education education) {

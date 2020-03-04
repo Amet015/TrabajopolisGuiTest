@@ -38,10 +38,6 @@ public class ResumeExperiencePage extends BasePage {
     @FindBy(css = "select.ui-datepicker-year")
     WebElement yearListBox;
 
-    @FindBy(css = "a.:contains()")
-    WebElement daySelect;
-
-
     @FindBy(css = "select.ui-datepicker-month")
     WebElement monthListBox;
 

@@ -34,4 +34,5 @@ public class WebUtils {
         String [] dateSplit = date.split("/");
         return dateSplit[2];
     }
+    
 }

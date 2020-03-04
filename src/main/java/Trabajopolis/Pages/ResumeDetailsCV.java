@@ -107,7 +107,8 @@ public class ResumeDetailsCV extends BasePage {
     }
 
     public String getIdType(String id) {
-        return WebComponents.getTextFromTheElement(ID_TYPE, id);
+        String [] idType = WebComponents.getTextFromTheElement(ID_TYPE, id).split(":");
+        return idType[0];
     }
 
     public String getLanguague() {

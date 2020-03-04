@@ -133,10 +133,14 @@ public class MyAccountSteps {
     @And("^The Curriculum is created with the basic information entered$")
     public void theCurriculumIsCreatedWithTheBasicInformationEntered() {
         resumeDetailsCV = manageListingPage.clickLookMyCV();
-        Assert.assertTrue(resumeDetailsCV.getIdType(mapPersonalInformation.get("Id")).contains(context.getCurriculum()
-                .getPersonalInformation().getIdType()), "Type Id does't have the expected Id Type: "
-                + context.getCurriculum().getPersonalInformation().getIdType() + ". the Id type is: "+
-                resumeDetailsCV.getIdType(mapPersonalInformation.get("Id")) );
+        String actualId  = resumeDetailsCV.getIdType(mapPersonalInformation.get("Id"));
+        String  expectedId = context.getCurriculum().getPersonalInformation().getIdType();
+        Assert.assertEquals(actualId,expectedId);
+
+//        Assert.assertTrue(resumeDetailsCV.getIdType(mapPersonalInformation.get("Id")).contains(context.getCurriculum()
+//                .getPersonalInformation().getIdType()), "Type Id does't have the expected Id Type: "
+//                + context.getCurriculum().getPersonalInformation().getIdType() + ". the Id type is: "+
+//                resumeDetailsCV.getIdType(mapPersonalInformation.get("Id")) );
         for (int i = 0; i < resumeDetailsCV.getListEducation().size() ; i++) {
             Assert.assertEquals(resumeDetailsCV.getListEducation().get(i), context.getCurriculum().getEducation().getListEducation().get(i));
         }

@@ -11,28 +11,28 @@ import java.util.HashMap;
 import java.util.Set;
 
 public class GeneralInformationPage extends BasePage {
-    @FindBy(name="Title")
+    @FindBy(name = "Title")
     WebElement titleField;
 
-    @FindBy(name="JobCategory[]")
+    @FindBy(name = "JobCategory[]")
     WebElement categoryListBox;
 
-    @FindBy(name="JobType[]")
+    @FindBy(name = "JobType[]")
     WebElement contractListBox;
 
-    @FindBy(name="pretension_salarial")
+    @FindBy(name = "pretension_salarial")
     WebElement salaryField;
 
-    @FindBy(name="Country")
+    @FindBy(name = "Country")
     WebElement countryListBox;
 
-    @FindBy(name="CityBolivia")
+    @FindBy(name = "CityBolivia")
     WebElement cityListBox;
 
-    @FindBy(name="privacidad")
+    @FindBy(name = "privacidad")
     WebElement privacityCV;
 
-    @FindBy(id="btn-add-cv")
+    @FindBy(id = "btn-add-cv")
     WebElement nextButton;
 
     Select selectValue;
@@ -43,18 +43,18 @@ public class GeneralInformationPage extends BasePage {
     private final String SALARY = "Salary";
     private final String COUNTRY = "Country";
     private final String CITY = "City";
-    private final String PRIVACITY_CV= "PrivacityCV";
+    private final String PRIVACITY_CV = "PrivacityCV";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(titleField));
     }
 
-    private void setTitle(String title){
+    private void setTitle(String title) {
         titleField.sendKeys(title);
     }
 
-    private void setCategory(String category){
+    private void setCategory(String category) {
         selectValue = new Select(categoryListBox);
         selectValue.selectByValue(category);
     }
@@ -64,26 +64,26 @@ public class GeneralInformationPage extends BasePage {
         selectValue.selectByVisibleText(contract);
     }
 
-    private void setSalary(String salary){
+    private void setSalary(String salary) {
         salaryField.sendKeys(salary);
     }
 
-    private void setCountry(String country){
+    private void setCountry(String country) {
         selectValue = new Select(countryListBox);
         selectValue.selectByValue(country);
     }
 
-    private void setCity(String city){
+    private void setCity(String city) {
         selectValue = new Select(cityListBox);
         selectValue.selectByValue(city);
     }
 
-    private void setPrivacityCV(String privacity){
+    private void setPrivacityCV(String privacity) {
         selectValue = new Select(privacityCV);
         selectValue.selectByValue(privacity);
     }
 
-    public void setFillsGeneralInformation(GeneralInformation generalInformation, final Set<String> fields){
+    public void setFillsGeneralInformation(GeneralInformation generalInformation, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(generalInformation);
         fields.forEach(field -> strategtyMap.get(field).run());
     }
@@ -100,7 +100,7 @@ public class GeneralInformationPage extends BasePage {
         return strategyMap;
     }
 
-    public ManageListingPage clickNextButton(){
+    public ManageListingPage clickNextButton() {
         nextButton.click();
         return new ManageListingPage();
     }

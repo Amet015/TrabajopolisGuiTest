@@ -20,9 +20,6 @@ public class ResumeExperiencePage extends BasePage {
     @FindBy(name = "WorkExperience[CompanyName][1]")
     WebElement companyNameField;
 
-    @FindBy(name = "WorkExperience[Industry][1]")
-    WebElement industryListBox;
-
     @FindBy(name = "WorkExperience[pais_0][1]")
     WebElement countryExperienceListBox;
 
@@ -92,7 +89,7 @@ public class ResumeExperiencePage extends BasePage {
 
     public void setFillsExperience(ResumeExperience resumeExperience, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(resumeExperience);
-       fields.forEach(field -> strategtyMap.get(field).run());
+        fields.forEach(field -> strategtyMap.get(field).run());
     }
 
     private HashMap<String, Runnable> composeStrategyMap(ResumeExperience resumeExperience) {
@@ -105,7 +102,6 @@ public class ResumeExperiencePage extends BasePage {
         strategyMap.put(END_DATE, () -> setEndDate(resumeExperience.getEndDate()));
         return strategyMap;
     }
-
 
     public EducationPage clickNextButton() {
         nextButton.click();

@@ -5,10 +5,7 @@ import Trabajopolis.components.WebComponents;
 import org.graalvm.compiler.replacements.StandardGraphBuilderPlugins;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Education {
     private String school;
@@ -40,12 +37,31 @@ public class Education {
             "%s, %s";
     private final String LANGUAGE_FORM = "%sNivel Oral: %sNivel Escrito: %sNivel Lectura: %s";
 
-    public Education(){
+    private final String SCHOOL = "School";
+    private final String STUDIO_LEVEL_SCHOOL = "Studio Level School";
+    private final String COUNTRY_SCHOOL = "Country School";
+    private final String CITY_SCHOOL = "City School";
+    private final String START_DATE_SCHOOL = "Start Date School";
+    private final String END_DATE_SCHOOL = "End Date School";
+    private final String UNIVERSITY = "University";
+    private final String CAREER = "Career";
+    private final String STUDIO_LEVEL_UNIVERSITY = "Studio Level University";
+    private final String COUNTRY_UNIVERSITY = "Country University";
+    private final String CITY_UNIVERSITY = "City University";
+    private final String START_DATE_UNIVERSITY = "Start Date University";
+    private final String END_DATE_UNIVERSITY = "End Date University";
+    private final String LANGUAGE = "Language";
+    private final String LANGUAGE_WRITTEN = "Language Written";
+    private final String LANGUAGE_ORAL = "Language Oral";
+    private final String LANGUAGE_READING = "Language Reading";
+
+
+    public Education() {
         webUtils = new WebUtils();
     }
 
 
-    private void fillListEducation(){
+    private void fillListEducation() {
         String school = String.format(SCHOOL_FORM, getStudioLevelSchool(), getSchool(),
                 webUtils.getMonthWritten(getStartSchool()), webUtils.getYear(getStartSchool()),
                 webUtils.getMonthWritten(getEndSchool()), webUtils.getYear(getEndSchool()), getCitySchool(),
@@ -198,48 +214,36 @@ public class Education {
 
 
     public void proccessInformation(Map<String, String> mapEducation) {
-        String school = mapEducation.get("School");
-        String studioLevelSchool = mapEducation.get("Studio Level School");
-        String countrySchool = mapEducation.get("Country School");
-        String citySchool = mapEducation.get("City School");
-        String starDateSchool = mapEducation.get("Start Date School");
-        String endDateSchool = mapEducation.get("End Date School");
-        String university = mapEducation.get("University");
-        String studioLevelUniversity = mapEducation.get("Studio Level University");
-        String career = mapEducation.get("Career");
-        String countryUniversity = mapEducation.get("Country University");
-        String cityUniversity = mapEducation.get("City University");
-        String startDateUniversity = mapEducation.get("Start Date University");
-        String endDateUniversity = mapEducation.get("End Date University");
-        String language = mapEducation.get("Language");
-        String languageWritten = mapEducation.get("Language Written");
-        String laguageOral = mapEducation.get("Language Oral");
-        String languageReading = mapEducation.get("Language Reading");
-
-        setSchool(school);
-        setStudioLevelSchool(studioLevelSchool);
-        setCountrySchool(countrySchool);
-        setCitySchool(citySchool);
-        setStartSchool(starDateSchool);
-        setEndSchool(endDateSchool);
-        setUniversity(university);
-        setStudioLevelUniversity(studioLevelUniversity);
-        setCareer(career);
-        setCountryUniversity(countryUniversity);
-        setCityUniversity(cityUniversity);
-        setStartUniversity(startDateUniversity);
-        setEndUniversity(endDateUniversity);
-        setLanguage(language);
-        setLanguageWritten(languageWritten);
-        setLanguageOral(laguageOral);
-        setLanguageReading(languageReading);
+        HashMap<String, Runnable> strategyMap = composeStrategy(mapEducation);
+        mapEducation.keySet().forEach(key -> strategyMap.get(key).run());
         fillListEducation();
         getLanguageForm();
+    }
 
+    private HashMap<String, Runnable> composeStrategy(Map<String, String> mapEducation) {
+        HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put(SCHOOL, () -> setSchool(mapEducation.get(SCHOOL)));
+        strategyMap.put(STUDIO_LEVEL_SCHOOL, () -> setStudioLevelSchool(mapEducation.get(STUDIO_LEVEL_SCHOOL)));
+        strategyMap.put(COUNTRY_SCHOOL, () -> setCountrySchool(mapEducation.get(COUNTRY_SCHOOL)));
+        strategyMap.put(CITY_SCHOOL, () -> setCitySchool(mapEducation.get(CITY_SCHOOL)));
+        strategyMap.put(START_DATE_SCHOOL, () -> setStartSchool(mapEducation.get(START_DATE_SCHOOL)));
+        strategyMap.put(END_DATE_SCHOOL, () -> setEndSchool(mapEducation.get(END_DATE_SCHOOL)));
+        strategyMap.put(UNIVERSITY, () -> setUniversity(mapEducation.get(UNIVERSITY)));
+        strategyMap.put(CAREER, () -> setCareer(mapEducation.get(CAREER)));
+        strategyMap.put(STUDIO_LEVEL_UNIVERSITY, () -> setStudioLevelUniversity(mapEducation.get(STUDIO_LEVEL_UNIVERSITY)));
+        strategyMap.put(COUNTRY_UNIVERSITY, () -> setCountryUniversity(mapEducation.get(COUNTRY_UNIVERSITY)));
+        strategyMap.put(CITY_UNIVERSITY, () -> setCityUniversity(mapEducation.get(CITY_UNIVERSITY)));
+        strategyMap.put(START_DATE_UNIVERSITY, () -> setStartUniversity(mapEducation.get(START_DATE_UNIVERSITY)));
+        strategyMap.put(END_DATE_UNIVERSITY, () -> setEndUniversity(mapEducation.get(END_DATE_UNIVERSITY)));
+        strategyMap.put(LANGUAGE, () -> setLanguage(mapEducation.get(LANGUAGE)));
+        strategyMap.put(LANGUAGE_WRITTEN, () -> setLanguageWritten(mapEducation.get(LANGUAGE_WRITTEN)));
+        strategyMap.put(LANGUAGE_ORAL, () -> setLanguageOral(mapEducation.get(LANGUAGE_ORAL)));
+        strategyMap.put(LANGUAGE_READING, () -> setLanguageReading(mapEducation.get(LANGUAGE_READING)));
+        return strategyMap;
     }
 
     public String getLanguageForm() {
-        String languageForm = String.format(LANGUAGE_FORM,getLanguage(),getLanguageOral(), getLanguageWritten(),
+        String languageForm = String.format(LANGUAGE_FORM, getLanguage(), getLanguageOral(), getLanguageWritten(),
                 getLanguageReading());
         return languageForm;
     }

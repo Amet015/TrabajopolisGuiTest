@@ -18,7 +18,7 @@ public class GeneralInformation {
     private final String SALARY = "Salary";
     private final String COUNTRY = "Country";
     private final String CITY = "City";
-    private final String PRIVACITY_CV= "PrivacityCV";
+    private final String PRIVACITY_CV = "PrivacityCV";
 
 
     public void setTitle(String title) {
@@ -78,7 +78,7 @@ public class GeneralInformation {
     }
 
     public void proccessInformation(Map<String, String> mapGeneralInformation) {
-        HashMap<String,Runnable> strategyMap = composeStrategy(mapGeneralInformation);
+        HashMap<String, Runnable> strategyMap = composeStrategy(mapGeneralInformation);
         mapGeneralInformation.keySet().forEach(key -> strategyMap.get(key).run());
     }
 

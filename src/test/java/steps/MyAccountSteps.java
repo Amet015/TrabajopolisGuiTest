@@ -110,7 +110,7 @@ public class MyAccountSteps {
         education.proccessInformation(mapEducation);
 
         educationPage = resumeExperiencePage.clickNextButton();;
-        educationPage.setFillsEducation(education);
+        educationPage.setFillsEducation(education, mapEducation.keySet());
     }
 
     @And("^I fill fields in General Information Page with$")

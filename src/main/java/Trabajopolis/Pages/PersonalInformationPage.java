@@ -25,7 +25,8 @@ public class PersonalInformationPage extends BasePage {
 
     Select selectValue;
 
-    public PersonalInformationPage(){}
+    public PersonalInformationPage() {
+    }
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -47,7 +48,7 @@ public class PersonalInformationPage extends BasePage {
         selectValue.selectByValue(maritalstatus);
     }
 
-    public ResumeExperiencePage clickNextButton(){
+    public ResumeExperiencePage clickNextButton() {
         nextButton.click();
         return new ResumeExperiencePage();
     }
@@ -55,42 +56,13 @@ public class PersonalInformationPage extends BasePage {
     public void setPersonalInformation(PersonalInformation personalInformation, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(personalInformation);
         fields.forEach(field -> strategtyMap.get(field).run());
-        //        selectIdType(personalInformation.getIdType());
-//        setAddressField(personalInformation.getAddress());
-//        selectMaritalStatus(personalInformation.getMaritalStatus());
     }
 
     private HashMap<String, Runnable> composeStrategyMap(PersonalInformation personalInformation) {
-        HashMap<String,Runnable> strategyMap = new HashMap<>();
-        strategyMap.put("Id", ()-> setIdType(personalInformation.getIdType()));
-        strategyMap.put("Address", ()-> setAddressField(personalInformation.getAddress()));
-        strategyMap.put("Marital Status", ()-> setMaritalStatus(personalInformation.getMaritalStatus()));
+        HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put("Id", () -> setIdType(personalInformation.getIdType()));
+        strategyMap.put("Address", () -> setAddressField(personalInformation.getAddress()));
+        strategyMap.put("Marital Status", () -> setMaritalStatus(personalInformation.getMaritalStatus()));
         return strategyMap;
     }
-
-//
-//     ************************** EN EL PAGE********************
-//    public TaskListPage createNewPod(final Pod pod, final Set<String> fields) {
-//        HashMap<String, Runnable> strategyMAp = composeStrategyMap(pod);
-//        fields.forEach(field -> strategyMAp.get(field).run());
-//        clickOnCreatePodAndInvitePeopleButton();
-//        return new TaskListPage();
-//    }
-//
-//    private HashMap<String, Runnable> composeStrategyMap(Pod pod) {
-//        HashMap<String, Runnable> strategyMap = new HashMap<>();
-//
-//        strategyMap.put("podName", () -> setProjectNameTextBox(pod.getPodName()));
-//        strategyMap.put("startDate", () ->  clickOnStartDateTextBox(pod.getStartDate()));
-//        strategyMap.put("dueDate", () -> clickOnDueDateTextBox(pod.getDueDate()));
-//        strategyMap.put("budgetTime", () -> setBudgetTimeTextBox(pod.getBudgetedTime()));
-//        strategyMap.put("client", () -> selectClientComboBox(pod.getClient()));
-//        strategyMap.put("projectLead", () -> selectProjectLeadComboBox(pod.getPodLead()));
-//        strategyMap.put("color", () -> setColorItem(pod.getPodColor()));
-//        strategyMap.put("description", () -> setDescriptionTextEditor(pod.getDescription()));
-//        return strategyMap;
-//    }
-
-
-
 }

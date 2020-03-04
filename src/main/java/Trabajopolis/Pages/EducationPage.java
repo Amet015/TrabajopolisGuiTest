@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import Trabajopolis.components.WebComponents;
 
+import java.util.HashMap;
+import java.util.Set;
+
 public class EducationPage extends BasePage {
     @FindBy(name = "EducacionColegio[Institucion][1]")
     WebElement schoolField;
@@ -68,6 +71,24 @@ public class EducationPage extends BasePage {
 
     @FindBy(css = "select.ui-datepicker-year")
     WebElement yearListBox;
+
+    private final String SCHOOL = "School";
+    private final String STUDIO_LEVEL_SCHOOL = "Studio Level School";
+    private final String COUNTRY_SCHOOL = "Country School";
+    private final String CITY_SCHOOL = "City School";
+    private final String START_DATE_SCHOOL = "Start Date School";
+    private final String END_DATE_SCHOOL = "End Date School";
+    private final String UNIVERSITY = "University";
+    private final String CAREER = "Career";
+    private final String STUDIO_LEVEL_UNIVERSITY = "Studio Level University";
+    private final String COUNTRY_UNIVERSITY = "Country University";
+    private final String CITY_UNIVERSITY = "City University";
+    private final String START_DATE_UNIVERSITY = "Start Date University";
+    private final String END_DATE_UNIVERSITY = "End Date University";
+    private final String LANGUAGE = "Language";
+    private final String LANGUAGE_WRITTEN = "Language Written";
+    private final String LANGUAGE_ORAL = "Language Oral";
+    private final String LANGUAGE_READING = "Language Reading";
 
     Select selectValue;
 
@@ -145,6 +166,7 @@ public class EducationPage extends BasePage {
         selectValue = new Select(languagueWritenListBox);
         selectValue.selectByValue(languagueWriten);
     }
+
     private void setLanguageOral(String languageOral) {
         selectValue = new Select(languageOralListBox);
         selectValue.selectByValue(languageOral);
@@ -155,25 +177,34 @@ public class EducationPage extends BasePage {
         selectValue.selectByValue(languageReading);
     }
 
-    public void setFillsEducation(Education education) {
-        setSchool(education.getSchool());
-        setStudioLevelSchool(education.getStudioLevelSchool());
-        setCountrySchool(education.getCountrySchool());
-        setCitySchool(education.getCitySchool());
-        setStartSchool(education.getStartSchool());
-        setEndSchool(education.getEndSchool());
-        setUniversity(education.getUniversity());
-        setStudioLevelUniversity(education.getStudioLevelUniversity());
-        setCareer(education.getCareer());
-        setCountryUniversity(education.getCountryUniversity());
-        setCityUniversity(education.getCityUniversity());
-        setStartUniversity(education.getStartUniversity());
-        setEndUniversity(education.getEndUniversity());
-        setLanguage(education.getLanguage());
-        setLanguageWritten(education.getLanguageWritten());
-        setLanguageOral(education.getLanguageOral());
-        setLanguageReading(education.getLanguageReading());
+    public void setFillsEducation(Education education, final Set<String> fields) {
+        HashMap<String, Runnable> strategtyMap = composeStrategyMap(education);
+        fields.forEach(field -> strategtyMap.get(field).run());
 
+
+    }
+
+    private HashMap<String, Runnable> composeStrategyMap(Education education) {
+        HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put(SCHOOL, () -> setSchool(education.getSchool()));
+        strategyMap.put(STUDIO_LEVEL_SCHOOL, () -> setStudioLevelSchool(education.getStudioLevelSchool()));
+        strategyMap.put(COUNTRY_SCHOOL, () -> setCountrySchool(education.getCountrySchool()));
+        strategyMap.put(CITY_SCHOOL, () -> setCitySchool(education.getCitySchool()));
+        strategyMap.put(START_DATE_SCHOOL, () -> setStartSchool(education.getStartSchool()));
+        strategyMap.put(END_DATE_SCHOOL, () -> setEndSchool(education.getEndSchool()));
+        strategyMap.put(UNIVERSITY, () -> setUniversity(education.getUniversity()));
+        strategyMap.put(CAREER, () -> setCareer(education.getCareer()));
+        strategyMap.put(STUDIO_LEVEL_UNIVERSITY, () -> setStudioLevelUniversity(education.getStudioLevelUniversity()));
+        strategyMap.put(COUNTRY_UNIVERSITY, () -> setCountryUniversity(education.getCountryUniversity()));
+        strategyMap.put(CITY_UNIVERSITY, () -> setCityUniversity(education.getCityUniversity()));
+        strategyMap.put(START_DATE_UNIVERSITY, () -> setStartUniversity(education.getStartUniversity()));
+        strategyMap.put(END_DATE_UNIVERSITY, () -> setEndUniversity(education.getEndUniversity()));
+        strategyMap.put(LANGUAGE, () -> setLanguage(education.getLanguage()));
+        strategyMap.put(LANGUAGE_WRITTEN, () -> setLanguageWritten(education.getLanguageWritten()));
+        strategyMap.put(LANGUAGE_ORAL, () -> setLanguageOral(education.getLanguageOral()));
+        strategyMap.put(LANGUAGE_READING, () -> setLanguageReading(education.getLanguageReading()));
+
+        return strategyMap;
     }
 
     public GeneralInformationPage clickNextButton() {

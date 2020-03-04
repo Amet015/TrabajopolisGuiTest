@@ -26,14 +26,14 @@ public class ResumeExperience {
 
     private final String RESUME_EXPERIENCE = "%s, desde %s %s hasta %s %s\n" + "%s";
 
-    public ResumeExperience(){
+    public ResumeExperience() {
         webUtils = new WebUtils();
     }
 
-    private void fillListExperience(){
-        String resumeExperience = String.format(RESUME_EXPERIENCE, getCompanyCharge(),webUtils
+    private void fillListExperience() {
+        String resumeExperience = String.format(RESUME_EXPERIENCE, getCompanyCharge(), webUtils
                 .getMonthWritten(getStartDate()), webUtils.getYear(getStartDate()), webUtils
-                .getMonthWritten(getEndDate()),webUtils.getYear(getEndDate()),getCompanyName());
+                .getMonthWritten(getEndDate()), webUtils.getYear(getEndDate()), getCompanyName());
         listExperience.add(resumeExperience);
         Collections.sort(listExperience);
     }
@@ -87,7 +87,7 @@ public class ResumeExperience {
     }
 
     public void proccessInformation(Map<String, String> mapResumeExperience) {
-        HashMap<String,Runnable> strategyMap = composeStrategy(mapResumeExperience);
+        HashMap<String, Runnable> strategyMap = composeStrategy(mapResumeExperience);
         mapResumeExperience.keySet().forEach(key -> strategyMap.get(key).run());
         fillListExperience();
     }
@@ -103,20 +103,7 @@ public class ResumeExperience {
         return strategyMap;
     }
 
-//    public void processInformation(Map<String, String> mapPersonalInformation) {
-//        HashMap<String,Runnable> strategyMap = composeStrategy(mapPersonalInformation);
-//        mapPersonalInformation.keySet().forEach(key -> strategyMap.get(key).run());
-//    }
-//    private HashMap<String, Runnable> composeStrategy(Map<String, String> mapPersonalInformation) {
-//        HashMap<String, Runnable> strategyMap = new HashMap<>();
-//        strategyMap.put("Id", () -> setIdType(mapPersonalInformation.get("Id")));
-//        strategyMap.put("Address", () -> setAddress(mapPersonalInformation.get("Address")));
-//        strategyMap.put("Marital Status", () -> setMaritalStatus(mapPersonalInformation.get("Marital Status")));
-//        return strategyMap;
-//
-//    }
-
-    public ArrayList getListExperience(){
+    public ArrayList getListExperience() {
         return listExperience;
     }
 }

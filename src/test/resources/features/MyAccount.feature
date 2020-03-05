@@ -5,7 +5,7 @@ Feature: My Account
     And I create Curriculums in Personal Information page with
       | Id             | Cédula de Identidad |
       | NumberId       | 8049555             |
-      | Date Born      | 2/3/1990            |
+      | Date Born      | 2/3/1990           |
       | Sex            | Masculino           |
       | Address        | c/ laredo           |
       | Marital Status | Soltero(a)          |
@@ -22,14 +22,14 @@ Feature: My Account
       | Country School          | Bolivia                  |
       | City School             | Cochabamba               |
       | Start Date School       | 2/10/1997                |
-      | End Date School         | 11/25/2008               |
+      | End Date School         | 25/11/2008               |
       | University              | Univalle                 |
       | Career                  | Telecomunicaciones       |
       | Studio Level University | Licenciatura             |
       | Country University      | Bolivia                  |
       | City University         | Cochabamba               |
       | Start Date University   | 2/10/1997                |
-      | End Date University     | 11/25/2008               |
+      | End Date University     | 25/11/2008               |
       | Language                | Quechua                  |
       | Language Written        | Medio                    |
       | Language Oral           | Medio                    |

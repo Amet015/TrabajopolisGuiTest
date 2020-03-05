@@ -1,5 +1,7 @@
 package Trabajopolis.entities;
 
+import Trabajopolis.Utils.WebUtils;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +20,8 @@ public class PersonalInformation {
     private final String SEX = "Sex";
     private final String ADDRESS = "Address";
     private final String MARITAL_STATUS = "Marital Status";
+
+    private WebUtils webUtils = new WebUtils();
 
     public void setIdType(String idType) {
         //this.idType = idType.replace("UNIQUE_ID", getUniqueID());
@@ -66,6 +70,10 @@ public class PersonalInformation {
 
     public String getMaritalStatus() {
         return maritalStatus;
+    }
+
+    public String getMartialStatusResume(){
+        return webUtils.getSexMaritalStatus(this.sex, this.maritalStatus);
     }
 
     public void processInformation(Map<String, String> mapPersonalInformation) {

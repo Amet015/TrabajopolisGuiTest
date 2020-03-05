@@ -16,7 +16,7 @@ public class WebComponents {
 
     public static void setDateCalendar(String date, WebElement year, WebElement month) {
         String[] dateSplit = date.split("/");
-        monthInt = Integer.valueOf(dateSplit[0]) - 1;
+        monthInt = Integer.valueOf(dateSplit[1]) - 1;
         selectValue = new Select(year);
         selectValue.selectByValue(dateSplit[2]);
         selectValue = new Select(month);
@@ -25,7 +25,7 @@ public class WebComponents {
     }
 
     private static void selectDay(String[] dateSplit) {
-        String day = String.format(DAY_XPATH, monthInt, dateSplit[2], dateSplit[1]);
+        String day = String.format(DAY_XPATH, monthInt, dateSplit[2], dateSplit[0]);
         WebElement dayToSelect = WebDriverManager.getInstance().getWebDriver().findElement(By.xpath(day));
         dayToSelect.click();
     }

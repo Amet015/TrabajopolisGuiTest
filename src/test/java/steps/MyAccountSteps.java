@@ -136,6 +136,10 @@ public class MyAccountSteps {
         String actualId  = resumeDetailsCV.getIdType(mapPersonalInformation.get("Id"));
         String  expectedId = context.getCurriculum().getPersonalInformation().getIdType();
         Assert.assertEquals(actualId,expectedId);
+        String actualNumberId = resumeDetailsCV.getNumberID(mapPersonalInformation.get("Id"));
+        String expectedNumberId = context.getCurriculum().getPersonalInformation().getNumberId();
+        Assert.assertEquals(actualNumberId,expectedNumberId);
+        Assert.assertEquals(resumeDetailsCV.getDateBorn(),context.getCurriculum().getPersonalInformation().getDateBorn());
 
 //        Assert.assertTrue(resumeDetailsCV.getIdType(mapPersonalInformation.get("Id")).contains(context.getCurriculum()
 //                .getPersonalInformation().getIdType()), "Type Id does't have the expected Id Type: "
@@ -156,6 +160,9 @@ public class MyAccountSteps {
         Assert.assertEquals(resumeDetailsCV.getCountry(), context.getCurriculum().getGeneralInformation().getCountry());
         Assert.assertEquals(resumeDetailsCV.getCity(), context.getCurriculum().getGeneralInformation().getCity());
         Assert.assertEquals(resumeDetailsCV.getSalary(),context.getCurriculum().getGeneralInformation().getSalary());
+        Assert.assertEquals(resumeDetailsCV.getMaritalStatus(),context.getCurriculum().getPersonalInformation().getMartialStatusResume());
+        Assert.assertEquals(resumeDetailsCV.getMaritalStatus(),context.getCurriculum().getPersonalInformation().getMartialStatusResume());
+
     }
 
     @And("^I delete Curriculum$")

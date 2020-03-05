@@ -25,8 +25,11 @@ public class ResumeDetailsCV extends BasePage {
 
     //div[@class="item"]//strong[contains(text(),"Dirección")]/following-sibling::text()
 
-    private final String EXPERIENCE_FIELD = "//div[h2[contains(text(),\"Experiencia\")]]//ul//li//span[@style=" +
-            "\"display:block;\" and contains(text(),\"%s\")] ";
+//    private final String EXPERIENCE_FIELD = "//div[h2[contains(text(),\"Experiencia\")]]//ul//li//span[@style=" +
+//            "\"display:block;\" and contains(text(),\"%s\")] ";
+
+    @FindBy(xpath = "//div[strong[contains(text(),'Fecha de Nacimiento')] and @class='item']")
+    WebElement dateBorn;
 
     @FindBy(xpath = "//div[h2[@class=\"title\" and contains(text(), \"Idiomas\")]]//li//span")
     WebElement languague;
@@ -49,7 +52,6 @@ public class ResumeDetailsCV extends BasePage {
     @FindBy(xpath = "//div[strong[contains(text(),'Ciudad')] and @class=\"item\"]")
     WebElement city;
 
-
     @FindBy(xpath = "//div[h2[contains(text(),\"Educación\")]]//ul//li")
     List<WebElement> edutacion;
 
@@ -59,6 +61,8 @@ public class ResumeDetailsCV extends BasePage {
     List<WebElement> experience;
 
     ArrayList<String> listExperience;
+
+    private final String DATE_FORMAT = "%s/%s/%s";
 
 
     @Override
@@ -79,7 +83,7 @@ public class ResumeDetailsCV extends BasePage {
         }
         Collections.sort(listExperience);
 
-        for (String esto: listExperience ) {
+        for (String esto : listExperience) {
             System.out.println(esto);
         }
     }
@@ -103,12 +107,32 @@ public class ResumeDetailsCV extends BasePage {
 
     public String getMaritalStatus() {
         String maritalStatusClean = maritalStatus.getText().replace("Estado Civil: ", "");
-        return maritalStatus.getText();
+        return maritalStatusClean;
     }
 
     public String getIdType(String id) {
-        String [] idType = WebComponents.getTextFromTheElement(ID_TYPE, id).split(":");
+        String[] idType = WebComponents.getTextFromTheElement(ID_TYPE, id).split(":");
         return idType[0];
+    }
+
+    public String getDateBorn() {
+        String date = dateBorn.getText();
+        System.out.println(date);
+        System.out.println(date);
+        date = date.replace("Fecha de Nacimiento: ", "");
+        date = date.substring(0, date.indexOf(" ")).replace(".", "/");
+        String [] dateFormat = date.split("/");
+        for (int i = 0; i < dateFormat.length -1 ; i++) {
+            if(dateFormat[i].startsWith("0")){
+                dateFormat[i] = dateFormat[i].replace("0","");
+            }
+        }
+        return String.format(DATE_FORMAT,dateFormat[0],dateFormat[1],dateFormat[2]);
+    }
+
+    public String getNumberID(String id) {
+        String[] number = WebComponents.getTextFromTheElement(ID_TYPE, id).split(":");
+        return number[1].trim();
     }
 
     public String getLanguague() {

@@ -2,10 +2,8 @@ package Trabajopolis.entities;
 
 import Trabajopolis.Utils.WebUtils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Supplier;
 
 public class Education {
     private String school;
@@ -54,6 +52,7 @@ public class Education {
     private final String LANGUAGE_WRITTEN = "Language Written";
     private final String LANGUAGE_ORAL = "Language Oral";
     private final String LANGUAGE_READING = "Language Reading";
+    private final String EDUCATION = "Education";
 
 
     public Education() {
@@ -247,6 +246,22 @@ public class Education {
                 getLanguageReading());
         return languageForm;
     }
+
+    public HashMap<String,String> processInformationToGet(Set<String> keyEducation) {
+        HashMap<String, String> values = new HashMap<>();
+        HashMap<String, Supplier> strategyMap = composeStrategyGet();
+        for (String key : keyEducation ) {
+            values.put(key , strategyMap.get(key).get().toString());
+        }
+        return values;
+    }
+
+    private HashMap<String, Supplier> composeStrategyGet() {
+        HashMap<String,Supplier> strategyMapGet = new HashMap<>();
+        strategyMapGet.put(EDUCATION,() -> getListEducation());
+        return strategyMapGet;
+    }
+
 
     public ArrayList getListEducation() {
         return educationList;

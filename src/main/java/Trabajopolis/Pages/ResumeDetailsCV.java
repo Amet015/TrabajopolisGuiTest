@@ -6,9 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.function.Supplier;
 
 public class ResumeDetailsCV extends BasePage {
 
@@ -57,9 +56,49 @@ public class ResumeDetailsCV extends BasePage {
     @FindBy(xpath = "//div[h2[contains(text(),\"Experiencia\")]]//ul//li")
     List<WebElement> experience;
 
+
     ArrayList<String> listExperience;
 
     private final String DATE_FORMAT = "%s/%s/%s";
+
+    private final String ID = "Id";
+    private final String NUMBER_ID = "NumberId";
+    private final String DATE_BORN = "Date Born";
+    private final String SEX = "Sex";
+    private final String ADDRESS = "Address";
+    private final String MARITAL_STATUS = "Marital Status";
+    private final String COMPANY_CHARGE = "Company Charge";
+    private final String COMPANY_NAME = "Company Name";
+    private final String COUNTRY = "Country";
+    private final String CITY = "City";
+    private final String START_DATE = "Start Date";
+    private final String END_DATE = "End Date";
+    private final String SCHOOL = "School";
+    private final String STUDIO_LEVEL_SCHOOL = "Studio Level School";
+    private final String COUNTRY_SCHOOL = "Country School";
+    private final String CITY_SCHOOL = "City School";
+    private final String START_DATE_SCHOOL = "Start Date School";
+    private final String END_DATE_SCHOOL = "End Date School";
+    private final String UNIVERSITY = "University";
+    private final String CAREER = "Career";
+    private final String STUDIO_LEVEL_UNIVERSITY = "Studio Level University";
+    private final String COUNTRY_UNIVERSITY = "Country University";
+    private final String CITY_UNIVERSITY = "City University";
+    private final String START_DATE_UNIVERSITY = "Start Date University";
+    private final String END_DATE_UNIVERSITY = "End Date University";
+    private final String LANGUAGE = "Language";
+    private final String LANGUAGE_WRITTEN = "Language Written";
+    private final String LANGUAGE_ORAL = "Language Oral";
+    private final String LANGUAGE_READING = "Language Reading";
+    private final String TITLE = "Title";
+    private final String CATEGORY = "Category";
+    private final String CONTRACT_TYPE = "Contract Type";
+    private final String SALARY = "Salary";
+    private final String PRIVACITY_CV = "PrivacityCV";
+    private final String EXPERIENCE = "Experience";
+    private final String EDUCATION = "Education";
+
+    private String id;
 
 
     @Override
@@ -79,10 +118,6 @@ public class ResumeDetailsCV extends BasePage {
             listExperience.add(element.getText());
         }
         Collections.sort(listExperience);
-
-        for (String esto : listExperience) {
-            System.out.println(esto);
-        }
     }
 
     private void fillListEducation() {
@@ -107,9 +142,14 @@ public class ResumeDetailsCV extends BasePage {
         return maritalStatusClean;
     }
 
-    public String getIdType(String id) {
+    public void setIdType(String id) {
         String[] idType = WebComponents.getTextFromTheElement(ID_TYPE, id).split(":");
-        return idType[0];
+        this.id = idType[0];
+
+    }
+
+    private String getIdType(){
+        return this.id;
     }
 
     public String getDateBorn() {
@@ -135,7 +175,6 @@ public class ResumeDetailsCV extends BasePage {
     public String getLanguague() {
         return languague.getText();
     }
-
 
     public String getTitle() {
         return title.getText();
@@ -167,5 +206,76 @@ public class ResumeDetailsCV extends BasePage {
 
     public ArrayList getListExperience() {
         return listExperience;
+    }
+
+    public HashMap<String,String> getPersonalInformationToValidate() {
+        HashMap<String,String> values = new HashMap<>();
+        HashMap<String, Supplier> strategyMapPersonal = composeStrategyMapPersonalInformationToGet();
+        for (String key: strategyMapPersonal.keySet() ) {
+            values.put(key , strategyMapPersonal.get(key).get().toString());
+        }
+        return values;
+    }
+
+    public HashMap<String,String> getResumeExperienceToValidate() {
+        HashMap<String,String> values = new HashMap<>();
+        HashMap<String, Supplier> strategyMapExperience = composeStrategyMapResumeExperienceToGet();
+        for (String key: strategyMapExperience.keySet() ) {
+            values.put(key , strategyMapExperience.get(key).get().toString());
+        }
+        return values;
+    }
+
+    private HashMap<String, Supplier> composeStrategyMapResumeExperienceToGet() {
+        HashMap<String,Supplier> strategyMap = new HashMap<>();
+        strategyMap.put(EXPERIENCE, () -> getListExperience());
+        return strategyMap;
+    }
+
+    public HashMap<String,String> getEducationToValidate () {
+        HashMap<String,String> values = new HashMap<>();
+        HashMap<String, Supplier> strategyMapEducation = composeStrategyMapEducationToGet();
+        for (String key: strategyMapEducation.keySet() ) {
+            values.put(key , strategyMapEducation.get(key).get().toString());
+        }
+        return values;
+    }
+
+    private HashMap<String, Supplier> composeStrategyMapEducationToGet() {
+        HashMap<String,Supplier> strategyMap = new HashMap<>();
+        strategyMap.put(EDUCATION, () -> getListEducation());
+        return strategyMap;
+    }
+
+    public HashMap<String,String> getGeneralInformationToValidate() {
+        HashMap<String,String> values = new HashMap<>();
+        HashMap<String, Supplier> strategyMapGeneralIformation = composeStrategyMapPersonalInformationToGet();
+        for (String key: strategyMapGeneralIformation.keySet() ) {
+            values.put(key , strategyMapGeneralIformation.get(key).get().toString());
+        }
+        return values;
+    }
+
+    private HashMap<String, Supplier> composeStrategyMapPersonalInformationToGet() {
+        HashMap<String,Supplier> strategyMap = new HashMap<>();
+        strategyMap.put(ID, () -> getIdType());
+        strategyMap.put(NUMBER_ID, () -> getNumberID(getIdType()));
+        strategyMap.put(DATE_BORN, () -> getDateBorn());
+        strategyMap.put(ADDRESS, () -> getAddress());
+        strategyMap.put(MARITAL_STATUS, () -> getMaritalStatus());
+
+        return strategyMap;
+    }
+
+    private HashMap<String, Supplier> composeStrategyMapGeneralInformationToGet() {
+        HashMap<String,Supplier> strategyMap = new HashMap<>();
+        strategyMap.put(TITLE, () -> getTitle());
+        strategyMap.put(CATEGORY, () -> getCategory());
+        strategyMap.put(CONTRACT_TYPE, () -> getContractType());
+        strategyMap.put(SALARY, () -> getSalary());
+        strategyMap.put(COUNTRY, () -> getCountry());
+        strategyMap.put(CITY, () -> getCity());
+
+        return strategyMap;
     }
 }

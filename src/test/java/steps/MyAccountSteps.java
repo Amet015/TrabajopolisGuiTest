@@ -19,7 +19,6 @@ import org.testng.Assert;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class MyAccountSteps {
     private MyAccountPage myAccountPage;
@@ -35,6 +34,9 @@ public class MyAccountSteps {
     private ResumeDetailsCV resumeDetailsCV;
     private Context context;
     private Map<String,String> mapPersonalInformation;
+    private Map<String,String> mapResumeExperience;
+    private Map<String,String> mapEducation;
+    private Map<String,String> mapGeneralInformation;
 
     public MyAccountSteps(Context context) {
         this.context = context;
@@ -87,6 +89,7 @@ public class MyAccountSteps {
         this.mapPersonalInformation = mapPersonalInformation;
         PersonalInformation personalInformation = context.getCurriculum().getPersonalInformation();
         personalInformation.processInformation(mapPersonalInformation);
+        //personalInformation.processInformationToGet(mapPersonalInformation.keySet());
 
         myListingsPage = new MyListingsPage();
         personalInformationPage = myListingsPage.clickAddCV();
@@ -96,6 +99,7 @@ public class MyAccountSteps {
 
     @And("^I fill fields in Resume Experience page with$")
     public void iFillFieldsInResumeExperiencePageWith(final Map<String, String> mapResumeExperience) {
+        this.mapResumeExperience = mapResumeExperience;
         ResumeExperience resumeExperience = context.getCurriculum().getResumeExperience();
         resumeExperience.proccessInformation(mapResumeExperience);
 
@@ -105,6 +109,7 @@ public class MyAccountSteps {
 
     @And("^I fill fields in Education Page with$")
     public void iFillFieldsInEducationPageWith(final Map<String, String> mapEducation) {
+        this.mapEducation = mapEducation;
         Education education = context.getCurriculum().getEducation();
         education.proccessInformation(mapEducation);
 
@@ -114,8 +119,10 @@ public class MyAccountSteps {
 
     @And("^I fill fields in General Information Page with$")
     public void iFillFieldsInGeneralInformationPageWith(final Map<String, String> mapGeneralInformation) {
+        this.mapGeneralInformation = mapGeneralInformation;
         GeneralInformation generalInformation = context.getCurriculum().getGeneralInformation();
         generalInformation.proccessInformation(mapGeneralInformation);
+        //generalInformation.processInformationToGet(mapGeneralInformation.keySet());
 
         generalInformationPage =  educationPage.clickNextButton();
         generalInformationPage.setFillsGeneralInformation(generalInformation, mapGeneralInformation.keySet());
@@ -132,9 +139,15 @@ public class MyAccountSteps {
     @And("^The Curriculum is created with the basic information entered$")
     public void theCurriculumIsCreatedWithTheBasicInformationEntered() {
         resumeDetailsCV = manageListingPage.clickLookMyCV();
-        String actualId  = resumeDetailsCV.getIdType(mapPersonalInformation.get("Id"));
-        String  expectedId = context.getCurriculum().getPersonalInformation().getIdType();
-        Assert.assertEquals(actualId,expectedId);
+        resumeDetailsCV.setIdType(mapPersonalInformation.get("Id"));
+        HashMap<String, String> validatePersonalInformation = resumeDetailsCV.getPersonalInformationToValidate();
+        HashMap<String, String> validateResumeExperience = resumeDetailsCV.getResumeExperienceToValidate();
+        HashMap<String, String> validateEducation = resumeDetailsCV.getEducationToValidate();
+        HashMap<String, String> validateGeneralInformation = resumeDetailsCV.getGeneralInformationToValidate();
+
+        Assert.assertEquals(validatePersonalInformation,context.getCurriculum().getPersonalInformation().processInformationToGet());
+
+
         String actualNumberId = resumeDetailsCV.getNumberID(mapPersonalInformation.get("Id"));
         String expectedNumberId = context.getCurriculum().getPersonalInformation().getNumberId();
         Assert.assertEquals(actualNumberId,expectedNumberId);
@@ -155,7 +168,6 @@ public class MyAccountSteps {
         Assert.assertEquals(resumeDetailsCV.getCountry(), context.getCurriculum().getGeneralInformation().getCountry());
         Assert.assertEquals(resumeDetailsCV.getCity(), context.getCurriculum().getGeneralInformation().getCity());
         Assert.assertEquals(resumeDetailsCV.getSalary(),context.getCurriculum().getGeneralInformation().getSalary());
-        Assert.assertEquals(resumeDetailsCV.getMaritalStatus(),context.getCurriculum().getPersonalInformation().getMartialStatusResume());
         Assert.assertEquals(resumeDetailsCV.getMaritalStatus(),context.getCurriculum().getPersonalInformation().getMartialStatusResume());
 
     }

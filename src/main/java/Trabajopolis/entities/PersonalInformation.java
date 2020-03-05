@@ -4,6 +4,8 @@ import Trabajopolis.Utils.WebUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
 
 public class PersonalInformation {
 
@@ -90,5 +92,25 @@ public class PersonalInformation {
         strategyMap.put(ADDRESS, () -> setAddress(mapPersonalInformation.get(ADDRESS)));
         strategyMap.put(MARITAL_STATUS, () -> setMaritalStatus(mapPersonalInformation.get(MARITAL_STATUS)));
         return strategyMap;
+    }
+
+    public HashMap<String,String> processInformationToGet() {
+        HashMap<String, String> values = new HashMap<>();
+        HashMap<String,Supplier> strategyMap = composeStrategyGet();
+        for (String key : strategyMap.keySet() ) {
+            values.put(key , strategyMap.get(key).get().toString());
+        }
+        return values;
+    }
+
+    private HashMap<String, Supplier> composeStrategyGet() {
+        HashMap<String,Supplier> strategyMapGet = new HashMap<>();
+        strategyMapGet.put(ID,() -> getIdType());
+        strategyMapGet.put(NUMBER_ID,() -> getNumberId());
+        strategyMapGet.put(DATE_BORN,() -> getDateBorn());
+        strategyMapGet.put(ADDRESS,() -> getAddress());
+        strategyMapGet.put(MARITAL_STATUS,() -> getMartialStatusResume());
+
+        return strategyMapGet;
     }
 }

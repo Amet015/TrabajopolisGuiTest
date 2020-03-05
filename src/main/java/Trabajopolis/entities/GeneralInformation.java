@@ -2,6 +2,8 @@ package Trabajopolis.entities;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
 
 public class GeneralInformation {
     private String title;
@@ -92,5 +94,25 @@ public class GeneralInformation {
         strategyMap.put(CITY, () -> setCity(mapGeneralInformation.get(CITY)));
         strategyMap.put(PRIVACITY_CV, () -> setPrivacityCV(mapGeneralInformation.get(PRIVACITY_CV)));
         return strategyMap;
+    }
+
+    public HashMap<String,String> processInformationToGet(Set<String> keyGeneralInformation) {
+        HashMap<String, String> values = new HashMap<>();
+        HashMap<String, Supplier> strategyMap = composeStrategyGet();
+        for (String key : keyGeneralInformation ) {
+            values.put(key , strategyMap.get(key).get().toString());
+        }
+        return values;
+    }
+
+    private HashMap<String, Supplier> composeStrategyGet() {
+        HashMap<String,Supplier> strategyMapGet = new HashMap<>();
+        strategyMapGet.put(TITLE,() -> getTitle());
+        strategyMapGet.put(CATEGORY,() -> getCategory());
+        strategyMapGet.put(CONTRACT_TYPE,() -> getContractType());
+        strategyMapGet.put(SALARY,() -> getSalary());
+        strategyMapGet.put(COUNTRY,() -> getCountry());
+        strategyMapGet.put(CITY,() -> getCity());
+        return strategyMapGet;
     }
 }

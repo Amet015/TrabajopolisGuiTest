@@ -2,10 +2,8 @@ package Trabajopolis.entities;
 
 import Trabajopolis.Utils.WebUtils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Supplier;
 
 public class ResumeExperience {
     private String companyCharge;
@@ -23,6 +21,7 @@ public class ResumeExperience {
     private final String CITY = "City";
     private final String START_DATE = "Start Date";
     private final String END_DATE = "End Date";
+    private final String EXPERIENCE = "Experience";
 
     private final String RESUME_EXPERIENCE = "%s, desde %s %s hasta %s %s\n" + "%s";
 
@@ -102,6 +101,22 @@ public class ResumeExperience {
         strategyMap.put(END_DATE, () -> setEndDate(mapResumeExperience.get(END_DATE)));
         return strategyMap;
     }
+
+    public HashMap<String,String> processInformationToGet(Set<String> keyResumeExperience) {
+        HashMap<String, String> values = new HashMap<>();
+        HashMap<String, Supplier> strategyMap = composeStrategyGet();
+        for (String key : keyResumeExperience ) {
+            values.put(key , strategyMap.get(key).get().toString());
+        }
+        return values;
+    }
+
+    private HashMap<String, Supplier> composeStrategyGet() {
+        HashMap<String,Supplier> strategyMapGet = new HashMap<>();
+        strategyMapGet.put(EXPERIENCE,() -> getListExperience());
+        return strategyMapGet;
+    }
+
 
     public ArrayList getListExperience() {
         return listExperience;

@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.HashMap;
 import java.util.Set;
+import java.util.function.Supplier;
 
 public class PersonalInformationPage extends BasePage {
     @FindBy(name = "identidad_0")

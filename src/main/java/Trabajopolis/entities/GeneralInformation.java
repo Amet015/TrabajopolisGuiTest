@@ -96,10 +96,10 @@ public class GeneralInformation {
         return strategyMap;
     }
 
-    public HashMap<String,String> processInformationToGet(Set<String> keyGeneralInformation) {
+    public HashMap<String,String> processInformationToGet() {
         HashMap<String, String> values = new HashMap<>();
         HashMap<String, Supplier> strategyMap = composeStrategyGet();
-        for (String key : keyGeneralInformation ) {
+        for (String key : strategyMap.keySet() ) {
             values.put(key , strategyMap.get(key).get().toString());
         }
         return values;

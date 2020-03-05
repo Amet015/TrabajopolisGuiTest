@@ -102,10 +102,10 @@ public class ResumeExperience {
         return strategyMap;
     }
 
-    public HashMap<String,String> processInformationToGet(Set<String> keyResumeExperience) {
+    public HashMap<String,String> processInformationToGet() {
         HashMap<String, String> values = new HashMap<>();
         HashMap<String, Supplier> strategyMap = composeStrategyGet();
-        for (String key : keyResumeExperience ) {
+        for (String key : strategyMap.keySet() ) {
             values.put(key , strategyMap.get(key).get().toString());
         }
         return values;

@@ -247,10 +247,10 @@ public class Education {
         return languageForm;
     }
 
-    public HashMap<String,String> processInformationToGet(Set<String> keyEducation) {
+    public HashMap<String,String> processInformationToGet() {
         HashMap<String, String> values = new HashMap<>();
         HashMap<String, Supplier> strategyMap = composeStrategyGet();
-        for (String key : keyEducation ) {
+        for (String key : strategyMap.keySet() ) {
             values.put(key , strategyMap.get(key).get().toString());
         }
         return values;

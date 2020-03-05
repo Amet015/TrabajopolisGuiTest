@@ -14,10 +14,10 @@ public class ResumeDetailsCV extends BasePage {
     private final String ID_TYPE = "//div[strong[contains(text(),'%s')] and @class=\"item\"]";
 
     @FindBy(xpath = "//div[strong[contains(text(),'Dirección')] and @class=\"item\"]")
-    WebElement address;
+    private WebElement address;
 
     @FindBy(xpath = "//div[strong[contains(text(),'Estado')] and @class=\"item\"]")
-    WebElement maritalStatus;
+    private WebElement maritalStatus;
 
     //div[@class="item"]//strong[contains(text(),"Dirección")]/following-sibling::text()
 
@@ -25,39 +25,39 @@ public class ResumeDetailsCV extends BasePage {
 //            "\"display:block;\" and contains(text(),\"%s\")] ";
 
     @FindBy(xpath = "//div[strong[contains(text(),'Fecha de Nacimiento')] and @class='item']")
-    WebElement dateBorn;
+    private WebElement dateBorn;
 
     @FindBy(xpath = "//div[h2[@class=\"title\" and contains(text(), \"Idiomas\")]]//li//span")
-    WebElement languague;
+    private WebElement languague;
 
     @FindBy(xpath = "//h1[@style=\"color:#1E4B82; margin-bottom:10px;\"]")
-    WebElement title;
+    private WebElement title;
 
     @FindBy(xpath = "//div[strong[contains(text(),'Categoría')] and @class=\"item\"]")
-    WebElement category;
+    private WebElement category;
 
     @FindBy(xpath = "//div[strong[contains(text(),'Contrato')] and @class=\"item\"]")
-    WebElement contractType;
+    private WebElement contractType;
 
     @FindBy(xpath = "//div[strong[contains(text(),'Pretensión')] and @class=\"item\"]")
-    WebElement salary;
+    private WebElement salary;
 
     @FindBy(xpath = "//div[strong[contains(text(),'País')] and @class=\"item\"]")
-    WebElement country;
+    private WebElement country;
 
     @FindBy(xpath = "//div[strong[contains(text(),'Ciudad')] and @class=\"item\"]")
-    WebElement city;
+    private WebElement city;
 
     @FindBy(xpath = "//div[h2[contains(text(),\"Educación\")]]//ul//li")
-    List<WebElement> edutacion;
+    private List<WebElement> edutacion;
 
-    ArrayList<String> listEducation;
+    private ArrayList<String> listEducation;
 
     @FindBy(xpath = "//div[h2[contains(text(),\"Experiencia\")]]//ul//li")
-    List<WebElement> experience;
+    private List<WebElement> experience;
 
 
-    ArrayList<String> listExperience;
+    private ArrayList<String> listExperience;
 
     private final String DATE_FORMAT = "%s/%s/%s";
 
@@ -249,7 +249,7 @@ public class ResumeDetailsCV extends BasePage {
 
     public HashMap<String,String> getGeneralInformationToValidate() {
         HashMap<String,String> values = new HashMap<>();
-        HashMap<String, Supplier> strategyMapGeneralIformation = composeStrategyMapPersonalInformationToGet();
+        HashMap<String, Supplier> strategyMapGeneralIformation = composeStrategyMapGeneralInformationToGet();
         for (String key: strategyMapGeneralIformation.keySet() ) {
             values.put(key , strategyMapGeneralIformation.get(key).get().toString());
         }

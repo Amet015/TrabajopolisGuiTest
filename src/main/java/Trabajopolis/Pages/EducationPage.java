@@ -1,12 +1,12 @@
 package Trabajopolis.Pages;
 
 import Trabajopolis.BasePage;
+import Trabajopolis.components.WebComponents;
 import Trabajopolis.entities.Education;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import Trabajopolis.components.WebComponents;
 
 import java.util.HashMap;
 import java.util.Set;

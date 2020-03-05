@@ -36,14 +36,13 @@ public class LoginSteps {
     public void iInsertTheCredentials() {
         loginPage = new LoginPage();
         loginPage.test_login();
-        
     }
 
     @Then("^The application displays \"([^\"]*)\"$")
-    public void theApplicationDisplays(String arg0) {
+    public void theApplicationDisplays(String miPerfil) {
         MyAccountPage myAccountPage = new MyAccountPage();
         String actual = myAccountPage.getMiCuentaCantidato();
-        String expected = arg0;
+        String expected = miPerfil;
         assertEquals(expected,actual);
     }
 }

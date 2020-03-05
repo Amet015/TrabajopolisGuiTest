@@ -1,11 +1,11 @@
 package Trabajopolis.entities;
 
 import Trabajopolis.Utils.WebUtils;
-import Trabajopolis.components.WebComponents;
-import org.graalvm.compiler.replacements.StandardGraphBuilderPlugins;
-import org.openqa.selenium.WebElement;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Education {
     private String school;

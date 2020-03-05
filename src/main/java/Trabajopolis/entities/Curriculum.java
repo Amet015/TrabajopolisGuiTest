@@ -1,7 +1,5 @@
 package Trabajopolis.entities;
 
-import java.util.ArrayList;
-
 public class Curriculum {
     private PersonalInformation personalInformation;
     private GeneralInformation generalInformation;

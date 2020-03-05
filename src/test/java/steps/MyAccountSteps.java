@@ -45,7 +45,6 @@ public class MyAccountSteps {
         myAccountPage = new MyAccountPage();
         myAccountPage.clickMiPerfil();
         mapPersonalInformation = new HashMap<>();
-
     }
 
     @When("^I edit Mi Perfil")
@@ -123,7 +122,7 @@ public class MyAccountSteps {
     }
 
     @Then("^The application displays a page with a button \"([^\"]*)\"$")
-    public void theApplicationDisplaysAPageWithAButton(String descargarCV) throws Throwable {
+    public void theApplicationDisplaysAPageWithAButton(String descargarCV) {
         manageListingPage = generalInformationPage.clickNextButton();
         String actual = manageListingPage.getDonwLadCVText();
         String expected = descargarCV;
@@ -141,10 +140,6 @@ public class MyAccountSteps {
         Assert.assertEquals(actualNumberId,expectedNumberId);
         Assert.assertEquals(resumeDetailsCV.getDateBorn(),context.getCurriculum().getPersonalInformation().getDateBorn());
 
-//        Assert.assertTrue(resumeDetailsCV.getIdType(mapPersonalInformation.get("Id")).contains(context.getCurriculum()
-//                .getPersonalInformation().getIdType()), "Type Id does't have the expected Id Type: "
-//                + context.getCurriculum().getPersonalInformation().getIdType() + ". the Id type is: "+
-//                resumeDetailsCV.getIdType(mapPersonalInformation.get("Id")) );
         for (int i = 0; i < resumeDetailsCV.getListEducation().size() ; i++) {
             Assert.assertEquals(resumeDetailsCV.getListEducation().get(i), context.getCurriculum().getEducation().getListEducation().get(i));
         }

@@ -64,39 +64,17 @@ public class ResumeDetailsCV extends BasePage {
     private final String ID = "Id";
     private final String NUMBER_ID = "NumberId";
     private final String DATE_BORN = "Date Born";
-    private final String SEX = "Sex";
     private final String ADDRESS = "Address";
     private final String MARITAL_STATUS = "Marital Status";
-    private final String COMPANY_CHARGE = "Company Charge";
-    private final String COMPANY_NAME = "Company Name";
     private final String COUNTRY = "Country";
     private final String CITY = "City";
-    private final String START_DATE = "Start Date";
-    private final String END_DATE = "End Date";
-    private final String SCHOOL = "School";
-    private final String STUDIO_LEVEL_SCHOOL = "Studio Level School";
-    private final String COUNTRY_SCHOOL = "Country School";
-    private final String CITY_SCHOOL = "City School";
-    private final String START_DATE_SCHOOL = "Start Date School";
-    private final String END_DATE_SCHOOL = "End Date School";
-    private final String UNIVERSITY = "University";
-    private final String CAREER = "Career";
-    private final String STUDIO_LEVEL_UNIVERSITY = "Studio Level University";
-    private final String COUNTRY_UNIVERSITY = "Country University";
-    private final String CITY_UNIVERSITY = "City University";
-    private final String START_DATE_UNIVERSITY = "Start Date University";
-    private final String END_DATE_UNIVERSITY = "End Date University";
-    private final String LANGUAGE = "Language";
-    private final String LANGUAGE_WRITTEN = "Language Written";
-    private final String LANGUAGE_ORAL = "Language Oral";
-    private final String LANGUAGE_READING = "Language Reading";
     private final String TITLE = "Title";
     private final String CATEGORY = "Category";
     private final String CONTRACT_TYPE = "Contract Type";
     private final String SALARY = "Salary";
-    private final String PRIVACITY_CV = "PrivacityCV";
     private final String EXPERIENCE = "Experience";
     private final String EDUCATION = "Education";
+    private final String LANGUAGE = "Language";
 
     private String id;
 
@@ -154,8 +132,6 @@ public class ResumeDetailsCV extends BasePage {
 
     public String getDateBorn() {
         String date = dateBorn.getText();
-        System.out.println(date);
-        System.out.println(date);
         date = date.replace("Fecha de Nacimiento: ", "");
         date = date.substring(0, date.indexOf(" ")).replace(".", "/");
         String [] dateFormat = date.split("/");
@@ -244,6 +220,7 @@ public class ResumeDetailsCV extends BasePage {
     private HashMap<String, Supplier> composeStrategyMapEducationToGet() {
         HashMap<String,Supplier> strategyMap = new HashMap<>();
         strategyMap.put(EDUCATION, () -> getListEducation());
+        strategyMap.put(LANGUAGE, () -> getLanguague());
         return strategyMap;
     }
 

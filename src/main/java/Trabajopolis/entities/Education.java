@@ -259,6 +259,7 @@ public class Education {
     private HashMap<String, Supplier> composeStrategyGet() {
         HashMap<String,Supplier> strategyMapGet = new HashMap<>();
         strategyMapGet.put(EDUCATION,() -> getListEducation());
+        strategyMapGet.put(LANGUAGE,() -> getLanguageForm());
         return strategyMapGet;
     }
 

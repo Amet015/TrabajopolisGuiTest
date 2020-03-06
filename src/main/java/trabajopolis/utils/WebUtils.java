@@ -4,29 +4,30 @@ import java.util.HashMap;
 
 public class WebUtils {
 
-    private HashMap<String,String> mapMonth = new HashMap<>();
-    private HashMap<String,String> mapMaleMaritalStatus = new HashMap<>();
-    private HashMap<String,String> mapFemaleMaritalStatus = new HashMap<>();
+    private HashMap<String, String> mapMonth = new HashMap<>();
+    private HashMap<String, String> mapMaleMaritalStatus = new HashMap<>();
+    private HashMap<String, String> mapFemaleMaritalStatus = new HashMap<>();
     private final String MALE = "Masculino";
 
 
-    public WebUtils(){
+    public WebUtils() {
         initialze();
     }
+
     private void initialze() {
         mapMonth = new HashMap<>();
-        mapMonth.put("1","Enero");
-        mapMonth.put("2","Febrero");
-        mapMonth.put("3","Marzo");
-        mapMonth.put("4","Abril");
-        mapMonth.put("5","Mayo");
-        mapMonth.put("6","Junio");
-        mapMonth.put("7","Julio");
-        mapMonth.put("8","Agosto");
-        mapMonth.put("9","Septiembre");
-        mapMonth.put("10","Octubre");
-        mapMonth.put("11","Noviembre");
-        mapMonth.put("12","Diciembre");
+        mapMonth.put("1", "Enero");
+        mapMonth.put("2", "Febrero");
+        mapMonth.put("3", "Marzo");
+        mapMonth.put("4", "Abril");
+        mapMonth.put("5", "Mayo");
+        mapMonth.put("6", "Junio");
+        mapMonth.put("7", "Julio");
+        mapMonth.put("8", "Agosto");
+        mapMonth.put("9", "Septiembre");
+        mapMonth.put("10", "Octubre");
+        mapMonth.put("11", "Noviembre");
+        mapMonth.put("12", "Diciembre");
 
         mapMaleMaritalStatus.put("Soltero(a)", "Soltero");
         mapMaleMaritalStatus.put("Casado(a)", "Casado");
@@ -42,12 +43,12 @@ public class WebUtils {
     }
 
     public String getMonthWritten(String date) {
-        String [] dateSplit = date.split("/");
+        String[] dateSplit = date.split("/");
         return mapMonth.get(dateSplit[1]);
     }
 
-    public String getYear(String date){
-        String [] dateSplit = date.split("/");
+    public String getYear(String date) {
+        String[] dateSplit = date.split("/");
         return dateSplit[2];
     }
 

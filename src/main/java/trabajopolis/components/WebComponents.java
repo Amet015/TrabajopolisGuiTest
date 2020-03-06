@@ -26,8 +26,8 @@ public class WebComponents {
         dayToSelect.click();
     }
 
-    public static String getTextFromTheElement(String xpathValue , String value ) {
-        String element = String.format(xpathValue,value);
+    public static String getTextFromTheElement(String xpathValue, String value) {
+        String element = String.format(xpathValue, value);
         WebElement webElement = WebDriverManager.getInstance().getWebDriver().findElement(By.xpath(element));
         return webElement.getText();
     }

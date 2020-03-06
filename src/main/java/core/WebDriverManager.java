@@ -12,32 +12,33 @@ public class WebDriverManager {
     private static WebDriverManager instance;
     private static WebDriverWait webDriverWait;
 
-    private WebDriverManager(){
+    private WebDriverManager() {
         initialize();
     }
 
-    public static WebDriverManager getInstance(){
+    public static WebDriverManager getInstance() {
         if (instance == null || instance.webDriver == null) {
             instance = new WebDriverManager();
         }
         return instance;
     }
 
-  private void initialize() {
-      this.webDriver = DriverWebFactory.getWebDriver();
-      webDriver.manage().window().maximize();
-      webDriver.manage().timeouts().implicitlyWait(DriverConfig.getInstance().getImplicitWait(), TimeUnit.SECONDS);
-      webDriverWait = new WebDriverWait(webDriver, DriverConfig.getInstance().getExplicitWait());
+    private void initialize() {
+        this.webDriver = DriverWebFactory.getWebDriver();
+        webDriver.manage().window().maximize();
+        webDriver.manage().timeouts().implicitlyWait(DriverConfig.getInstance().getImplicitWait(), TimeUnit.SECONDS);
+        webDriverWait = new WebDriverWait(webDriver, DriverConfig.getInstance().getExplicitWait());
     }
 
-    public WebDriver getWebDriver(){
+    public WebDriver getWebDriver() {
         return this.webDriver;
     }
 
-    public void quitWebDriver(){
+    public void quitWebDriver() {
         webDriver.quit();
         webDriver = null;
     }
+
     public WebDriverWait getWebDriverWait() {
         return webDriverWait;
     }

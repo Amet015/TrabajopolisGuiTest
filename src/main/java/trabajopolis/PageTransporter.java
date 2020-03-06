@@ -4,7 +4,7 @@ import core.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 
 public class PageTransporter {
-    private WebDriver webDriver= WebDriverManager.getInstance().getWebDriver();
+    private WebDriver webDriver = WebDriverManager.getInstance().getWebDriver();
     private final String BASE_URL = "https://www.trabajopolis.bo/";
     // Encargada de leer el url base
     // almacenar como constantes las variaciones

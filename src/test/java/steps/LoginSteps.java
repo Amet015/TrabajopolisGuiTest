@@ -1,11 +1,9 @@
 package steps;
 
-import Core.WebDriverManager;
-import Trabajopolis.PageTransporter;
-import Trabajopolis.Pages.LoginPage;
-import Trabajopolis.Pages.MyAccountPage;
-import cucumber.api.PendingException;
-import cucumber.api.Scenario;
+import core.WebDriverManager;
+import trabajopolis.PageTransporter;
+import trabajopolis.pages.LoginPage;
+import trabajopolis.pages.MyAccountPage;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

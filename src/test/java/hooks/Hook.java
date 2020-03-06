@@ -1,10 +1,9 @@
 package hooks;
 
-import Core.WebDriverManager;
-import Trabajopolis.PageTransporter;
-import Trabajopolis.Pages.EditProfilePage;
-import Trabajopolis.Pages.LoginPage;
-import Trabajopolis.entities.Context;
+import core.WebDriverManager;
+import trabajopolis.PageTransporter;
+import trabajopolis.pages.LoginPage;
+import trabajopolis.entities.Context;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 

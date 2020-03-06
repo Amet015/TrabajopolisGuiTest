@@ -1,16 +1,16 @@
 package steps;
 
-import Trabajopolis.PageTransporter;
-import Trabajopolis.Pages.EditProfilePage;
-import Trabajopolis.Pages.EducationPage;
-import Trabajopolis.Pages.GeneralInformationPage;
-import Trabajopolis.Pages.ManageListingPage;
-import Trabajopolis.Pages.MyAccountPage;
-import Trabajopolis.Pages.MyListingsPage;
-import Trabajopolis.Pages.PersonalInformationPage;
-import Trabajopolis.Pages.ResumeDetailsCV;
-import Trabajopolis.Pages.ResumeExperiencePage;
-import Trabajopolis.entities.*;
+import trabajopolis.PageTransporter;
+import trabajopolis.pages.EditProfilePage;
+import trabajopolis.pages.EducationPage;
+import trabajopolis.pages.GeneralInformationPage;
+import trabajopolis.pages.ManageListingPage;
+import trabajopolis.pages.MyAccountPage;
+import trabajopolis.pages.MyListingsPage;
+import trabajopolis.pages.PersonalInformationPage;
+import trabajopolis.pages.ResumeDetailsCV;
+import trabajopolis.pages.ResumeExperiencePage;
+import trabajopolis.entities.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

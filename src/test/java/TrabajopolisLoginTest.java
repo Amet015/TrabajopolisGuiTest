@@ -10,64 +10,64 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TrabajopolisLoginTest {
-  private PageTransporter pageTransporter;
+    private PageTransporter pageTransporter;
 
-  public TrabajopolisLoginTest(){
-    pageTransporter = new PageTransporter();
-  }
+    public TrabajopolisLoginTest() {
+        pageTransporter = new PageTransporter();
+    }
 
-  @After
-  public void afterTest(){
-    WebDriverManager.getInstance().quitWebDriver();
-  }
+    @After
+    public void afterTest() {
+        WebDriverManager.getInstance().quitWebDriver();
+    }
 
-  @Test
-  public void login_trabajopolis() {
-    pageTransporter.navigateToLoginPage();
-    LoginPage loginPage = new LoginPage();
-    loginPage.test_login();
-    MyAccountPage myAccountPage = new MyAccountPage();
-    String expected = myAccountPage.getMiCuentaCantidato();
-    String actual = "Mi Perfil";
-    assertEquals(expected,actual);
-  }
+    @Test
+    public void login_trabajopolis() {
+        pageTransporter.navigateToLoginPage();
+        LoginPage loginPage = new LoginPage();
+        loginPage.test_login();
+        MyAccountPage myAccountPage = new MyAccountPage();
+        String expected = myAccountPage.getMiCuentaCantidato();
+        String actual = "Mi Perfil";
+        assertEquals(expected, actual);
+    }
 
-  @Test
-  public void search_trabajopolis() {
-    pageTransporter.navigateToLoginPage();
-    LoginPage loginPage = new LoginPage();
-    loginPage.test_login();
-    MyAccountPage myAccountPage = new MyAccountPage();
-    myAccountPage.clickBuscarEmpleos();
-    BuscarEmpleosPage buscarEmpleosPage = new BuscarEmpleosPage();
-    buscarEmpleosPage.selectCategory("Informática");
-    buscarEmpleosPage.selectPostedWithin("30");
-    buscarEmpleosPage.clickSearchJob();
-    SearchResultJobPage searchResultJobPage = new SearchResultJobPage();
-    String actual = searchResultJobPage.getResultTitle();
-    String expected = "Resultados de Búsqueda de Empleos";
-    assertEquals(expected,actual);
-  }
+    @Test
+    public void search_trabajopolis() {
+        pageTransporter.navigateToLoginPage();
+        LoginPage loginPage = new LoginPage();
+        loginPage.test_login();
+        MyAccountPage myAccountPage = new MyAccountPage();
+        myAccountPage.clickBuscarEmpleos();
+        BuscarEmpleosPage buscarEmpleosPage = new BuscarEmpleosPage();
+        buscarEmpleosPage.selectCategory("Informática");
+        buscarEmpleosPage.selectPostedWithin("30");
+        buscarEmpleosPage.clickSearchJob();
+        SearchResultJobPage searchResultJobPage = new SearchResultJobPage();
+        String actual = searchResultJobPage.getResultTitle();
+        String expected = "Resultados de Búsqueda de Empleos";
+        assertEquals(expected, actual);
+    }
 
-  @Test
-  public void search_ThroughtHomePage(){
-    pageTransporter.navigateToLoginPage();
-    LoginPage loginPage = new LoginPage();
-    loginPage.test_login();
-    MyAccountPage myAccountPage = new MyAccountPage();
-    myAccountPage.clickInicio();
-    HomePage homePage = new HomePage();
-    homePage.setCategory("Internet");
-    homePage.setCityListBox("Cochabamba");
-    homePage.setEmployementTypeListBox("Full time");
-    homePage.setPostedWithinListBox("30");
-    homePage.clickSearch();
-    SearchResultJobPage searchResultJobPage = new SearchResultJobPage();
-    String actual = searchResultJobPage.getResultTitle();
-    String expected = "Resultados de Búsqueda de Empleos";
-    assertEquals(expected,actual);
+    @Test
+    public void search_ThroughtHomePage() {
+        pageTransporter.navigateToLoginPage();
+        LoginPage loginPage = new LoginPage();
+        loginPage.test_login();
+        MyAccountPage myAccountPage = new MyAccountPage();
+        myAccountPage.clickInicio();
+        HomePage homePage = new HomePage();
+        homePage.setCategory("Internet");
+        homePage.setCityListBox("Cochabamba");
+        homePage.setEmployementTypeListBox("Full time");
+        homePage.setPostedWithinListBox("30");
+        homePage.clickSearch();
+        SearchResultJobPage searchResultJobPage = new SearchResultJobPage();
+        String actual = searchResultJobPage.getResultTitle();
+        String expected = "Resultados de Búsqueda de Empleos";
+        assertEquals(expected, actual);
 
-  }
+    }
 
 //  @Test
 //  public void create_Curriculum(){
@@ -141,28 +141,28 @@ public class TrabajopolisLoginTest {
 //    myListingsPage.clickDeleteCV();
 //  }
 
-  @Test
-  public void edit_EditSalary() {
-    pageTransporter.navigateToLoginPage();
-    String newSalary = "4000";
-    LoginPage loginPage = new LoginPage();
-    loginPage.test_login();
-    MyAccountPage myAccountPage = new MyAccountPage();
-    myAccountPage.clickMiPerfil();
-    EditProfilePage editProfilePage = new EditProfilePage();
-    String salaryOld = editProfilePage.getSalaryField();
-    editProfilePage.setSalaryField(newSalary);
-    String actualSalary = editProfilePage.getSalaryField();
-    editProfilePage.clickSave();
-    String messageExpected = "Guardados los cambios del perfil";
-    String messageActual = editProfilePage.getMessageSuccesful();
-    assertEquals(messageExpected,messageActual);
-    assertEquals(newSalary,actualSalary);
+    @Test
+    public void edit_EditSalary() {
+        pageTransporter.navigateToLoginPage();
+        String newSalary = "4000";
+        LoginPage loginPage = new LoginPage();
+        loginPage.test_login();
+        MyAccountPage myAccountPage = new MyAccountPage();
+        myAccountPage.clickMiPerfil();
+        EditProfilePage editProfilePage = new EditProfilePage();
+        String salaryOld = editProfilePage.getSalaryField();
+        editProfilePage.setSalaryField(newSalary);
+        String actualSalary = editProfilePage.getSalaryField();
+        editProfilePage.clickSave();
+        String messageExpected = "Guardados los cambios del perfil";
+        String messageActual = editProfilePage.getMessageSuccesful();
+        assertEquals(messageExpected, messageActual);
+        assertEquals(newSalary, actualSalary);
 
-    pageTransporter.navigateEditProfilePage();
-    editProfilePage.setSalaryField(salaryOld);
-    editProfilePage.clickSave();
+        pageTransporter.navigateEditProfilePage();
+        editProfilePage.setSalaryField(salaryOld);
+        editProfilePage.clickSave();
 
-  }
+    }
 
 }

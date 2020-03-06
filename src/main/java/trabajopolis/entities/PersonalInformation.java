@@ -73,7 +73,7 @@ public class PersonalInformation {
         return maritalStatus;
     }
 
-    public String getMartialStatusResume(){
+    public String getMartialStatusResume() {
         return webUtils.getSexMaritalStatus(this.sex, this.maritalStatus);
     }
 
@@ -93,22 +93,22 @@ public class PersonalInformation {
         return strategyMap;
     }
 
-    public HashMap<String,String> processInformationToGet() {
+    public HashMap<String, String> processInformationToGet() {
         HashMap<String, String> values = new HashMap<>();
-        HashMap<String,Supplier> strategyMap = composeStrategyGet();
-        for (String key : strategyMap.keySet() ) {
-            values.put(key , strategyMap.get(key).get().toString());
+        HashMap<String, Supplier> strategyMap = composeStrategyGet();
+        for (String key : strategyMap.keySet()) {
+            values.put(key, strategyMap.get(key).get().toString());
         }
         return values;
     }
 
     private HashMap<String, Supplier> composeStrategyGet() {
-        HashMap<String,Supplier> strategyMapGet = new HashMap<>();
-        strategyMapGet.put(ID,() -> getIdType());
-        strategyMapGet.put(NUMBER_ID,() -> getNumberId());
-        strategyMapGet.put(DATE_BORN,() -> getDateBorn());
-        strategyMapGet.put(ADDRESS,() -> getAddress());
-        strategyMapGet.put(MARITAL_STATUS,() -> getMartialStatusResume());
+        HashMap<String, Supplier> strategyMapGet = new HashMap<>();
+        strategyMapGet.put(ID, () -> getIdType());
+        strategyMapGet.put(NUMBER_ID, () -> getNumberId());
+        strategyMapGet.put(DATE_BORN, () -> getDateBorn());
+        strategyMapGet.put(ADDRESS, () -> getAddress());
+        strategyMapGet.put(MARITAL_STATUS, () -> getMartialStatusResume());
 
         return strategyMapGet;
     }

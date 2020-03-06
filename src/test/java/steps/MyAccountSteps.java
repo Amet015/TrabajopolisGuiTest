@@ -33,7 +33,7 @@ public class MyAccountSteps {
     private GeneralInformationPage generalInformationPage;
     private ResumeDetailsCV resumeDetailsCV;
     private Context context;
-    private Map<String,String> mapPersonalInformation;
+    private Map<String, String> mapPersonalInformation;
 
     public MyAccountSteps(Context context) {
         this.context = context;
@@ -107,7 +107,8 @@ public class MyAccountSteps {
         Education education = context.getCurriculum().getEducation();
         education.proccessInformation(mapEducation);
 
-        educationPage = resumeExperiencePage.clickNextButton();;
+        educationPage = resumeExperiencePage.clickNextButton();
+        ;
         educationPage.setFillsEducation(education, mapEducation.keySet());
     }
 
@@ -116,7 +117,7 @@ public class MyAccountSteps {
         GeneralInformation generalInformation = context.getCurriculum().getGeneralInformation();
         generalInformation.proccessInformation(mapGeneralInformation);
 
-        generalInformationPage =  educationPage.clickNextButton();
+        generalInformationPage = educationPage.clickNextButton();
         generalInformationPage.setFillsGeneralInformation(generalInformation, mapGeneralInformation.keySet());
     }
 
@@ -137,10 +138,10 @@ public class MyAccountSteps {
         HashMap<String, String> validateEducation = resumeDetailsCV.getEducationToValidate();
         HashMap<String, String> validateGeneralInformation = resumeDetailsCV.getGeneralInformationToValidate();
 
-        Assert.assertEquals(validatePersonalInformation,context.getCurriculum().getPersonalInformation().processInformationToGet());
-        Assert.assertEquals(validateGeneralInformation,context.getCurriculum().getGeneralInformation().processInformationToGet());
-        Assert.assertEquals(validateResumeExperience,context.getCurriculum().getResumeExperience().processInformationToGet());
-        Assert.assertEquals(validateEducation,context.getCurriculum().getEducation().processInformationToGet());
+        Assert.assertEquals(validatePersonalInformation, context.getCurriculum().getPersonalInformation().processInformationToGet());
+        Assert.assertEquals(validateGeneralInformation, context.getCurriculum().getGeneralInformation().processInformationToGet());
+        Assert.assertEquals(validateResumeExperience, context.getCurriculum().getResumeExperience().processInformationToGet());
+        Assert.assertEquals(validateEducation, context.getCurriculum().getEducation().processInformationToGet());
     }
 
     @And("^I delete Curriculum$")

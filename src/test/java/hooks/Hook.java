@@ -10,12 +10,12 @@ import cucumber.api.java.Before;
 public class Hook {
     Context context;
 
-    public Hook(Context context){
+    public Hook(Context context) {
         this.context = context;
     }
 
     @Before
-    public void loginInThePage(){
+    public void loginInThePage() {
         PageTransporter pageTransporter = new PageTransporter();
         pageTransporter.navigateToLoginPage();
         LoginPage loginPage = new LoginPage();
@@ -24,7 +24,7 @@ public class Hook {
     }
 
     @After
-    public void quitWebDriver(){
+    public void quitWebDriver() {
         WebDriverManager.getInstance().getWebDriver().quit();
     }
 }

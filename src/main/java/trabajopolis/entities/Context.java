@@ -5,7 +5,7 @@ public class Context {
 
     private Curriculum curriculum;
 
-    public Context(){
+    public Context() {
         curriculum = new Curriculum();
     }
 

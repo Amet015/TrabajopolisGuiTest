@@ -13,7 +13,7 @@ public class Curriculum {
         resumeExperience = new ResumeExperience();
     }
 
-    public PersonalInformation getPersonalInformation(){
+    public PersonalInformation getPersonalInformation() {
         return personalInformation;
     }
 
@@ -28,7 +28,6 @@ public class Curriculum {
     public ResumeExperience getResumeExperience() {
         return resumeExperience;
     }
-
 
 
 }

@@ -95,23 +95,23 @@ public class GeneralInformation {
         return strategyMap;
     }
 
-    public HashMap<String,String> processInformationToGet() {
+    public HashMap<String, String> processInformationToGet() {
         HashMap<String, String> values = new HashMap<>();
         HashMap<String, Supplier> strategyMap = composeStrategyGet();
-        for (String key : strategyMap.keySet() ) {
-            values.put(key , strategyMap.get(key).get().toString());
+        for (String key : strategyMap.keySet()) {
+            values.put(key, strategyMap.get(key).get().toString());
         }
         return values;
     }
 
     private HashMap<String, Supplier> composeStrategyGet() {
-        HashMap<String,Supplier> strategyMapGet = new HashMap<>();
-        strategyMapGet.put(TITLE,() -> getTitle());
-        strategyMapGet.put(CATEGORY,() -> getCategory());
-        strategyMapGet.put(CONTRACT_TYPE,() -> getContractType());
-        strategyMapGet.put(SALARY,() -> getSalary());
-        strategyMapGet.put(COUNTRY,() -> getCountry());
-        strategyMapGet.put(CITY,() -> getCity());
+        HashMap<String, Supplier> strategyMapGet = new HashMap<>();
+        strategyMapGet.put(TITLE, () -> getTitle());
+        strategyMapGet.put(CATEGORY, () -> getCategory());
+        strategyMapGet.put(CONTRACT_TYPE, () -> getContractType());
+        strategyMapGet.put(SALARY, () -> getSalary());
+        strategyMapGet.put(COUNTRY, () -> getCountry());
+        strategyMapGet.put(CITY, () -> getCity());
         return strategyMapGet;
     }
 }

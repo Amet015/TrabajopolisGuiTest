@@ -30,7 +30,7 @@ public class SearchSteps {
 
         // Logica para abrir y cerrar distintos jobs y realizar las validaciones
 
-       // String actualCategories = jobPage.getCategories();
+        // String actualCategories = jobPage.getCategories();
 
         /*Assert.assertTrue(actualCategories.contains(expectedCategory),
                 "The job " + jobName + " doesn't have the expected category: " + expectedCategory

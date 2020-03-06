@@ -102,18 +102,18 @@ public class ResumeExperience {
         return strategyMap;
     }
 
-    public HashMap<String,String> processInformationToGet() {
+    public HashMap<String, String> processInformationToGet() {
         HashMap<String, String> values = new HashMap<>();
         HashMap<String, Supplier> strategyMap = composeStrategyGet();
-        for (String key : strategyMap.keySet() ) {
-            values.put(key , strategyMap.get(key).get().toString());
+        for (String key : strategyMap.keySet()) {
+            values.put(key, strategyMap.get(key).get().toString());
         }
         return values;
     }
 
     private HashMap<String, Supplier> composeStrategyGet() {
-        HashMap<String,Supplier> strategyMapGet = new HashMap<>();
-        strategyMapGet.put(EXPERIENCE,() -> getListExperience());
+        HashMap<String, Supplier> strategyMapGet = new HashMap<>();
+        strategyMapGet.put(EXPERIENCE, () -> getListExperience());
         return strategyMapGet;
     }
 

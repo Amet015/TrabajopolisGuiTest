@@ -15,12 +15,12 @@ public class LoginSteps {
     LoginPage loginPage;
     PageTransporter pageTransporter;
 
-    public LoginSteps(){
+    public LoginSteps() {
         pageTransporter = new PageTransporter();
     }
 
     @After
-    public void afterTest(){
+    public void afterTest() {
         WebDriverManager.getInstance().quitWebDriver();
     }
 
@@ -41,6 +41,6 @@ public class LoginSteps {
         MyAccountPage myAccountPage = new MyAccountPage();
         String actual = myAccountPage.getMiCuentaCantidato();
         String expected = miPerfil;
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 }

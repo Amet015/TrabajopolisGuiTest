@@ -1,13 +1,13 @@
 package steps;
 
 import core.WebDriverManager;
+import io.cucumber.java.After;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import trabajopolis.PageTransporter;
 import trabajopolis.pages.LoginPage;
 import trabajopolis.pages.MyAccountPage;
-import cucumber.api.java.After;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 
 import static org.junit.Assert.assertEquals;
 

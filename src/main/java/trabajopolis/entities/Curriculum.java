@@ -28,6 +28,4 @@ public class Curriculum {
     public ResumeExperience getResumeExperience() {
         return resumeExperience;
     }
-
-
 }

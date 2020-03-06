@@ -1,21 +1,16 @@
-package hooks;
+package runner;
 
 import core.WebDriverManager;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import trabajopolis.PageTransporter;
 import trabajopolis.pages.LoginPage;
-import trabajopolis.entities.Context;
 
 
-public class Hook {
-    Context context;
-
-    public Hook(Context context) {
-        this.context = context;
-    }
-
-    @Before
+public class RunCukesTest extends AbstractTestNGCucumberTests {
+    
+    @BeforeTest
     public void loginInThePage() {
         PageTransporter pageTransporter = new PageTransporter();
         pageTransporter.navigateToLoginPage();
@@ -24,7 +19,7 @@ public class Hook {
 
     }
 
-    @After
+    @AfterTest
     public void quitWebDriver() {
         WebDriverManager.getInstance().getWebDriver().quit();
     }

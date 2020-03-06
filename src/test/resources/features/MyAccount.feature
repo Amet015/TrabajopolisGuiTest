@@ -46,11 +46,11 @@ Feature: My Account
     And The Curriculum is created with the basic information entered
     And I delete Curriculum
 
-#
-#  Scenario: Edit Salary
-#    Given I navitate to My Account Page
-#    When I edit Mi Perfil
-#      | Salary | 4000 |
-#    And I save changes
-#    Then The application displays a message "Guardados los cambios del perfil"
-#    And I reload the page and verify the changes
+
+  Scenario: Edit Salary
+    Given I navitate to My Account Page
+    When I edit Mi Perfil
+      | Salary | 4000 |
+    And I save changes
+    Then The application displays a message "Guardados los cambios del perfil"
+    And I reload the page and verify the changes

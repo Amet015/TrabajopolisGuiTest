@@ -5,15 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import trabajopolis.PageTransporter;
-import trabajopolis.pages.EditProfilePage;
-import trabajopolis.pages.EducationPage;
-import trabajopolis.pages.GeneralInformationPage;
-import trabajopolis.pages.ManageListingPage;
-import trabajopolis.pages.MyAccountPage;
-import trabajopolis.pages.MyListingsPage;
-import trabajopolis.pages.PersonalInformationPage;
-import trabajopolis.pages.ResumeDetailsCV;
-import trabajopolis.pages.ResumeExperiencePage;
+import trabajopolis.pages.*;
 import trabajopolis.entities.*;
 //import cucumber.api.java.en.And;
 //import cucumber.api.java.en.Given;
@@ -37,6 +29,10 @@ public class MyAccountSteps {
     private GeneralInformationPage generalInformationPage;
     private ResumeDetailsCV resumeDetailsCV;
     private Context context;
+    private SearchJobPage searchJobPage;
+    private SearchResultJobPage searchResultJobPage;
+    private PopUpPage popUpPage;
+    private SearchingSaved searchingSaved;
     private Map<String, String> mapPersonalInformation;
 
     public MyAccountSteps(Context context) {
@@ -155,4 +151,53 @@ public class MyAccountSteps {
         myAccountPage.clickMisCurriculos();
         myListingsPage.clickDeleteCV();
     }
+
+    @Given("^I go to My Account Page$")
+    public void iGoToMyAccountPage() {
+        pageTransporter.navigateToMyAccountPage();
+        myAccountPage = new MyAccountPage();
+
+    }
+
+    @And("^I go to Buscar Empleos$")
+    public void iGoToBuscarEmpleos() {
+        searchJobPage = myAccountPage.clickBuscarEmpleos();
+    }
+
+    @And("^I search the Job with the following$")
+    public void iSearchTheJobWithTheFollowing(final Map<String, String> mapSearchJob) {
+        SearchJob searchJob = context.getSearchJob();
+        searchJob.proccessInformation(mapSearchJob);
+
+        searchJobPage.setFillsSearchJob(searchJob,mapSearchJob.keySet());
+        searchResultJobPage = searchJobPage.clickSearchJob();
+    }
+
+    @When("^I go Guardar Esta Busqueda$")
+    public void iGoGuardarEstaBusqueda() {
+        popUpPage = searchResultJobPage.clickSaveThisSearching();
+    }
+
+    @And("^I give the name \"([^\"]*)\"$")
+    public void iGiveTheName(String name) throws Throwable {
+        popUpPage.setSearchName(name);
+        PopUp popUp = context.getPopUp();
+        popUp.setNameOfSearching(name);
+    }
+
+    @Then("^I verify the searching saved$")
+    public void iVerifyTheSearchingSaved() {
+        pageTransporter.navigateToMyAccountPage();
+        searchingSaved = myAccountPage.clickMySearchingSaved();
+        String actual = searchingSaved.getSearched(context.getPopUp().getNameOfSearching());
+        String expected = context.getPopUp().getNameOfSearching();
+        Assert.assertEquals(actual,expected);
+    }
+
+    @And("^I delete the searching saved$")
+    public void iDeleteTheSearchingSaved() {
+        searchingSaved.clickDelete();
+    }
+
+
 }

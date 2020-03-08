@@ -54,3 +54,14 @@ Feature: My Account
     And I save changes
     Then The application displays a message "Guardados los cambios del perfil"
     And I reload the page and verify the changes
+
+  Scenario: Save Searching
+    Given I go to My Account Page
+    And I go to Buscar Empleos
+    And I search the Job with the following
+      | Category | Internet |
+      | Country  | Bolivia  |
+    When I go Guardar Esta Busqueda
+    And I give the name "Busqueda internet"
+    Then I verify the searching saved
+    And I delete the searching saved

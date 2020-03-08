@@ -15,6 +15,9 @@ public class SearchResultJobPage extends BasePage {
     @FindBy(linkText = "Desarrollador(a) de Software")
     WebElement addStandardUnivalle;
 
+    @FindBy(linkText = "Guardar esta Búsqueda")
+    private WebElement saveSearching;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(listings));
@@ -26,5 +29,10 @@ public class SearchResultJobPage extends BasePage {
 
     public String getResultTitle() {
         return resultTitleTxt.getText();
+    }
+
+    public PopUpPage clickSaveThisSearching() {
+        saveSearching.click();
+        return new PopUpPage();
     }
 }

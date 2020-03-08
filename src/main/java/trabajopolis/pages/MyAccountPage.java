@@ -19,9 +19,11 @@ public class MyAccountPage extends BasePage {
     @FindBy(linkText = "Inicio")
     WebElement inicioLink;
 
-
     @FindBy(xpath = "//*[@id=\"rounded-lh\"]/ul/li[3]/div/div[1]/ul/li[2]/a")
     WebElement misCurriculosLink;
+
+    @FindBy(linkText = "Búsquedas Guardadas")
+    private WebElement searchingSaved;
 
     public MyAccountPage() {
     }
@@ -31,8 +33,9 @@ public class MyAccountPage extends BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(miPerfilLink));
     }
 
-    public void clickBuscarEmpleos() {
+    public SearchJobPage clickBuscarEmpleos() {
         buscarEmpleosLink.click();
+        return new SearchJobPage();
     }
 
     public String getMiCuentaCantidato() {
@@ -49,5 +52,10 @@ public class MyAccountPage extends BasePage {
 
     public void clickMisCurriculos() {
         misCurriculosLink.click();
+    }
+
+    public SearchingSaved clickMySearchingSaved() {
+        searchingSaved.click();
+        return new SearchingSaved();
     }
 }

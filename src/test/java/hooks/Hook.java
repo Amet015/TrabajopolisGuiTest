@@ -18,7 +18,7 @@ public class Hook {
     @Before
     public void loginInThePage() {
         PageTransporter pageTransporter = new PageTransporter();
-        pageTransporter.navigateToLoginPage();
+        pageTransporter.navigateToPage("Login Page");
         LoginPage loginPage = new LoginPage();
         loginPage.test_login();
 

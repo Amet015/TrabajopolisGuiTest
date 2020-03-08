@@ -3,30 +3,27 @@ package trabajopolis;
 import core.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 
+import java.security.Signature;
+import java.util.HashMap;
+
 public class PageTransporter {
     private WebDriver webDriver = WebDriverManager.getInstance().getWebDriver();
     private final String BASE_URL = "https://www.trabajopolis.bo/";
-    // Encargada de leer el url base
-    // almacenar como constantes las variaciones
+    private HashMap<String, String> urlMap;
 
-    public void navigateToLoginPage() {
-        WebDriverManager.getInstance().getWebDriver().get(BASE_URL + "log-in/");
+    public PageTransporter(){
+        urlMap = new HashMap<>();
+        urlMap.put("Pagina principal","");
+        urlMap.put("Login Page","log-in/");
+        urlMap.put("Mi cuenta", "my-account/");
+        urlMap.put("Mis curriculos", "my-listings/");
+        urlMap.put("Mi perfil", "edit-profile/");
+        urlMap.put("Busquedas guardadas", "saved-searches/");
     }
 
-    public void navigateToPage(final String pageName) {
-        WebDriverManager.getInstance().getWebDriver().get(BASE_URL + pageName);
-    }
 
-    public void navigateToMyAccountPage() {
-        webDriver.get(BASE_URL + "my-account/");
-    }
+    public void navigateToPage(String endPoint) {
+        WebDriverManager.getInstance().getWebDriver().get(BASE_URL + urlMap.get(endPoint));
 
-    public void navigateEditProfilePage() {
-        webDriver.get(BASE_URL + "edit-profile/");
     }
-
-    public void navigateToMyCurriculums() {
-        webDriver.get(BASE_URL + "my-listings/");
-    }
-
 }

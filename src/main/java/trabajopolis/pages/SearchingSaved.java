@@ -23,7 +23,7 @@ public class SearchingSaved extends BasePage {
         return nameSaved.getText();
     }
 
-    public void clickDelete(){
+    public void clickDelete() throws InterruptedException {
         deleteLink.click();
         webDriver.switchTo().alert().accept();
     }

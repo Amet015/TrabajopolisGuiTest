@@ -49,7 +49,6 @@ public class MyAccountSteps {
     @When("^I edit Mi Perfil")
     public void iEdit(final Map<String, String> dataTableSalary) {
         editProfilePage = new EditProfilePage();
-        System.out.println(dataTableSalary.get("Salary"));
         String salary = dataTableSalary.get("Salary");
         editProfilePage.setSalaryField(salary);
         newSalary = editProfilePage.getSalaryField();
@@ -67,18 +66,17 @@ public class MyAccountSteps {
         Assert.assertEquals(actualMessageSuccesful, expectedMessageSuccesful);
     }
 
-    @And("^I reload the page and verify the changes$")
-    public void iReloadThePageAndVerifyTheChanges() {
-        pageTransporter.navigateEditProfilePage();
+    @And("^I reload the page (.*) and verify the changes$")
+    public void iReloadThePageAndVerifyTheChanges(String endPoint) {
+        pageTransporter.navigateToPage(endPoint);
         String actualSalary = editProfilePage.getSalaryField();
         String expectedSalary = newSalary;
         Assert.assertEquals(actualSalary, expectedSalary);
     }
 
-    @When("^I navigate to Curriculums$")
-    public void iNavigateToCurriculums() {
-        pageTransporter = new PageTransporter();
-        pageTransporter.navigateToMyCurriculums();
+    @When("^I navigate to (.*)$")
+    public void iNavigateToCurriculums(String endPoint) {
+        pageTransporter.navigateToPage(endPoint);
     }
 
     @And("^I create Curriculums in Personal Information page with$")
@@ -144,17 +142,15 @@ public class MyAccountSteps {
         Assert.assertEquals(validateEducation, context.getCurriculum().getEducation().processInformationToGet());
     }
 
-    @And("^I delete Curriculum$")
-    public void iDeleteCurriculum() {
-        pageTransporter.navigateToMyAccountPage();
-        myAccountPage = new MyAccountPage();
-        myAccountPage.clickMisCurriculos();
+    @And("^I go to (.*) and delete it$")
+    public void iDeleteCurriculum(String endPoint) {
+        pageTransporter.navigateToPage(endPoint);
         myListingsPage.clickDeleteCV();
     }
 
-    @Given("^I go to My Account Page$")
-    public void iGoToMyAccountPage() {
-        pageTransporter.navigateToMyAccountPage();
+    @Given("^I go to (.*) Page$")
+    public void iGoToMyAccountPage(String endPoint) {
+        pageTransporter.navigateToPage(endPoint);
         myAccountPage = new MyAccountPage();
 
     }
@@ -185,9 +181,8 @@ public class MyAccountSteps {
         popUp.setNameOfSearching(name);
     }
 
-    @Then("^I verify the searching saved$")
+    @Then("^I go to Busquedas guardadas and verify the searches saved$")
     public void iVerifyTheSearchingSaved() {
-        pageTransporter.navigateToMyAccountPage();
         searchingSaved = myAccountPage.clickMySearchingSaved();
         String actual = searchingSaved.getSearched(context.getPopUp().getNameOfSearching());
         String expected = context.getPopUp().getNameOfSearching();
@@ -195,7 +190,7 @@ public class MyAccountSteps {
     }
 
     @And("^I delete the searching saved$")
-    public void iDeleteTheSearchingSaved() {
+    public void iDeleteTheSearchingSaved() throws InterruptedException {
         searchingSaved.clickDelete();
     }
 

@@ -159,7 +159,7 @@ public class TrabajopolisLoginTest {
         assertEquals(messageExpected, messageActual);
         assertEquals(newSalary, actualSalary);
 
-        pageTransporter.navigateEditProfilePage();
+//        pageTransporter.navigateEditProfilePage();
         editProfilePage.setSalaryField(salaryOld);
         editProfilePage.clickSave();
 

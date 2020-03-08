@@ -1,7 +1,7 @@
 Feature: My Account
 
   Scenario: Create new curriculum
-    When I navigate to Curriculums
+    When I navigate to Mis curriculos
     And I create Curriculums in Personal Information page with
       | Id             | Cédula de Identidad |
       | NumberId       | 8049555             |
@@ -44,7 +44,7 @@ Feature: My Account
       | PrivacityCV   | Todas las Empresas - Visible en la Base de Datos de CVs |
     Then The application displays a page with a button "DESCARGAR CURRÍCULUM EN PDF"
     And The Curriculum is created with the basic information entered
-    And I delete Curriculum
+    And I go to Mis curriculos and delete it
 
 
   Scenario: Edit Salary
@@ -53,15 +53,18 @@ Feature: My Account
       | Salary | 4000 |
     And I save changes
     Then The application displays a message "Guardados los cambios del perfil"
-    And I reload the page and verify the changes
+    And I reload the page Mi perfil and verify the changes
+
+
 
   Scenario: Save Searching
-    Given I go to My Account Page
+    Given I go to Mi cuenta Page
     And I go to Buscar Empleos
     And I search the Job with the following
       | Category | Internet |
       | Country  | Bolivia  |
     When I go Guardar Esta Busqueda
     And I give the name "Busqueda internet"
-    Then I verify the searching saved
+    Then I go to Mi cuenta Page
+    And I go to Busquedas guardadas and verify the searches saved
     And I delete the searching saved

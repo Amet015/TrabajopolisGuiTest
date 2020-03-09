@@ -1,13 +1,12 @@
 package trabajopolis.pages;
 
-import trabajopolis.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import trabajopolis.BasePage;
 import trabajopolis.entities.EditProfile;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 

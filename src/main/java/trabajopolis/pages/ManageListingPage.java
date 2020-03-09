@@ -6,10 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ManageListingPage extends BasePage {
-    @FindBy(xpath = "//*[@id=\"maindDivBg\"]/div[6]/p[4]/a[1]")
+    @FindBy(xpath = "//a[contains(text(),'Descargar Curr')]")
     WebElement downloadCVButton;
 
-    @FindBy(xpath = "//*[@id=\"maindDivBg\"]/div[6]/p[4]/a[2]")
+    @FindBy(xpath = "//a[contains(text(),'Ver Curr')]")
     WebElement lookMyCV;
 
     @Override

@@ -10,7 +10,7 @@ public class MyAccountPage extends BasePage {
     @FindBy(linkText = "Buscar Empleos")
     WebElement buscarEmpleosLink;
 
-    @FindBy(xpath = "/html/body/div[4]/div[6]/div[2]/div/h1")
+    @FindBy(xpath = "//div//h1[contains(text(),'Mi Cuenta de Candidato')]")
     WebElement miCuentaDeCandidatoTxt;
 
     @FindBy(linkText = "Mi Perfil")
@@ -19,7 +19,7 @@ public class MyAccountPage extends BasePage {
     @FindBy(linkText = "Inicio")
     WebElement inicioLink;
 
-    @FindBy(xpath = "//*[@id=\"rounded-lh\"]/ul/li[3]/div/div[1]/ul/li[2]/a")
+    @FindBy(linkText = "Mis Currículos")
     WebElement misCurriculosLink;
 
     @FindBy(linkText = "Búsquedas Guardadas")

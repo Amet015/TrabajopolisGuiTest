@@ -24,10 +24,10 @@ public class LoginSteps {
         WebDriverManager.getInstance().quitWebDriver();
     }
 
-    @Given("^I go to Login page$")
-    public void iLoginToTheApplication() {
+    @Given("^I go to (.*)$")
+    public void iLoginToTheApplication(String endPoint) {
 
-        pageTransporter.navigateToLoginPage();
+        pageTransporter.navigateToPage(endPoint);
     }
 
     @When("^I insert the credentials$")

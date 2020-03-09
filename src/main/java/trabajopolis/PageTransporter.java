@@ -21,7 +21,6 @@ public class PageTransporter {
         urlMap.put("Busquedas guardadas", "saved-searches/");
     }
 
-
     public void navigateToPage(String endPoint) {
         WebDriverManager.getInstance().getWebDriver().get(BASE_URL + urlMap.get(endPoint));
 

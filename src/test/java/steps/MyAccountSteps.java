@@ -36,15 +36,16 @@ public class MyAccountSteps {
         this.context = context;
     }
 
-    @Given("^I navitate to My Account Page$")
-    public void iNavitateToMyAccountPage() {
-        myAccountPage = new MyAccountPage();
-        myAccountPage.clickMiPerfil();
-        mapPersonalInformation = new HashMap<>();
-    }
+//    @Given("^I navitate to My Account Page$")
+//    public void iNavitateToMyAccountPage() {
+//        myAccountPage = new MyAccountPage();
+//        myAccountPage.clickMiPerfil();
+//
+//    }
 
     @When("^I edit Mi Perfil")
     public void iEdit(final Map<String, String> mapEditProfile) {
+        mapPersonalInformation = new HashMap<>();
         mapOldEditProfile = new HashMap<>();
         editProfilePage = new EditProfilePage();
         mapOldEditProfile.put("Salary",editProfilePage.getSalaryField());

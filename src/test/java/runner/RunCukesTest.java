@@ -16,12 +16,10 @@ public class RunCukesTest extends AbstractTestNGCucumberTests {
         pageTransporter.navigateToPage("Login Page");
         LoginPage loginPage = new LoginPage();
         loginPage.test_login();
-
-
     }
 
     @AfterTest
     public void quitWebDriver() {
-        WebDriverManager.getInstance().getWebDriver().quit();
+        WebDriverManager.getInstance().quitWebDriver();
     }
 }

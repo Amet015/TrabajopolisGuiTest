@@ -6,6 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import trabajopolis.PageTransporter;
 import trabajopolis.pages.LoginPage;
+import trabajopolis.reports.Report;
 
 
 public class RunCukesTest extends AbstractTestNGCucumberTests {
@@ -21,5 +22,6 @@ public class RunCukesTest extends AbstractTestNGCucumberTests {
     @AfterTest
     public void quitWebDriver() {
         WebDriverManager.getInstance().quitWebDriver();
+        Report.getInstance().generateReport();
     }
 }

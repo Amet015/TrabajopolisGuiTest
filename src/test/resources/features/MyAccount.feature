@@ -6,7 +6,7 @@ Feature: My Account
       | Id             | Cédula de Identidad |
       | NumberId       | 8049555             |
       | Date Born      | 2/3/1990            |
-      | Sex            | Masculino           |
+      | Sex            | MasculinA           |
       | Address        | c/ laredo           |
       | Marital Status | Soltero(a)          |
     And I fill fields in Resume Experience page with
@@ -62,7 +62,7 @@ Feature: My Account
     And I go to Buscar Empleos
     And I search the Job with the following
       | Category | Internet |
-      | Country  | Bolivia  |
+      | Country  | BoliviOO  |
     When I go Guardar Esta Busqueda
     And I give the name "Busqueda internet"
     Then I go to Mi cuenta Page

@@ -5,11 +5,13 @@ public class Context {
 
     private Curriculum curriculum;
     private SearchJob searchJob;
+    private EditProfile editProfile;
     private PopUp popUp;
 
     public Context() {
         curriculum = new Curriculum();
         searchJob = new SearchJob();
+        editProfile = new EditProfile();
         popUp = new PopUp();
     }
 
@@ -21,8 +23,12 @@ public class Context {
         return searchJob;
     }
 
-    public PopUp getPopUp(){
+    public PopUp getPopUp() {
         return popUp;
+    }
+
+    public EditProfile getEditProfile() {
+        return editProfile;
     }
 
 }

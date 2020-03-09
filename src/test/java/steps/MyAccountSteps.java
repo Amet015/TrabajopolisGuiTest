@@ -7,10 +7,6 @@ import io.cucumber.java.en.When;
 import trabajopolis.PageTransporter;
 import trabajopolis.pages.*;
 import trabajopolis.entities.*;
-//import cucumber.api.java.en.And;
-//import cucumber.api.java.en.Given;
-//import cucumber.api.java.en.Then;
-//import cucumber.api.java.en.When;
 import org.testng.Assert;
 
 import java.util.HashMap;
@@ -33,6 +29,7 @@ public class MyAccountSteps {
     private SearchResultJobPage searchResultJobPage;
     private PopUpPage popUpPage;
     private SearchingSaved searchingSaved;
+    HashMap<String,String> mapOldEditProfile;
     private Map<String, String> mapPersonalInformation;
 
     public MyAccountSteps(Context context) {
@@ -47,11 +44,16 @@ public class MyAccountSteps {
     }
 
     @When("^I edit Mi Perfil")
-    public void iEdit(final Map<String, String> dataTableSalary) {
+    public void iEdit(final Map<String, String> mapEditProfile) {
+        mapOldEditProfile = new HashMap<>();
         editProfilePage = new EditProfilePage();
-        String salary = dataTableSalary.get("Salary");
-        editProfilePage.setSalaryField(salary);
-        newSalary = editProfilePage.getSalaryField();
+        mapOldEditProfile.put("Salary",editProfilePage.getSalaryField());
+        EditProfile editProfile = context.getEditProfile();
+        editProfile.oldProccessInformation(mapOldEditProfile);
+
+        editProfile.proccessInformation(mapEditProfile);
+        editProfilePage.setEditProfile(editProfile, mapEditProfile.keySet());
+
     }
 
     @And("^I save changes$")
@@ -69,9 +71,14 @@ public class MyAccountSteps {
     @And("^I reload the page (.*) and verify the changes$")
     public void iReloadThePageAndVerifyTheChanges(String endPoint) {
         pageTransporter.navigateToPage(endPoint);
-        String actualSalary = editProfilePage.getSalaryField();
-        String expectedSalary = newSalary;
-        Assert.assertEquals(actualSalary, expectedSalary);
+//        String actualSalary = editProfilePage.getSalaryField();
+//        String expectedSalary = newSalary;
+//        Assert.assertEquals(actualSalary, expectedSalary);
+
+        HashMap<String, String> validateEditProfile = editProfilePage.getEditProfile();
+        Assert.assertEquals(validateEditProfile, context.getEditProfile().getEditProfileToValidate());
+        editProfilePage.setOldEditProfile(context.getEditProfile(), mapOldEditProfile.keySet());
+        editProfilePage.clickSave();
     }
 
     @When("^I navigate to (.*)$")

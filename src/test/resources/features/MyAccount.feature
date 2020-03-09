@@ -49,7 +49,7 @@ Feature: My Account
 
 
   Scenario: Edit Salary
-    Given I navitate to My Account Page
+    Given I navigate to Mi perfil
     When I edit Mi Perfil
       | Salary | 4000 |
     And I save changes

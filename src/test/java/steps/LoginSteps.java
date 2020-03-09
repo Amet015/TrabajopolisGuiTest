@@ -19,14 +19,8 @@ public class LoginSteps {
         pageTransporter = new PageTransporter();
     }
 
-    @After
-    public void afterTest() {
-        WebDriverManager.getInstance().quitWebDriver();
-    }
-
-    @Given("^I go to (.*)$")
+    @Given("^I go to (.*) with user credentials$")
     public void iLoginToTheApplication(String endPoint) {
-
         pageTransporter.navigateToPage(endPoint);
     }
 

@@ -1,13 +1,11 @@
 package trabajopolis;
 
 import core.WebDriverManager;
-import org.openqa.selenium.WebDriver;
 
-import java.security.Signature;
 import java.util.HashMap;
 
 public class PageTransporter {
-    private WebDriver webDriver = WebDriverManager.getInstance().getWebDriver();
+
     private final String BASE_URL = "https://www.trabajopolis.bo/";
     private HashMap<String, String> urlMap;
 

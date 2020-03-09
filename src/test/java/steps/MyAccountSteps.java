@@ -142,9 +142,8 @@ public class MyAccountSteps {
         Assert.assertEquals(validateEducation, context.getCurriculum().getEducation().processInformationToGet());
     }
 
-    @And("^I go to (.*) and delete it$")
-    public void iDeleteCurriculum(String endPoint) {
-        pageTransporter.navigateToPage(endPoint);
+    @And("^I delete it$")
+    public void iDeleteCurriculum() {
         myListingsPage.clickDeleteCV();
     }
 

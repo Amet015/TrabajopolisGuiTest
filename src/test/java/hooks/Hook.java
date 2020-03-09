@@ -9,15 +9,17 @@ import trabajopolis.entities.Context;
 
 
 public class Hook {
-    Context context;
+    private Context context;
+    private PageTransporter pageTransporter;
 
     public Hook(Context context) {
         this.context = context;
+        pageTransporter = new PageTransporter();
     }
 
     @Before
     public void loginInThePage() {
-        PageTransporter pageTransporter = new PageTransporter();
+
         pageTransporter.navigateToPage("Login Page");
         LoginPage loginPage = new LoginPage();
         loginPage.test_login();
@@ -26,6 +28,6 @@ public class Hook {
 
     @After
     public void quitWebDriver() {
-        WebDriverManager.getInstance().getWebDriver().quit();
+        WebDriverManager.getInstance().quitWebDriver();
     }
 }

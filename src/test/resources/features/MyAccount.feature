@@ -44,7 +44,8 @@ Feature: My Account
       | PrivacityCV   | Todas las Empresas - Visible en la Base de Datos de CVs |
     Then The application displays a page with a button "DESCARGAR CURRÍCULUM EN PDF"
     And The Curriculum is created with the basic information entered
-    And I go to Mis curriculos and delete it
+    And I navigate to Mis curriculos
+    And I delete it
 
 
   Scenario: Edit Salary

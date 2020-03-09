@@ -1,15 +1,13 @@
 package steps;
 
-import Core.WebDriverManager;
-import Trabajopolis.PageTransporter;
-import Trabajopolis.Pages.LoginPage;
-import Trabajopolis.Pages.MyAccountPage;
-import cucumber.api.PendingException;
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import core.WebDriverManager;
+import io.cucumber.java.After;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import trabajopolis.PageTransporter;
+import trabajopolis.pages.LoginPage;
+import trabajopolis.pages.MyAccountPage;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,33 +15,26 @@ public class LoginSteps {
     LoginPage loginPage;
     PageTransporter pageTransporter;
 
-    public LoginSteps(){
+    public LoginSteps() {
         pageTransporter = new PageTransporter();
     }
 
-    @After
-    public void afterTest(){
-        WebDriverManager.getInstance().quitWebDriver();
-    }
-
-    @Given("^I go to Login page$")
-    public void iLoginToTheApplication() {
-
-        pageTransporter.navigateToLoginPage();
+    @Given("^I go to (.*) with user credentials$")
+    public void iLoginToTheApplication(String endPoint) {
+        pageTransporter.navigateToPage(endPoint);
     }
 
     @When("^I insert the credentials$")
     public void iInsertTheCredentials() {
         loginPage = new LoginPage();
         loginPage.test_login();
-        
     }
 
     @Then("^The application displays \"([^\"]*)\"$")
-    public void theApplicationDisplays(String arg0) {
+    public void theApplicationDisplays(String miPerfil) {
         MyAccountPage myAccountPage = new MyAccountPage();
         String actual = myAccountPage.getMiCuentaCantidato();
-        String expected = arg0;
-        assertEquals(expected,actual);
+        String expected = miPerfil;
+        assertEquals(expected, actual);
     }
 }

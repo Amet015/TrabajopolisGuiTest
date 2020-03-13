@@ -1,7 +1,5 @@
-package steps;
+package TestTrabajopolis.steps;
 
-import core.WebDriverManager;
-import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

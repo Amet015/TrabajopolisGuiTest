@@ -35,7 +35,7 @@ Feature: My Account
       | Language Oral           | Medio                    |
       | Language Reading        | Medio                    |
     And I fill fields in General Information Page with
-      | Title         | Ingeniero Telecomunicaciones                            |
+      | Title         | Ingeniero Electronico                                   |
       | Category      | Internet                                                |
       | Contract Type | Tiempo Completo                                         |
       | Salary        | 4000                                                    |
@@ -60,6 +60,7 @@ Feature: My Account
   Scenario: Save Searching
     Given I go to Mi cuenta Page
     And I go to Buscar Empleos
+   # And undefined step
     And I search the Job with the following
       | Category | Internet |
       | Country  | Bolivia  |

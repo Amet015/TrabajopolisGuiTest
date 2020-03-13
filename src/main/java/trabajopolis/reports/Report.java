@@ -13,6 +13,7 @@ package trabajopolis.reports;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.masterthought.cucumber.Reportable;
+import net.masterthought.cucumber.json.Feature;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -37,9 +38,10 @@ public class Report {
         jsonFiles.add("build/cucumber/cucumber.json");
         final String projectName = "TrabajopolisTest";
         final boolean runWithJenkins = false;
+        Feature feature = new Feature();
+        feature.getName();
         final Configuration configuration = new Configuration(reportOutputDirectory, projectName);
-        configuration.addClassifications("Platform", "WINDOWS");
-        configuration.addClassifications("Branch", "RELEASE/1.0");
+        configuration.addClassifications("Page", "Trabajopolis");
         final ReportBuilder reportBuilder = new ReportBuilder(jsonFiles, configuration);
         final Reportable result = reportBuilder.generateReports();
     }

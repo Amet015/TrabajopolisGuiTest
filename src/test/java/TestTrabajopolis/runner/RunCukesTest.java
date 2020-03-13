@@ -1,4 +1,4 @@
-package runner;
+package TestTrabajopolis.runner;
 
 import core.WebDriverManager;
 import io.cucumber.testng.AbstractTestNGCucumberTests;

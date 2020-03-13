@@ -1,5 +1,6 @@
-package steps;
+package TestTrabajopolis.steps;
 
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -72,9 +73,6 @@ public class MyAccountSteps {
     @And("^I reload the page (.*) and verify the changes$")
     public void iReloadThePageAndVerifyTheChanges(String endPoint) {
         pageTransporter.navigateToPage(endPoint);
-//        String actualSalary = editProfilePage.getSalaryField();
-//        String expectedSalary = newSalary;
-//        Assert.assertEquals(actualSalary, expectedSalary);
 
         HashMap<String, String> validateEditProfile = editProfilePage.getEditProfile();
         Assert.assertEquals(validateEditProfile, context.getEditProfile().getEditProfileToValidate());
@@ -114,7 +112,7 @@ public class MyAccountSteps {
         education.proccessInformation(mapEducation);
 
         educationPage = resumeExperiencePage.clickNextButton();
-        ;
+
         educationPage.setFillsEducation(education, mapEducation.keySet());
     }
 
@@ -202,4 +200,8 @@ public class MyAccountSteps {
     }
 
 
+    @And("pending step")
+    public void pendingStep() throws Throwable {
+        throw new PendingException();
+    }
 }

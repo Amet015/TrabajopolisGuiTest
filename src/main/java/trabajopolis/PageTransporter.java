@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class PageTransporter {
 
     private final String BASE_URL = "https://www.trabajopolis.bo/";
-    private HashMap<String, String> urlMap;
+    private static HashMap<String, String> urlMap;
 
     public PageTransporter(){
         urlMap = new HashMap<>();

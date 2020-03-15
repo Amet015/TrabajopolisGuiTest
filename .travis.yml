@@ -26,6 +26,7 @@ before_install:
   - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 
 install:
+  - sudo gradle assemble
   - sudo gradle build
 
 script:

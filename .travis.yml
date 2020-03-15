@@ -32,6 +32,6 @@ install:
 script:
   - whereis google-chrome-stable
   - whereis chromedriver
-  - gradle task executeFeatures
+  - sudo gradle task executeFeatures
 notifications:
   email: true

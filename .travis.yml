@@ -32,6 +32,6 @@ install:
 script:
 #  - whereis google-chrome-stable
 #  - whereis chromedriver
-   - gradle -q executeFeatures
+   - gradle executeFeatures
 notifications:
   email: true

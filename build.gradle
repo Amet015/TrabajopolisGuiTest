@@ -41,7 +41,7 @@ task executeFeatures(type: Test) {
 
         jvmArgs = ['-Dcucumber.options= --glue steps --plugin pretty '
                            + '--plugin json:build/cucumber/cucumber.json --plugin rerun:build/cucumber/rerun.txt '
-                           + 'classpath: /usr/local/bin/chromedriver']
+                           + 'classpath:']
     }
 }
 

@@ -52,15 +52,15 @@ class ChromeWebDriver implements IDriver {
         // -- ChromeWebDriver is being controlled by automated test software --
         chromeOptions.addArguments("disable-infobars");
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
-        chromeOptions.setBinary("/usr/bin/google-chrome-stable");
-        chromeOptions.addArguments("--headless");
-        chromeOptions.addArguments("--disable-gpu");
-
-        final DesiredCapabilities dc = new DesiredCapabilities();
-        dc.setJavascriptEnabled(true);
-        dc.setCapability(
-                ChromeOptions.CAPABILITY, chromeOptions
-        );
+//        chromeOptions.setBinary("/usr/bin/google-chrome-stable");
+//        chromeOptions.addArguments("--headless");
+//        chromeOptions.addArguments("--disable-gpu");
+//
+//        final DesiredCapabilities dc = new DesiredCapabilities();
+//        dc.setJavascriptEnabled(true);
+//        dc.setCapability(
+//                ChromeOptions.CAPABILITY, chromeOptions
+//        );
 
         //Use to ignore ssl errors
         chromeOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
@@ -69,6 +69,6 @@ class ChromeWebDriver implements IDriver {
 
 
         //Todo Add more code here if need to do some configurations
-        return new org.openqa.selenium.chrome.ChromeDriver(dc);
+        return new org.openqa.selenium.chrome.ChromeDriver(chromeOptions);
     }
 }

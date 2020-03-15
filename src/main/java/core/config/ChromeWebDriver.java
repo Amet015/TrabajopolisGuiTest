@@ -9,6 +9,7 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.util.HashMap;
@@ -22,6 +23,8 @@ class ChromeWebDriver implements IDriver {
      *
      * @return A new ChromeWebDriver.
      */
+
+
     @Override
     public WebDriver initDriver() {
 
@@ -49,11 +52,21 @@ class ChromeWebDriver implements IDriver {
         // -- ChromeWebDriver is being controlled by automated test software --
         chromeOptions.addArguments("disable-infobars");
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
+        chromeOptions.setBinary("/path/to/google-chrome-stable");
+        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--disable-gpu");
+
+        final DesiredCapabilities dc = new DesiredCapabilities();
+        dc.setJavascriptEnabled(true);
+        dc.setCapability(
+                ChromeOptions.CAPABILITY, chromeOptions
+        );
 
         //Use to ignore ssl errors
         chromeOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         chromeOptions.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
+
 
         //Todo Add more code here if need to do some configurations
         return new org.openqa.selenium.chrome.ChromeDriver(chromeOptions);

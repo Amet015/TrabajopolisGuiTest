@@ -22,7 +22,7 @@ before_install:
   - sudo apt-get install chromium-chromedriver
   - sudo gradle assemble
   - sudo gradle check
-  - sudo ./gradlew wrapper
+  - sudo gradle wrapper
 install:
   - sudo gradle build
 

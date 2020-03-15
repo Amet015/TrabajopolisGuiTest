@@ -52,7 +52,7 @@ class ChromeWebDriver implements IDriver {
         // -- ChromeWebDriver is being controlled by automated test software --
         chromeOptions.addArguments("disable-infobars");
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
-        chromeOptions.setBinary("/path/to/google-chrome-stable");
+        chromeOptions.setBinary("/usr/local/bin/chromedriver");
         chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("--disable-gpu");
 

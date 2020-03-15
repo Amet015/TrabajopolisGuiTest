@@ -24,9 +24,9 @@ repositories {
     mavenCentral()
 }
 
-checkstyle{
-    toolVersion='8.1'
-}
+//checkstyle{
+//    toolVersion='8.1'
+//}
 
 configurations {
     cucumberRuntime {

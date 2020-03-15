@@ -6,7 +6,7 @@ jdk:
 
 addons:
   chrome: stable
-  firefox: "49.0"
+  #firefox: "49.0"
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -20,12 +20,12 @@ cache:
 before_install:
   - sudo apt-get update
   - sudo apt-get install chromium-chromedriver
-  - gradle assemble
-  - gradle check
+#  - gradle assemble
+#  - gradle check
 install:
   - gradle build
 
 script:
-  - gradle task executeFeatures
+ # - gradle task executeFeatures
 notifications:
   email: true

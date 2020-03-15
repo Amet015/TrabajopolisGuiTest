@@ -11,28 +11,28 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TrabajopolisLoginTest {
-    private PageTransporter pageTransporter;
-
-    public TrabajopolisLoginTest() {
-        pageTransporter = new PageTransporter();
-    }
-
-
-    @After
-    public void afterTest() {
-        WebDriverManager.getInstance().quitWebDriver();
-    }
-
-    @Test
-    public void login_trabajopolis() {
-        pageTransporter.navigateToPage("Login Page");
-        LoginPage loginPage = new LoginPage();
-        loginPage.test_login();
-        MyAccountPage myAccountPage = new MyAccountPage();
-        String expected = myAccountPage.getMiCuentaCantidato();
-        String actual = "Mi Perfil";
-        assertEquals(expected, actual);
-    }
+//    private PageTransporter pageTransporter;
+//
+//    public TrabajopolisLoginTest() {
+//        pageTransporter = new PageTransporter();
+//    }
+//
+//
+//    @After
+//    public void afterTest() {
+//        WebDriverManager.getInstance().quitWebDriver();
+//    }
+//
+//    @Test
+//    public void login_trabajopolis() {
+//        pageTransporter.navigateToPage("Login Page");
+//        LoginPage loginPage = new LoginPage();
+//        loginPage.test_login();
+//        MyAccountPage myAccountPage = new MyAccountPage();
+//        String expected = myAccountPage.getMiCuentaCantidato();
+//        String actual = "Mi Perfil";
+//        assertEquals(expected, actual);
+//    }
 
     //
 //    @Test

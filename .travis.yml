@@ -4,9 +4,9 @@ jdk:
 
 #sudo: false
 
-addons:
-  chrome: stable
-  #firefox: "49.0"
+#addons:
+#  chrome: stable
+#  #firefox: "49.0"
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -18,20 +18,20 @@ cache:
     - $HOME/.gradle/wrapper/
 
 before_install:
-  - wget -N http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -P ~/
-  - unzip ~/chromedriver_linux64.zip -d ~/
-  - rm ~/chromedriver_linux64.zip
-  - sudo mv -f ~/chromedriver /usr/local/share/
-  - sudo chmod +x /usr/local/share/chromedriver
-  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+#  - wget -N http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -P ~/
+#  - unzip ~/chromedriver_linux64.zip -d ~/
+#  - rm ~/chromedriver_linux64.zip
+#  - sudo mv -f ~/chromedriver /usr/local/share/
+#  - sudo chmod +x /usr/local/share/chromedriver
+#  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 
 install:
   - sudo gradle assemble
   - sudo gradle build
 
 script:
-  - whereis google-chrome-stable
-  - whereis chromedriver
+#  - whereis google-chrome-stable
+#  - whereis chromedriver
   - sudo gradle -q executeFeatures
 notifications:
   email: true

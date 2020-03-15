@@ -69,6 +69,6 @@ class ChromeWebDriver implements IDriver {
 
 
         //Todo Add more code here if need to do some configurations
-        return new org.openqa.selenium.chrome.ChromeDriver(chromeOptions);
+        return new org.openqa.selenium.chrome.ChromeDriver(dc);
     }
 }

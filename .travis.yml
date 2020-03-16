@@ -27,11 +27,11 @@ before_install:
 
 install:
 #  - sudo ./gradlew assemble
-  - sudo ./gradlew clean build
+  - gradle clean build
 
 script:
 #  - whereis google-chrome-stable
 #  - whereis chromedriver
-   - ./gradlew executeFeatures
+   - gradle executeFeatures
 notifications:
   email: false

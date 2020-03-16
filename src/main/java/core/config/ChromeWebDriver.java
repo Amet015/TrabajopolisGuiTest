@@ -49,8 +49,8 @@ class ChromeWebDriver implements IDriver {
         // -- ChromeWebDriver is being controlled by automated test software --
         chromeOptions.addArguments("disable-infobars");
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
-//        chromeOptions.addArguments("--headless");
-//        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--disable-gpu");
 
 //        final DesiredCapabilities dc = new DesiredCapabilities();
 //        dc.setJavascriptEnabled(true);

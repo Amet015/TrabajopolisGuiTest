@@ -39,7 +39,7 @@ task executeFeatures(type: Test) {
     options {
         useDefaultListeners = false
 
-        jvmArgs = ['-Dcucumber.options= --glue steps --plugin pretty '
+        jvmArgs = ['-Dcucumber.options= --glue TestTrabajopolis --plugin pretty '
                            + '--plugin json:build/cucumber/cucumber.json --plugin rerun:build/cucumber/rerun.txt '
                            + 'classpath: src/test/resources/features']
     }
@@ -57,4 +57,5 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-java:5.4.0'
     testCompile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '5.4.0'
     compile group: 'io.cucumber', name: 'cucumber-testng', version: '5.4.0'
+    compile group: 'net.masterthought', name: 'cucumber-reporting', version: '4.6.0'
 }

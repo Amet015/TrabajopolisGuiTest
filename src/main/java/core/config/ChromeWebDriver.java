@@ -9,7 +9,6 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.util.HashMap;
@@ -23,8 +22,6 @@ class ChromeWebDriver implements IDriver {
      *
      * @return A new ChromeWebDriver.
      */
-
-
     @Override
     public WebDriver initDriver() {
 

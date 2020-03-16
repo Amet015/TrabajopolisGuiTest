@@ -22,12 +22,7 @@ import java.util.HashMap;
 
 import static io.github.bonigarcia.wdm.DriverManagerType.FIREFOX;
 
-/**
- * FirefoxWebDriver, this class is in charge of initializing the specific characteristics of FirefoxWebDriver.
- *
- * @author Maday Alcala
- * @version 0.0.1
- */
+
 public class FirefoxWebDriver implements IDriver {
 
     /**

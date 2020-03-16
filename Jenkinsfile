@@ -11,7 +11,7 @@ pipeline {
         }
         stage('TEST') {
             steps {
-                sh './gradlew executeFeatures'
+                sh './gradlew -q executeFeatures'
             }
         }
     }

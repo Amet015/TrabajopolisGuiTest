@@ -6,12 +6,13 @@ pipeline {
   stages {
         stage('BUILD') {
             steps {
+                sh './gradlew assemble'
                 sh './gradlew build'
             }
         }
         stage('TEST') {
             steps {
-                sh './gradlew -q executeFeatures'
+                sh './gradlew executeFeatures'
             }
         }
     }

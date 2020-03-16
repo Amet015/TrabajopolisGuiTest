@@ -20,14 +20,14 @@ public class Hook {
     @Before
     public void loginInThePage() {
 
-        pageTransporter.navigateToPage("Login Page");
-        LoginPage loginPage = new LoginPage();
-        loginPage.test_login();
+//        pageTransporter.navigateToPage("Login Page");
+//        LoginPage loginPage = new LoginPage();
+//        loginPage.test_login();
 
     }
 
     @After
     public void quitWebDriver() {
-        WebDriverManager.getInstance().quitWebDriver();
+//        WebDriverManager.getInstance().quitWebDriver();
     }
 }

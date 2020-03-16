@@ -35,4 +35,3 @@ script:
    - gradle -q executeFeatures
 notifications:
   email: false
-  

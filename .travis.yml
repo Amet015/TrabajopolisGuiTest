@@ -26,8 +26,8 @@ before_install:
 #  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 
 install:
-  - sudo ./gradlew assemble
-  - sudo ./gradlew build
+#  - sudo ./gradlew assemble
+  - sudo ./gradlew clean build
 
 script:
 #  - whereis google-chrome-stable

@@ -2,12 +2,6 @@ language: java
 jdk:
   - openjdk8
 
-#sudo: false
-
-#addons:
-#  chrome: stable
-#  #firefox: "49.0"
-
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -17,21 +11,11 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-before_install:
-#  - wget -N http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -P ~/
-#  - unzip ~/chromedriver_linux64.zip -d ~/
-#  - rm ~/chromedriver_linux64.zip
-#  - sudo mv -f ~/chromedriver /usr/local/share/
-#  - sudo chmod +x /usr/local/share/chromedriver
-#  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
-
 install:
-#  - sudo ./gradlew assemble
+
   - gradle clean build
 
 script:
-#  - whereis google-chrome-stable
-#  - whereis chromedriver
    - gradle executeFeatures
 notifications:
   email: false

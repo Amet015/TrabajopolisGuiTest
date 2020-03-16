@@ -41,7 +41,7 @@ task executeFeatures(type: Test) {
 
         jvmArgs = ['-Dcucumber.options= --glue steps --plugin pretty '
                            + '--plugin json:build/cucumber/cucumber.json --plugin rerun:build/cucumber/rerun.txt '
-                           + 'classpath:']
+                           + 'classpath: src/test/resources/features']
     }
 }
 //    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0-alpha-4'

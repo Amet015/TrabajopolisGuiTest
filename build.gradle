@@ -44,8 +44,6 @@ task executeFeatures(type: Test) {
                            + 'classpath: src/test/resources/features']
     }
 }
-//    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0-alpha-4'
-//    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '4.0.0-alpha-4'
 
 
 dependencies {

@@ -6,7 +6,7 @@ pipeline {
   stages {
         stage('BUILD') {
             steps {
-                bat 'gradle build'
+                bat './gradlew build'
             }
         }
         stage('TEST') {
